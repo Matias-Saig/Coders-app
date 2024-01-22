@@ -10,4 +10,8 @@
 # Preview
 
 **Primer entrega**  
-<img src="/Screenshot_1er_entrega.png" width="250px" />
+<img src="/Screenshot_1er_entrega.png" width="150px" />
+
+
+# Wireframe
+<img src="/wirerame.jpg" />
