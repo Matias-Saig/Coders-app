@@ -4,7 +4,7 @@
 <br />
 
 # Skills
-- React Nativ
+- React Native
 <br />
 
 # Preview

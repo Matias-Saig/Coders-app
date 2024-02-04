@@ -1,5 +1,11 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
+# Run android virtual device
+avd-coder-app.sh
+
+# Open vscode here
+code_here.sh
+
 # dependencies
 node_modules/
 
