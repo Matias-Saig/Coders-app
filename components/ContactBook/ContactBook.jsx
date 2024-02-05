@@ -2,8 +2,10 @@ import { StyleSheet, View } from "react-native";
 import Subtitle from "../Elements/Subtitle";
 import OptimizedList from "./OptimizedList";
 const ContactBook = () => {
+
+  
   return (
-    <View>
+    <View style={[styles.container]}>
       <Subtitle>Agenda de contactos</Subtitle>
       <OptimizedList />
     </View>
@@ -12,4 +14,8 @@ const ContactBook = () => {
 
 export default ContactBook;
 
-// const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    //width: "100%",
+  }
+});

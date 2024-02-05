@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 // COLORS
 export const globalColor = {
   // lights tones
-  highLight: "#EFEFEF",
+  white: "#FBFBFB",
+  highLight: "#F7F7F7",
   highShadow: "#CCCCCC",
   hightDark : "#A6A6A6",
 
@@ -14,7 +15,7 @@ export const globalColor = {
 
   // mid tones
   midLight: "#8894AE",
-  midShadow: "#464646",
+  midShadow: "#767676",
   midDark: "#2E3D50",
 
   // dark tones
@@ -26,6 +27,11 @@ export const globalColor = {
 
 // STYLES
 export const globalStyles = StyleSheet.create({
+
+  // Background
+  BG: {
+    backgroundColor: globalColor.highLight
+  },
  
   // texts
   title: {
@@ -47,11 +53,18 @@ export const globalStyles = StyleSheet.create({
     marginTop: 20,
   },
 
+  paragraph: {
+    color: globalColor.lowDark,
+    marginVertical:3,
+    fontSize:16
+  },
+
   // containers
   containerCenter: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "center",   
   },
+
   containerCenterFull: {
     flex: 1,
     alignItems: "center",

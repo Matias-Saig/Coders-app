@@ -1,4 +1,4 @@
-export const contacts = [
+export const contactsList = [
     { id: "1", name: "Juan", lastname: "Pérez", nickname: "JP", bank: "Banco A", cbu: "1234567890123456789012", alias: "juanperezalias" },
     { id: "2", name: "María", lastname: "Gómez", nickname: "MG", bank: "Banco B", cbu: "2345678901234567890123", alias: "mariagomezalias" },
     { id: "3", name: "Carlos", lastname: "Rodríguez", nickname: "CR", bank: "Banco C", cbu: "3456789012345678901234", alias: "carlosrodriguezalias" },
