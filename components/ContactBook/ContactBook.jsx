@@ -1,5 +1,4 @@
 import { StyleSheet, View } from "react-native";
-import { globalColor, globalStyles } from "../../global/globalStyles";
 import Subtitle from "../Subtitle/Subtitle";
 const ContactBook = () => {
   return (

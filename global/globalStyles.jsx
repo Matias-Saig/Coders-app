@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+// COLORS
 export const globalColor = {
   // lights tones
   highLight: "#EFEFEF",
@@ -22,7 +23,10 @@ export const globalColor = {
   lowDark: "#17181D"
 };
 
+
+// STYLES
 export const globalStyles = StyleSheet.create({
+ 
   // texts
   title: {
     fontFamily: "serif",
