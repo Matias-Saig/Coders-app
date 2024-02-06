@@ -4,10 +4,37 @@
 <br />
 
 # Skills
-- React Nativ
+- React Native
 <br />
+
+# Elementos usados
+- Alert » aviso de contacto agregado o borrado (Android)
+- FlatList » OptimizedList.jsx
+- Image
+- Modal » CustomModal (componente personalizado) » para agregado y borrado de contacto
+- ScrollView » en CustomModal para agregar contacto
+- StyleSheet
+- Switch » para destacar contacto, cambia backgroundColor del container del contactDetail.jsx
+- Text
+- TextInput » AddContact.jsx
+- TouchableHighlight
+- TouchableOpacity
+- useState » para almacenar datos de input, crear contacto y borrar contacto, y cambio de backgroundColor con switch
+- View
+
+# Datos
+ContactList.js » Datos de contactos de la agenda
+
+# Estilos
+globalStyles » estilos globales
+globalColor » constantes de colores
+
 
 # Preview
 
 **Primer entrega**  
-<img src="/Screenshot_1er_entrega.png" width="250px" />
+<img src="/Screenshot_1er_entrega.png" width="150px" />
+
+
+# Wireframe
+<img src="/wirerame.jpg" />
