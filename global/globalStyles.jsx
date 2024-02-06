@@ -6,7 +6,7 @@ export const globalColor = {
   white: "#FBFBFB",
   highLight: "#F7F7F7",
   highShadow: "#CCCCCC",
-  hightDark : "#A6A6A6",
+  highDark : "#A6A6A6",
 
   // hightlights
   detailLight: "#F9B176",

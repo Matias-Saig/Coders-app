@@ -4,7 +4,7 @@ const CustomModal = ({
   children,
   closeStyle,
   openStyle,
-  openText,
+  openButtonText,
   openTextStyle,
 }) => {
   const [toggleModal, setToggleModal] = useState(false);
@@ -20,20 +20,20 @@ const CustomModal = ({
       >
         <View style={styles.centered}>
           <View style={styles.modalContainer}>
-            {children}
-
             <Pressable
               style={styles.buttonClose}
               onPress={() => setToggleModal(!toggleModal)}
             >
               <Text style={closeStyle}> ← </Text>
             </Pressable>
+
+            {children}
           </View>
         </View>
       </Modal>
 
       <Pressable style={openStyle} onPress={() => setToggleModal(true)}>
-        <Text style={openTextStyle}>{openText}</Text>
+        <Text style={openTextStyle}>{openButtonText}</Text>
       </Pressable>
     </>
   );

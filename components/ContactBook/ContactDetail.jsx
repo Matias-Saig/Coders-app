@@ -1,14 +1,18 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { globalColor, globalStyles } from "../../global/globalStyles";
 import CustomModal from "../CustomModal/CustomModal";
+import { useState } from "react";
+
 
 const ContactDetail = ({ renderItem, contacts, setContacts }) => {
-  
+
+  const [thisContact, setThisContact ] = useState(renderItem.name)
+
+
 
   const deleteContact = () => {
-    setContacts(contacts.filter(elem => elem.id !== renderItem.id))
-    }
-  
+    setContacts(contacts.filter((elem) => elem.id !== renderItem.id));
+  };
 
   return (
     <View style={styles.container}>
@@ -18,6 +22,10 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
 
       <Text style={[globalStyles.paragraph, styles.name]}>
         {renderItem.name} {renderItem.lastname}
+      </Text>
+
+      <Text style={[globalStyles.paragraph, styles.nickname]}>
+        &ldquo;{renderItem.nickname}&rdquo;
       </Text>
 
       <Text style={[globalStyles.paragraph, styles.rest]}>
@@ -34,15 +42,19 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
         {renderItem.bank}
       </Text>
 
-      <CustomModal openText={"Borrar contacto"} >
-        <Text>texto de mas pruebas 2</Text>
-        
+      {/* Modal */}
+
+
+      <CustomModal openButtonText={"Borrar"}>
+        <Text>
+          ¿Quieres borrar este contacto de la agenda? Una vez hecho no se puede
+          deshacer
+        </Text>
+
         <Pressable onPress={deleteContact}>
-<Text> Borrar contacto </Text>
+          <Text> ok, borrar contacto </Text>
         </Pressable>
       </CustomModal>
-
-     
     </View>
   );
 };
@@ -72,7 +84,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
+    marginBottom: 0,
+  },
+  nickname: {
+    color: globalColor.highDark,
+    textAlign: "center",
     marginBottom: 10,
+    fontWeight: "bold",
   },
   rest: {
     color: globalColor.midShadow,

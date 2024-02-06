@@ -7,6 +7,7 @@ const ContactBook = () => {
   return (
     <View style={[styles.container]}>
       <Subtitle>Agenda de contactos</Subtitle>
+      
       <OptimizedList />
     </View>
   );
