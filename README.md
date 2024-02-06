@@ -35,6 +35,11 @@ globalColor » constantes de colores
 **Primer entrega**  
 <img src="/Screenshot_1er_entrega.png" width="150px" />
 
+**Primer entrega**  
+<img src="/Screenshot_2da_entrega_1.png" width="150px" />
+<img src="/Screenshot_2da_entrega_2.png" width="150px" />
+<img src="/Screenshot_2da_entrega_3.png" width="150px" />
+
 
 # Wireframe
 <img src="/wirerame.jpg" />
