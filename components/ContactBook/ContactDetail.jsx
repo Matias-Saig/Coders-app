@@ -1,9 +1,12 @@
-import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
+import { StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
 import { globalColor, globalStyles } from "../../global/globalStyles";
 import CustomModal from "../CustomModal/CustomModal";
 import { useState } from "react";
 
 const ContactDetail = ({ renderItem, contacts, setContacts }) => {
+  // Modal
+  const [toggleModal, setToggleModal] = useState(false);
+
   // Switch
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
@@ -42,15 +45,19 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
         &ldquo;{renderItem.nickname}&rdquo;
       </Text>
 
-      <Text style={[globalStyles.paragraph, styles.rest]}>
-        <Text style={styles.span}>CBU</Text>
-        {renderItem.cbu}
-      </Text>
+      <View style={styles.spanContainer}>
+        <Text style={[globalStyles.paragraph, styles.span]}>CBU</Text>
+        <Text style={[globalStyles.paragraph, styles.rest]}>
+          {renderItem.cbu}
+        </Text>
+      </View>
 
-      <Text style={[globalStyles.paragraph, styles.rest]}>
-        <Text style={styles.span}>Alias</Text>
-        {renderItem.alias}
-      </Text>
+      <View style={styles.spanContainer}>
+        <Text style={[globalStyles.paragraph, styles.span]}>Alias</Text>
+        <Text style={[globalStyles.paragraph, styles.rest]}>
+          {renderItem.alias}
+        </Text>
+      </View>
 
       <Text style={[globalStyles.paragraph, styles.rest]}>
         {renderItem.bank}
@@ -58,15 +65,19 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
 
       {/* Modal */}
 
-      <CustomModal openButtonText={"Borrar"}>
+      <CustomModal
+        openButtonText={"Borrar"}
+        toggleModal={toggleModal}
+        setToggleModal={setToggleModal}
+      >
         <Text>
           ¿Quieres borrar este contacto de la agenda? Una vez hecho no se puede
           deshacer
         </Text>
 
-        <Pressable onPress={deleteContact}>
+        <TouchableOpacity onPress={deleteContact}>
           <Text> ok, borrar contacto </Text>
-        </Pressable>
+        </TouchableOpacity>
       </CustomModal>
     </View>
   );
@@ -79,11 +90,11 @@ const styles = StyleSheet.create({
     backgroundColor: globalColor.white,
     marginVertical: 10,
     paddingVertical: 20,
-    paddingHorizontal: 50,
-    border: 12,
-    borderColor: globalColor.lowDark,
+    paddingHorizontal: 20,
+    borderWidth: 2,
+    borderColor: globalColor.highShadow,
     borderRadius: 20,
-    elevation: 10,
+    elevation: 3,
   },
   top: {
     alignSelf: "flex-end",
@@ -112,8 +123,11 @@ const styles = StyleSheet.create({
     color: globalColor.midShadow,
   },
   span: {
-    display: "inline",
     fontWeight: "bold",
-    marginRight: 5,
+    color: globalColor.midShadow,
+  },
+  spanContainer: {
+    flexDirection: "row",
+    gap: 10,
   },
 });

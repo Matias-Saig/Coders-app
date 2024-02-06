@@ -8,12 +8,9 @@ const OptimizedList = () => {
   const [contacts, setContacts] = useState(contactsList);
 
   return (
-
-    
     <View style={styles.list}>
-    
-    <AddContact contacts={contacts} setContacts={setContacts}/> 
-      
+      <AddContact contacts={contacts} setContacts={setContacts} />
+
       <FlatList
         data={contacts}
         renderItem={({ item }) => (

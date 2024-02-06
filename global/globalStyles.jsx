@@ -6,12 +6,13 @@ export const globalColor = {
   white: "#FBFBFB",
   highLight: "#F7F7F7",
   highShadow: "#CCCCCC",
-  highDark : "#A6A6A6",
+  highDark: "#A6A6A6",
 
   // hightlights
   detailLight: "#F9B176",
   detailShadow: "#FEEECD",
   detailDark: "#D7B791",
+  error: "#e63946",
 
   // mid tones
   midLight: "#8894AE",
@@ -21,31 +22,29 @@ export const globalColor = {
   // dark tones
   lowLight: "#363636",
   lowShadow: "#292C35",
-  lowDark: "#17181D"
+  lowDark: "#17181D",
 };
-
 
 // STYLES
 export const globalStyles = StyleSheet.create({
-
   // Background
   BG: {
-    backgroundColor: globalColor.highLight
+    backgroundColor: globalColor.highLight,
   },
- 
+
   // texts
   title: {
     fontFamily: "serif",
     fontStyle: "italic",
     width: "100%",
-    fontWeight:"bold"
+    fontWeight: "bold",
   },
 
   subtitle: {
     fontFamily: "serif",
     fontStyle: "italic",
     width: "100%",
-    fontWeight:"bold",
+    fontWeight: "bold",
     fontSize: 20,
     color: globalColor.midLight,
     textAlign: "center",
@@ -55,14 +54,14 @@ export const globalStyles = StyleSheet.create({
 
   paragraph: {
     color: globalColor.lowDark,
-    marginVertical:3,
-    fontSize:16
+    marginVertical: 3,
+    fontSize: 16,
   },
 
   // containers
   containerCenter: {
     flex: 1,
-    alignItems: "center",   
+    alignItems: "center",
   },
 
   containerCenterFull: {
@@ -70,8 +69,32 @@ export const globalStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
+  // inputs
+  buttons: {
+    marginTop: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+  buttonsText: {
+    fontWeight: "bold",
+    textTransform: "capitalize",
+  },
+  input: {
+    height: 40,
+    width: "90%",
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: globalColor.highDark,
+    borderRadius: 5,
+    padding: 10,
+    backgroundColor: globalColor.white,
+  },
+  inputLabel: {
+    fontWeight: "bold",
+    marginBottom: 5,
+    color: globalColor.midDark,
+    fontSize: 16,
+  },
 });
-
-
-
-

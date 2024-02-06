@@ -1,9 +1,21 @@
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import CustomModal from "../CustomModal/CustomModal";
+import { globalColor, globalStyles } from "../../global/globalStyles";
 const AddContact = ({ contacts, setContacts }) => {
-  
+  // Modal
+  const [toggleModal, setToggleModal] = useState(false);
+
   // States
-    const [newContactId, setNewContactId] = useState(
+  const [newContactId, setNewContactId] = useState(
     Math.max(...contacts.map((item) => item.id)) + 1,
   );
 
@@ -36,9 +48,9 @@ const AddContact = ({ contacts, setContacts }) => {
   };
 
   // edit function
-  const editContact = () => {
+  const addContact = () => {
     setNewContactId(newContactId + 1);
-    
+
     setNewContact([
       (newContact.id = newContactId),
       (newContact.name = newContactName),
@@ -50,66 +62,93 @@ const AddContact = ({ contacts, setContacts }) => {
     ]);
 
     setContacts([newContact, ...contacts]);
+    setToggleModal(!toggleModal);
+    Alert.alert("Contacto agregado");
   };
 
   return (
-    <View>
-      <TextInput
-        style={styles.input}
-        onChangeText={handleName}
-        value={newContactName}
-        placeholder="Nombre"
-      />
+    <CustomModal
+      openButtonText={"Agendar contacto"}
+      openStyle={[globalStyles.buttons, styles.sendButton]}
+      openTextStyle={[globalStyles.buttonsText, styles.sendText]}
+      toggleModal={toggleModal}
+      setToggleModal={setToggleModal}
+    >
+      <ScrollView style={styles.scroll}>
+        <View style={globalStyles.containerCenter}>
+          <Text style={globalStyles.inputLabel}>Nombre</Text>
+          <TextInput
+            style={globalStyles.input}
+            onChangeText={handleName}
+            value={newContactName}
+            placeholder="Nombre"
+          />
 
-      <TextInput
-        style={styles.input}
-        onChangeText={handleLastname}
-        value={newContactLastname}
-        placeholder="Apellido"
-      />
+          <Text style={globalStyles.inputLabel}>Apellido</Text>
+          <TextInput
+            style={globalStyles.input}
+            onChangeText={handleLastname}
+            value={newContactLastname}
+            placeholder="Apellido"
+          />
 
-      <TextInput
-        style={styles.input}
-        onChangeText={handleNickname}
-        value={newContactNickname}
-        placeholder="Apodo"
-      />
+          <Text style={globalStyles.inputLabel}>Apodo</Text>
+          <TextInput
+            style={globalStyles.input}
+            onChangeText={handleNickname}
+            value={newContactNickname}
+            placeholder="Apodo"
+          />
 
-      <TextInput
-        style={styles.input}
-        onChangeText={handleBank}
-        value={newContactBank}
-        placeholder="Banco"
-      />
+          <Text style={globalStyles.inputLabel}>Banco</Text>
+          <TextInput
+            style={globalStyles.input}
+            onChangeText={handleBank}
+            value={newContactBank}
+            placeholder="Banco"
+          />
 
-      <TextInput
-        style={styles.input}
-        onChangeText={handleCbu}
-        value={newContactCbu}
-        placeholder="Cbu"
-      />
+          <Text style={globalStyles.inputLabel}>CBU</Text>
+          <TextInput
+            style={globalStyles.input}
+            onChangeText={handleCbu}
+            value={newContactCbu}
+            placeholder="Cbu"
+            inputMode="numeric"
+          />
 
-      <TextInput
-        style={styles.input}
-        onChangeText={handleAlias}
-        value={newContactAlias}
-        placeholder="Alias"
-      />
+          <Text style={globalStyles.inputLabel}>Alias</Text>
+          <TextInput
+            style={globalStyles.input}
+            onChangeText={handleAlias}
+            value={newContactAlias}
+            placeholder="Alias"
+          />
 
-      <Pressable onPress={editContact}>
-        <Text>prueba</Text>
-      </Pressable>
-    </View>
+          <TouchableOpacity
+            onPress={addContact}
+            style={[globalStyles.buttons, styles.sendButton]}
+          >
+            <Text style={[globalStyles.buttonsText, styles.sendText]}>
+              Agendar nuevo contacto
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </CustomModal>
   );
 };
 
 export default AddContact;
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+  sendButton: {
+    backgroundColor: globalColor.detailLight,
+  },
+  sendText: {
+    color: globalColor.midDark,
+  },
+  scroll: {
+    width: "100%",
   },
 });

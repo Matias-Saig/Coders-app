@@ -1,40 +1,40 @@
-import { useState } from "react";
-import { Alert, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import { globalColor } from "../../global/globalStyles";
 const CustomModal = ({
   children,
-  closeStyle,
   openStyle,
   openButtonText,
   openTextStyle,
+  toggleModal,
+  setToggleModal,
 }) => {
-  const [toggleModal, setToggleModal] = useState(false);
+  // const [toggleModal, setToggleModal] = useState(false);
   return (
     <>
       <Modal
         animationType="slide"
         visible={toggleModal}
         onRequestClose={() => {
-          Alert.alert("Regresando a pantalla anterior");
           setToggleModal(!toggleModal);
         }}
       >
         <View style={styles.centered}>
           <View style={styles.modalContainer}>
-            <Pressable
+            <TouchableOpacity
               style={styles.buttonClose}
               onPress={() => setToggleModal(!toggleModal)}
             >
-              <Text style={closeStyle}> ← </Text>
-            </Pressable>
+              <Text style={styles.buttonTextClose}> x </Text>
+            </TouchableOpacity>
 
             {children}
           </View>
         </View>
       </Modal>
 
-      <Pressable style={openStyle} onPress={() => setToggleModal(true)}>
+      <TouchableHighlight style={openStyle} onPress={() => setToggleModal(true)}>
         <Text style={openTextStyle}>{openButtonText}</Text>
-      </Pressable>
+      </TouchableHighlight>
     </>
   );
 };
@@ -47,13 +47,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
-    backgroundColor: "olive",
+    backgroundColor: "rgba(25,25,25,0.8)",
   },
   modalContainer: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: globalColor.midLight,
     borderRadius: 20,
-    padding: 35,
+    padding: 20,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -63,7 +63,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    width: 200,
-    height: 200,
+    width: "95%",
+  },
+  buttonClose: {
+    alignSelf: "flex-end",
+    backgroundColor: globalColor.error,
+    width: 24,
+    height: 24,
+    borderRadius: 5,
+    marginBottom:10
+  },
+  buttonTextClose: {
+    textAlign: "center",
+    color: globalColor.white,
   },
 });
