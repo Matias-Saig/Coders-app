@@ -1,4 +1,11 @@
-import { StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { globalColor, globalStyles } from "../../global/globalStyles";
 import CustomModal from "../CustomModal/CustomModal";
 import { useState } from "react";
@@ -21,6 +28,7 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
   // Delete
   const deleteContact = () => {
     setContacts(contacts.filter((elem) => elem.id !== renderItem.id));
+    Alert.alert("Contacto borrado");
   };
 
   return (
@@ -67,16 +75,24 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
 
       <CustomModal
         openButtonText={"Borrar"}
+        openStyle={[globalStyles.buttons, styles.buttonTrash]}
+        openTextStyle={[globalStyles.buttonsText, styles.buttonTextTrash]}
         toggleModal={toggleModal}
         setToggleModal={setToggleModal}
       >
-        <Text>
+        <Text style={[globalStyles.paragraph, styles.modalText]}>
           ¿Quieres borrar este contacto de la agenda? Una vez hecho no se puede
           deshacer
         </Text>
 
-        <TouchableOpacity onPress={deleteContact}>
-          <Text> ok, borrar contacto </Text>
+        <TouchableOpacity
+          onPress={deleteContact}
+          style={[globalStyles.buttons, styles.buttonTrash]}
+        >
+          <Text style={[globalStyles.buttonsText, styles.buttonTextTrash]}>
+            {" "}
+            borrar contacto{" "}
+          </Text>
         </TouchableOpacity>
       </CustomModal>
     </View>
@@ -129,5 +145,19 @@ const styles = StyleSheet.create({
   spanContainer: {
     flexDirection: "row",
     gap: 10,
+  },
+  buttonTrash: {
+    backgroundColor: globalColor.error,
+    width: "40%",
+    opacity: 0.8,
+    marginTop: 30,
+  },
+  buttonTextTrash: {
+    color: globalColor.white,
+    textAlign: "center",
+  },
+  modalText: {
+    color: globalColor.lowDark,
+    fontSize: 16,
   },
 });

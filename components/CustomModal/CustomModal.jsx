@@ -1,4 +1,11 @@
-import { Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import {
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { globalColor } from "../../global/globalStyles";
 const CustomModal = ({
   children,
@@ -8,7 +15,7 @@ const CustomModal = ({
   toggleModal,
   setToggleModal,
 }) => {
-  // const [toggleModal, setToggleModal] = useState(false);
+  
   return (
     <>
       <Modal
@@ -32,7 +39,10 @@ const CustomModal = ({
         </View>
       </Modal>
 
-      <TouchableHighlight style={openStyle} onPress={() => setToggleModal(true)}>
+      <TouchableHighlight
+        style={openStyle}
+        onPress={() => setToggleModal(true)}
+      >
         <Text style={openTextStyle}>{openButtonText}</Text>
       </TouchableHighlight>
     </>
@@ -71,7 +81,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 5,
-    marginBottom:10
+    marginBottom: 10,
   },
   buttonTextClose: {
     textAlign: "center",

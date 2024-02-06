@@ -56,6 +56,7 @@ export const globalStyles = StyleSheet.create({
     color: globalColor.lowDark,
     marginVertical: 3,
     fontSize: 16,
+    lineHeight: 22,
   },
 
   // containers

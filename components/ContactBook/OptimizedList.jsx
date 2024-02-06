@@ -32,5 +32,6 @@ const styles = StyleSheet.create({
   list: {
     marginVertical: 10,
     alignItems: "center",
+    paddingBottom: 200
   },
 });

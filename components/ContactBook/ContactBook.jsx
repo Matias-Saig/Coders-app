@@ -5,7 +5,7 @@ const ContactBook = () => {
 
   
   return (
-    <View style={[styles.container]}>
+    <View>
       <Subtitle>Agenda de contactos</Subtitle>
       
       <OptimizedList />
@@ -15,8 +15,3 @@ const ContactBook = () => {
 
 export default ContactBook;
 
-const styles = StyleSheet.create({
-  container: {
-    //width: "100%",
-  }
-});
