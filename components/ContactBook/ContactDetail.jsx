@@ -1,26 +1,40 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
 import { globalColor, globalStyles } from "../../global/globalStyles";
 import CustomModal from "../CustomModal/CustomModal";
 import { useState } from "react";
 
-
 const ContactDetail = ({ renderItem, contacts, setContacts }) => {
+  // Switch
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => {
+    setIsEnabled(!isEnabled);
+  };
 
-  const [thisContact, setThisContact ] = useState(renderItem.name)
+  const highlight = isEnabled && {
+    backgroundColor: globalColor.detailShadow,
+    fontSize: 24,
+  };
 
-
-
+  // Delete
   const deleteContact = () => {
     setContacts(contacts.filter((elem) => elem.id !== renderItem.id));
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={[globalStyles.paragraph, styles.id]}>
+    <View style={[styles.container, highlight]}>
+      <Text style={[globalStyles.paragraph, styles.top]}>
         nro {renderItem.id}
       </Text>
 
-      <Text style={[globalStyles.paragraph, styles.name]}>
+      <Text style={[globalStyles.paragraph, styles.top]}>Destacar</Text>
+
+      <Switch
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+        style={[styles.top, styles.switch]}
+      />
+
+      <Text style={[globalStyles.paragraph, styles.name, highlight]}>
         {renderItem.name} {renderItem.lastname}
       </Text>
 
@@ -43,7 +57,6 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
       </Text>
 
       {/* Modal */}
-
 
       <CustomModal openButtonText={"Borrar"}>
         <Text>
@@ -68,16 +81,19 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 50,
     border: 12,
-    // borderStyle: "solid",
     borderColor: globalColor.lowDark,
     borderRadius: 20,
     elevation: 10,
   },
-  id: {
-    textAlign: "right",
-    fontSize: 10,
+  top: {
+    alignSelf: "flex-end",
+    fontSize: 11,
     fontWeight: "bold",
-    color: globalColor.highShadow,
+    color: globalColor.highDark,
+  },
+  switch: {
+    height: 15,
+    width: 30,
   },
   name: {
     color: globalColor.midShadow,

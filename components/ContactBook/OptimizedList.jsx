@@ -11,13 +11,13 @@ const OptimizedList = () => {
 
     
     <View style={styles.list}>
-      <AddContact contacts={contacts} setContacts={setContacts}/>
+    
+    <AddContact contacts={contacts} setContacts={setContacts}/> 
       
       <FlatList
         data={contacts}
         renderItem={({ item }) => (
           <ContactDetail
-          
             renderItem={item}
             contacts={contacts}
             setContacts={setContacts}
