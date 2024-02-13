@@ -6,7 +6,13 @@
 # Switch condicional
 - En login
 - En tabs de inicio y agenda
+<br />
 
+# Fuentes importadas
+- Inter
+- CrimsonPro
+- LibreBaskerville
+- LeagueSpartan
 
 # Skills
 - React Native
