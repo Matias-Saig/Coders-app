@@ -23,9 +23,9 @@ export default function App() {
   };
 
   const toggleSwitch = () => {
-    setHomeActive(!homeActive)
-    setContactBookActive(!contactBookActive)
-  }
+    setHomeActive(!homeActive);
+    setContactBookActive(!contactBookActive);
+  };
 
   return (
     <View style={[globalStyles.containerCenter, globalStyles.BG]}>
@@ -33,7 +33,6 @@ export default function App() {
         <Login fx={toggleLogin} />
       ) : (
         <>
-          
           <StatusBar
             animated={true}
             backgroundColor={globalColor.midDark}
@@ -42,13 +41,23 @@ export default function App() {
           <TopBar />
 
           <View style={styles.tabs}>
-<Tab refer={"home"} fx={toggleSwitch} isActive={homeActive} > Inicio</Tab>
-<Tab refer={"contacts"} fx={toggleSwitch} isActive={contactBookActive} > Agenda</Tab>
-</View>
+            <Tab refer={"home"} fx={toggleSwitch} isActive={homeActive}>
+              {" "}
+              Inicio
+            </Tab>
+            <Tab
+              refer={"contacts"}
+              fx={toggleSwitch}
+              isActive={contactBookActive}
+            >
+              {" "}
+              Agenda
+            </Tab>
+          </View>
 
-{homeActive && <Home />}
+          {homeActive && <Home />}
 
-          {contactBookActive && <ContactBook /> }
+          {contactBookActive && <ContactBook />}
         </>
       )}
     </View>
@@ -57,9 +66,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   tabs: {
-    width:"80%",
-    flexDirection:"row",
-    gap:1,
-    marginVertical:10
-  }
+    width: "80%",
+    flexDirection: "row",
+    gap: 1,
+    marginVertical: 10,
+  },
 });
