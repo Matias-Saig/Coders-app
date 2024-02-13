@@ -1,11 +1,5 @@
 import { StyleSheet } from "react-native";
-import fonts, { fontsCollection } from "./fonts";
-import { useFonts } from "expo-font";
-
-const [fontLoaded, fontError] = useFonts(fontsCollection)
-
-if (fontLoaded) console.log("fuente cargada");
-if (fontError) console.log("salio mal");
+import fonts from "./fonts";
 
 // COLORS
 export const globalColor = {
@@ -41,20 +35,17 @@ export const globalStyles = StyleSheet.create({
 
   // texts
   title: {
-    // fontFamily: "serif",
-    // fontStyle: "italic",
-    fontFamily: fonts.serif,
+    fontStyle: "italic",
+    fontFamily: fonts.title,
     width: "100%",
     fontWeight: "bold",
   },
 
   subtitle: {
-    // fontFamily: "serif",
-    // fontStyle: "italic",
     fontFamily: fonts.serif,
     width: "100%",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 22,
     color: globalColor.midLight,
     textAlign: "center",
     textTransform: "uppercase",

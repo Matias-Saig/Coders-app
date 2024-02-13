@@ -1,8 +1,8 @@
 import { Text } from "react-native";
 import { globalStyles } from "../../global/globalStyles";
-const Subtitle = ({children}) => {
+const Subtitle = ({children, addStyle}) => {
   return (
-      <Text style={[globalStyles.subtitle]}>{children}</Text>
+      <Text style={[globalStyles.subtitle, addStyle]}>{children}</Text>
   );
 };
 

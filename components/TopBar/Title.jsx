@@ -4,7 +4,7 @@ import { globalColor, globalStyles } from "../../global/globalStyles";
 const Title = ({ flexWidth }) => {
   const styles = StyleSheet.create({
     h1: {
-      fontSize: 26,
+      fontSize: 30,
       color: globalColor.highLight,
     },
 

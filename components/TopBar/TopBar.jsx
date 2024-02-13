@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import Logo from "./Logo";
 import Title from "./Title";
 import { globalColor } from "../../global/globalStyles";
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",    
     backgroundColor: globalColor.midDark,
-    paddingVertical:5,
-    marginTop:30,
-  },
+    paddingVertical:10,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  }
 });

@@ -3,6 +3,11 @@
 
 <br />
 
+# Switch condicional
+- En login
+- En tabs de inicio y agenda
+
+
 # Skills
 - React Native
 <br />
