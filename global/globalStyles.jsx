@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import fonts from "./fonts";
 
 // COLORS
 export const globalColor = {
@@ -34,15 +35,17 @@ export const globalStyles = StyleSheet.create({
 
   // texts
   title: {
-    fontFamily: "serif",
-    fontStyle: "italic",
+    // fontFamily: "serif",
+    // fontStyle: "italic",
+    fontFamily: fonts.serif,
     width: "100%",
     fontWeight: "bold",
   },
 
   subtitle: {
-    fontFamily: "serif",
-    fontStyle: "italic",
+    // fontFamily: "serif",
+    // fontStyle: "italic",
+    fontFamily: fonts.serif,
     width: "100%",
     fontWeight: "bold",
     fontSize: 20,
@@ -53,6 +56,8 @@ export const globalStyles = StyleSheet.create({
   },
 
   paragraph: {
+    fontFamily: fonts.sansOne,
+    fontWeight: "normal",
     color: globalColor.lowDark,
     marginVertical: 3,
     fontSize: 16,

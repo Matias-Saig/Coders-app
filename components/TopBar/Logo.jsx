@@ -18,7 +18,7 @@ const Logo = ({ flexWidth }) => {
     <View style={[styles.logoContainer, globalStyles.containerCenterFull]}>
       <Image
         style={styles.logo}
-        source={require("../../assets/Logo/logoClassicPocket.png")}
+        source={require("../../assets/img/Logo/logoClassicPocket.png")}
       />
     </View>
   );

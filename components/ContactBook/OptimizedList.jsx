@@ -1,14 +1,15 @@
-import { FlatList, StyleSheet, View } from "react-native";
-import { contactsList } from "../../global/contactList";
+import { FlatList, SafeAreaView, StyleSheet } from "react-native";
+import { contactsList } from "../../data/contactList";
 import ContactDetail from "./ContactDetail";
 import { useState } from "react";
 import AddContact from "./AddContact";
+
 
 const OptimizedList = () => {
   const [contacts, setContacts] = useState(contactsList);
 
   return (
-    <View style={styles.list}>
+    <SafeAreaView style={styles.list}>
       <AddContact contacts={contacts} setContacts={setContacts} />
 
       <FlatList
@@ -22,7 +23,10 @@ const OptimizedList = () => {
         )}
         keyExtractor={(item) => item.id}
       />
-    </View>
+
+      
+
+    </SafeAreaView>
   );
 };
 
@@ -32,6 +36,6 @@ const styles = StyleSheet.create({
   list: {
     marginVertical: 10,
     alignItems: "center",
-    paddingBottom: 200
+    // paddingBottom: 200
   },
 });

@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import TopBar from "./components/TopBar/TopBar";
-import { globalStyles } from "./global/globalStyles";
-import ContactBook from "./components/ContactBook/ContactBook";
+import { globalColor, globalStyles } from "./global/globalStyles";
+import ContactBook from "./screens/ContactBook";
 
 export default function App() {
   return (
@@ -11,7 +11,12 @@ export default function App() {
 
       <ContactBook />
 
-      <StatusBar style="auto" />
+      <StatusBar
+        animated={true}
+        backgroundColor={globalColor.lowLight}
+        barStyle="auto"
+
+      />
     </View>
   );
 }

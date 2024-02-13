@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import Subtitle from "../Elements/Subtitle";
-import OptimizedList from "./OptimizedList";
+import Subtitle from "../components/Elements/Subtitle";
+import OptimizedList from "../components/ContactBook/OptimizedList";
 const ContactBook = () => {
 
   
