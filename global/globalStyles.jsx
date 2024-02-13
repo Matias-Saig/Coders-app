@@ -1,5 +1,11 @@
 import { StyleSheet } from "react-native";
-import fonts from "./fonts";
+import fonts, { fontsCollection } from "./fonts";
+import { useFonts } from "expo-font";
+
+const [fontLoaded, fontError] = useFonts(fontsCollection)
+
+if (fontLoaded) console.log("fuente cargada");
+if (fontError) console.log("salio mal");
 
 // COLORS
 export const globalColor = {
