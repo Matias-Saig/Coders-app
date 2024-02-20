@@ -42,7 +42,6 @@ export default function App() {
 
           <View style={styles.tabs}>
             <Tab refer={"home"} fx={toggleSwitch} isActive={homeActive}>
-              {" "}
               Inicio
             </Tab>
             <Tab
@@ -50,7 +49,6 @@ export default function App() {
               fx={toggleSwitch}
               isActive={contactBookActive}
             >
-              {" "}
               Agenda
             </Tab>
           </View>

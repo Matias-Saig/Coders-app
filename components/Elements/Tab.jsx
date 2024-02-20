@@ -30,7 +30,7 @@ const Tab = ({refer, fx, children, isActive}) => {
 return (
     <Pressable onPress={fx} style={[styles.button, styles.color]}>
 
-<Icons name={refer} size={24} color={styles.color} />
+<Icons refer={refer} size={24} color={styles.color} />
    <Text style={[styles.tabText, styles.color]}> {children} </Text>
 </Pressable>
  )
