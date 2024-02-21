@@ -36,7 +36,7 @@ export const globalStyles = StyleSheet.create({
   // texts
   title: {
     fontStyle: "italic",
-    fontFamily: fonts.title,
+    fontFamily: fonts.title,   
     width: "100%",
     fontWeight: "bold",
   },
@@ -53,7 +53,7 @@ export const globalStyles = StyleSheet.create({
   },
 
   paragraph: {
-    fontFamily: fonts.sansOne,
+    fontFamily: fonts.sans,
     fontWeight: "normal",
     color: globalColor.lowDark,
     marginVertical: 3,

@@ -1,15 +1,27 @@
+import { Platform } from "react-native"
+
 export const fontsCollection = {
-    "crimson":require("../assets/fonts/Crimson_Pro/CrimsonPro-VariableFont_wght.ttf"),
-    "inter":require("../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf"),
-    "spartan":require("../assets/fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf"),
-    "baskerville":require("../assets/fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf"),
+    "crimson":require("../assets/fonts/CrimsonPro-Variable.ttf"),
+    "inter":require("../assets/fonts/Inter-Variable.ttf"),
+    "spartan":require("../assets/fonts/LeagueSpartan-Variable.ttf"),
+    "baskerville":require("../assets/fonts/LibreBaskerville-Regular.ttf"),
   }
   
+  // android font fallback
   const fonts = {
-    title: "barkerville, crimson",
-    serif :"crimson",
-    sansOne:"spartan, inter",
-    sansTwo: "inter",
+    title: Platform.select({
+      web:"baskerville, crimson, serif",
+      android: "serif"
+    }),
+    serif: Platform.select({
+      web:"crimson, serif",
+      android: "serif"
+    }),
+    sans: Platform.select({
+      web:"spartan, inter, sans-serif",
+      android: "sans-serif"
+    })
+        
   }
 
   export default fonts

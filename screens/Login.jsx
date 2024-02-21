@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: globalColor.white,
-    fontFamily: fonts.sansOne,
+    fontFamily: fonts.sans,
     fontSize: 20,
     textTransform: "uppercase",
     fontWeight: "bold",
