@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 50,
     borderRadius: 5,
+    height:"45%"
   },
   logo: {
     backgroundColor: globalColor.midShadow,

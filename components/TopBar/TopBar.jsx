@@ -2,7 +2,7 @@ import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import Logo from "./Logo";
 import Title from "./Title";
 import { globalColor } from "../../global/globalStyles";
-const TopBar = ({title = "Classic Pocket" }) => {
+const TopBar = ({title}) => {
   return (
     <View style={styles.container}>
       <Logo flexWidth={1} />

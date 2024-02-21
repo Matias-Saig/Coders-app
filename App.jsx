@@ -2,18 +2,18 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import TopBar from "./components/TopBar/TopBar";
 import { globalColor, globalStyles } from "./global/globalStyles";
-import ContactBook from "./screens/ContactBook";
 import { useFonts } from "expo-font";
 import { fontsCollection } from "./global/fonts";
 import Login from "./screens/Login";
 import { useState } from "react";
-import Home from "./screens/Home";
+/* import Home from "./screens/Home";
+import ContactBook from "./screens/ContactBook";
 import Tab from "./components/Elements/Tab";
-
+ */
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
-  const [homeActive, setHomeActive] = useState(true);
-  const [contactBookActive, setContactBookActive] = useState(false);
+/*   const [homeActive, setHomeActive] = useState(true);
+  const [contactBookActive, setContactBookActive] = useState(false); */
 
   const [fontLoaded] = useFonts(fontsCollection);
   if (!fontLoaded) return null;
@@ -22,10 +22,10 @@ export default function App() {
     setIsLogin(!isLogin);
   };
 
-  const toggleSwitch = () => {
+ /*  const toggleSwitch = () => {
     setHomeActive(!homeActive);
     setContactBookActive(!contactBookActive);
-  };
+  }; */
 
   return (
     <View style={[globalStyles.containerCenter, globalStyles.BG]}>
@@ -40,7 +40,7 @@ export default function App() {
           />
           <TopBar />
 
-          <View style={styles.tabs}>
+       {/*    <View style={styles.tabs}>
             <Tab refer={"home"} fx={toggleSwitch} isActive={homeActive}>
               Inicio
             </Tab>
@@ -55,7 +55,8 @@ export default function App() {
 
           {homeActive && <Home />}
 
-          {contactBookActive && <ContactBook />}
+          {contactBookActive && <ContactBook />} */}
+
         </>
       )}
     </View>

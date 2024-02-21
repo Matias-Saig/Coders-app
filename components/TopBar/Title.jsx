@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { globalColor, globalStyles } from "../../global/globalStyles";
 
-const Title = ({ flexWidth, title}) => {
+const Title = ({ flexWidth, title = "Classic Pocket"}) => {
   const styles = StyleSheet.create({
     h1: {
       fontSize: 30,
