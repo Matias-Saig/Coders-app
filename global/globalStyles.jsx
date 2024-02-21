@@ -61,18 +61,6 @@ export const globalStyles = StyleSheet.create({
     lineHeight: 22,
   },
 
-  // containers
-  containerCenter: {
-    flex: 1,
-    alignItems: "center",
-  },
-
-  containerCenterFull: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
   // inputs
   buttons: {
     marginTop: 10,

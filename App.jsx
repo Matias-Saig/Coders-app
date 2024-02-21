@@ -1,19 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import TopBar from "./components/TopBar/TopBar";
 import { globalColor, globalStyles } from "./global/globalStyles";
 import { useFonts } from "expo-font";
 import { fontsCollection } from "./global/fonts";
 import Login from "./screens/Login";
 import { useState } from "react";
-/* import Home from "./screens/Home";
-import ContactBook from "./screens/ContactBook";
-import Tab from "./components/Elements/Tab";
- */
+import { StatusBar } from "expo-status-bar";
+import ScreensNavigation from "./Navigation/ScreensNavigation";
+
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
-/*   const [homeActive, setHomeActive] = useState(true);
-  const [contactBookActive, setContactBookActive] = useState(false); */
 
   const [fontLoaded] = useFonts(fontsCollection);
   if (!fontLoaded) return null;
@@ -22,52 +17,24 @@ export default function App() {
     setIsLogin(!isLogin);
   };
 
- /*  const toggleSwitch = () => {
-    setHomeActive(!homeActive);
-    setContactBookActive(!contactBookActive);
-  }; */
-
   return (
-    <View style={[globalStyles.containerCenter, globalStyles.BG]}>
-      {!isLogin ? (
-        <Login fx={toggleLogin} />
-      ) : (
-        <>
-          <StatusBar
-            animated={true}
-            backgroundColor={globalColor.midDark}
-            barStyle="light-content"
-          />
-          <TopBar />
+    <View style={[globalStyles.BG, styles.container]}>
 
-       {/*    <View style={styles.tabs}>
-            <Tab refer={"home"} fx={toggleSwitch} isActive={homeActive}>
-              Inicio
-            </Tab>
-            <Tab
-              refer={"contacts"}
-              fx={toggleSwitch}
-              isActive={contactBookActive}
-            >
-              Agenda
-            </Tab>
-          </View>
+<StatusBar animated={true} backgroundColor={globalColor.lowLight}
+style="light"
+ />
 
-          {homeActive && <Home />}
-
-          {contactBookActive && <ContactBook />} */}
-
-        </>
-      )}
+      {/* !isLogin ? <Login fx={toggleLogin} /> : <ScreensNavigation /> */}
+      <ScreensNavigation />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  tabs: {
-    width: "80%",
-    flexDirection: "row",
-    gap: 1,
-    marginVertical: 10,
+  container: {
+    flex:1,
+    width: "100%",
+    alignContent: "center",
   },
 });
+

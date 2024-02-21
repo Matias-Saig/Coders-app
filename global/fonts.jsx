@@ -8,20 +8,17 @@ export const fontsCollection = {
   }
   
   // android font fallback
-  const fonts = {
-    title: Platform.select({
-      web:"baskerville, crimson, serif",
-      android: "serif"
-    }),
-    serif: Platform.select({
-      web:"crimson, serif",
-      android: "serif"
-    }),
-    sans: Platform.select({
-      web:"spartan, inter, sans-serif",
-      android: "sans-serif"
-    })
-        
-  }
+  const fonts = Platform.select({
+    web: {
+      title: "baskerville, crimson, serif",
+      serif: "crimson, serif",
+      sans: "spartan, inter, sans-serif"
+    },
+    android: {
+      title: "serif",
+      serif: "serif",
+      sans: "sans-serif"
+    }
+  })
 
   export default fonts

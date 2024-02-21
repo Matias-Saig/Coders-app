@@ -10,7 +10,7 @@ const Logo = ({ flexWidth }) => {
     },
     logoContainer: {
       flex: flexWidth,
-
+      alignItems: "center",
     },
   });
 

@@ -1,105 +1,59 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Subtitle from "../components/Elements/Subtitle";
-import Icons from "../components/Elements/icons";
-import { globalColor } from "../global/globalStyles";
+import HomeCard from "../components/HomeElements/HomeCard";
+import HomeButton from "../components/HomeElements/HomeButton";
+import HomeDisplay from "../components/HomeElements/HomeDisplay";
 const Home = () => {
   return (
-    <>
-        <View style={styles.container}>
-          <Icons refer={"user"} size={24} color={globalColor.midDark} />
-          <Subtitle>Hola Invitado</Subtitle>
-        </View>
+    <View style={styles.containerSup}>
+     
+      <Subtitle>Hola Invitado</Subtitle>
+
+      <HomeDisplay />
 
       <View style={styles.container}>
-      <Text style={styles.subtitle}>Dinero disponible</Text>
-        <Text style={styles.saldo}>$1234</Text>
-        <Text style={styles.saldoSpan}>56</Text>
-      </View>
-      
-
-      <View style={styles.container}>
-        <Pressable disabled style={styles.buttonStructure}>
-          <Text style={styles.buttonStructureText}>Ingresar</Text>
-        </Pressable>
-        <Pressable disabled style={styles.buttonStructure}>
-          <Text  style={styles.buttonStructureText}> Retirar</Text>
-        </Pressable>
-        <Pressable disabled style={styles.buttonStructure}>
-          <Text style={styles.buttonStructureText}> Transferir</Text>
-        </Pressable>
-        <Pressable disabled style={styles.buttonStructure}>
-          <Text  style={styles.buttonStructureText}> Crédito</Text>
-        </Pressable>
-        <Pressable disabled style={styles.buttonStructure}>
-          <Text  style={styles.buttonStructureText}> Inversiones</Text>
-        </Pressable>
+        <HomeButton refer="credit">Ingresar Retirar</HomeButton>
+        <HomeButton refer="swap">Transferir</HomeButton>
+        <HomeButton refer="credit-card">Crédito</HomeButton>
+        <HomeButton refer="wallet">Inversiones</HomeButton>
       </View>
 
       <View styles={styles.container}>
-
-      <Pressable disabled style={styles.buttonStructure}>
-        <Text> Tarjetas </Text>
-      </Pressable>
+      
+      <HomeButton refer="card">Tarjetas</HomeButton>
       </View>
 
       <View style={styles.containerColumn}>
         <Text style={styles.subtitle}>Movimientos</Text>
 
-        <View styles={styles.container}>
-          <Text>Detalles</Text>
-          <View style={styles.container}>
-            <Text style={styles.saldo}>$1234</Text>
-            <Text style={styles.saldoSpan}>56</Text>
-          </View>
-        </View>
+        <HomeCard detail="Supermercado A" coinNumber={20142} coinSpan={99} />
 
-        <View styles={styles.container}>
-          <Text>Detalles</Text>
-          <View style={styles.container}>
-            <Text style={styles.saldo}>$1234</Text>
-            <Text style={styles.saldoSpan}>56</Text>
-          </View>
-        </View>
+        <HomeCard
+          detail="Transferencia a NG"
+          coinNumber={11480}
+          coinSpan={12}
+        />
 
-        <View styles={styles.container}>
-          <Text>Detalles</Text>
-          <View style={styles.container}>
-            <Text style={styles.saldo}>$1234</Text>
-            <Text style={styles.saldoSpan}>56</Text>
-          </View>
-        </View>
+        <HomeCard detail="Combustible" coinNumber={12345} coinSpan={56} />
       </View>
-    </>
+    </View>
   );
 };
 
 export default Home;
 
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: 10,
-    padding: 10,
-    borderRadius: 5,
-    flexDirection: "row",
-    backgroundColor: globalColor.highShadow,
+  containerSup: {
     width: "80%",
+    marginHorizontal: "10%",
+  },
+
+  container: {
+    flexDirection: "row",
     gap: 5,
   },
-  saldo: {
-    fontSize: 16,
+
+  containerColumn: {
+    alignItems: "center",
   },
-  saldoSpan: {
-    fontSize: 10,
-    textAlignVertical: "top",
-  },
-  subtitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  buttonStructure: {
-    flex: 1,
-  },
-  buttonStructureText: {
-    fontSize:11,    
-  }
 });

@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import Logo from "../components/TopBar/Logo";
 import Title from "../components/TopBar/Title";
 import Subtitle from "../components/Elements/Subtitle";
-import Icons from "../components/Elements/icons";
+import Icons from "../components/Elements/Icons";
 import { globalColor } from "../global/globalStyles";
 import fonts from "../global/fonts";
 const Login = ({ fx }) => {
@@ -10,7 +10,7 @@ const Login = ({ fx }) => {
     <View style={{marginTop:50}}>
       <View style={[styles.container, styles.logo]}>
         <Logo />
-        <Title />
+        <Title align="center" />
       </View>
 
       <View style={[styles.container, styles.text]}>
@@ -31,7 +31,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 50,
     borderRadius: 5,
-    height:"45%"
+    height:"45%",
+    width: "90%",
+    alignSelf:"center"
   },
   logo: {
     backgroundColor: globalColor.midShadow,
