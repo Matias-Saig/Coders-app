@@ -8,7 +8,7 @@ const TopBar = ({title, navigation}) => {
     <View style={styles.container}>
       {navigation.canGoBack() && 
                 <Pressable style={styles.goBack} onPress={()=>navigation.goBack()}>
-                    <Icons refer={"arrowleft"} size={24} color={globalColor.midLight}/>
+                    <Icons refer={"chevron-left"} size={32} color={globalColor.midLight}/>
                 </Pressable>}
       <Logo flexWidth={1} />
       <Title flexWidth={3} title={title } />
@@ -25,5 +25,8 @@ const styles = StyleSheet.create({
     backgroundColor: globalColor.midDark,
     paddingVertical:15,
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    alignItems: "center",
+    borderBottomWidth:1,
+    borderBlockColor: globalColor.midLight
   }
 });

@@ -1,32 +1,31 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { globalColor } from "../../global/globalStyles";
 import Icons from "../Elements/Icons";
-const HomeButton = ({ children, refer }) => {
+const HomeButtonCard = () => {
   return (
     <Pressable disabled style={styles.buttonStructure}>
-    <Icons refer={refer} size={24} color={globalColor.highLight}/>
-      <Text style={styles.buttonStructureText}>{children}</Text>
+    <Icons refer="v-card" size={32} color={globalColor.highLight}/>
+      <Text style={styles.buttonStructureText}>Tarjetas</Text>
     </Pressable>
   );
 };
 
-export default HomeButton;
+export default HomeButtonCard;
 
 const styles = StyleSheet.create({
     buttonStructure: {
-        flex: 1,
-        backgroundColor: globalColor.midDark,
-        paddingHorizontal:5,
-        paddingVertical:10,
+        backgroundColor: globalColor.midLight,
+        padding:10,
+        borderRadius: 10,
+        marginVertical:10,
+        flexDirection:"row",
         alignItems:"center",
-        justifyContent:"center",
-        borderRadius: 10
+        gap:10
       },
       buttonStructureText: {
-        fontSize: 11,
+        fontSize: 14,
         letterSpacing:1,
         fontWeight:"bold",
-        textAlign:"center",
         color: globalColor.highLight
       },
 });
