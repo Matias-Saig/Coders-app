@@ -152,6 +152,7 @@ export default AddContact;
 const styles = StyleSheet.create({
   sendButton: {
     backgroundColor: globalColor.detailLight,
+    marginBottom:20,
   },
   retryButton :{
     backgroundColor: globalColor.midShadow,
