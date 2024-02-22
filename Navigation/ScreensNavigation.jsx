@@ -7,6 +7,7 @@ import { View } from "react-native";
 import NavElement from "./NavElement.jsx";
 import { useState } from "react";
 import About from "../screens/About.jsx";
+import NavMenu from "./NavMenu.jsx";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,50 +27,23 @@ const ScreensNavigation = () => {
               header: () => {
                 return (
                   <>
-                    <TopBar navigation={navigation} title={route.name} />
-                    <View
-                      style={{
-                        flexDirection: "row",
-                      }}
-                    >
-                      {route.name === "Classic Pocket"
-                        ? setIsHome(true)
-                        : setIsHome(false)}
-                      {route.name === "Contactos"
-                        ? setIsContacts(true)
-                        : setIsContacts(false)}
-                      {route.name === "Mis datos"
-                        ? setIsUser(true)
-                        : setIsUser(false)}
+                    {route.name === "Classic Pocket"
+                      ? setIsHome(true)
+                      : setIsHome(false)}
+                    {route.name === "Contactos"
+                      ? setIsContacts(true)
+                      : setIsContacts(false)}
+                    {route.name === "Mis datos"
+                      ? setIsUser(true)
+                      : setIsUser(false)}
 
-                      <NavElement
-                        refer="home"
-                        isActive={isHome}
-                        fx={() => {
-                          navigation.navigate("Classic Pocket");
-                        }}
-                      >
-                        Inicio
-                      </NavElement>
-                      <NavElement
-                        refer="book"
-                        isActive={isContacts}
-                        fx={() => {
-                          navigation.navigate("Contactos");
-                        }}
-                      >
-                        Agenda
-                      </NavElement>
-                      <NavElement
-                        refer="user"
-                        isActive={isUser}
-                        fx={() => {
-                          navigation.navigate("Mis datos");
-                        }}
-                      >
-                        Usuario
-                      </NavElement>
-                    </View>
+                    <TopBar navigation={navigation} title={route.name} />
+                    <NavMenu
+                      navigation={navigation}
+                      isContacts={isContacts}
+                      isHome={isHome}
+                      isUser={isUser}
+                    />
                   </>
                 );
               },
@@ -79,7 +53,6 @@ const ScreensNavigation = () => {
           <Stack.Screen name="Classic Pocket" component={Home} />
           <Stack.Screen name="Contactos" component={ContactBook} />
           <Stack.Screen name="Mis datos" component={About} />
-          
         </Stack.Navigator>
       </NavigationContainer>
     </>

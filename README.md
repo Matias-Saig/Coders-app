@@ -35,6 +35,16 @@
 - useState » para almacenar datos de input, crear contacto y borrar contacto, y cambio de backgroundColor con switch
 - View
 
+<br />
+
+# Navegación
+Navigation » ScreensNavigaation.jsx
+Screen Stack » Home.jsx, ContactBook.jsx, About.jsx
+
+Title props » ScreensNavigaation.jsx, TopBar.jsx » "Classic Pocket", "Contactos", "Mis Datos"
+GoBack() » TopBar.jsx
+popToTop() » AddContact.jsx
+
 # Datos
 ContactList.js » Datos de contactos de la agenda
 

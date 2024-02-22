@@ -127,7 +127,7 @@ const AddContact = ({ contacts, setContacts, navigation }) => {
 
           <View style={styles.buttonsContainer}>
             <Pressable
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
               style={[globalStyles.buttons, styles.retryButton, styles.button]}
             >
               <Text style={[globalStyles.buttonsText, styles.sendText, styles.retryText]}>Cancelar</Text>
