@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import NavElement from "./NavElement";
 
 const NavMenu = ({ navigation, isHome, isContacts, isUser }) => {
@@ -40,5 +40,3 @@ const NavMenu = ({ navigation, isHome, isContacts, isUser }) => {
 };
 
 export default NavMenu;
-
-const styles = StyleSheet.create({});

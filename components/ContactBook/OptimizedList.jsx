@@ -4,13 +4,16 @@ import ContactDetail from "./ContactDetail";
 import { useState } from "react";
 import AddContact from "./AddContact";
 
-
-const OptimizedList = ({navigation}) => {
+const OptimizedList = ({ navigation }) => {
   const [contacts, setContacts] = useState(contactsList);
 
   return (
     <SafeAreaView style={styles.list}>
-      <AddContact contacts={contacts} setContacts={setContacts} navigation={navigation} />
+      <AddContact
+        contacts={contacts}
+        setContacts={setContacts}
+        navigation={navigation}
+      />
 
       <FlatList
         data={contacts}
@@ -23,8 +26,6 @@ const OptimizedList = ({navigation}) => {
         )}
         keyExtractor={(item) => item.id}
       />
-      
-
     </SafeAreaView>
   );
 };
@@ -36,5 +37,5 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignItems: "center",
     paddingBottom: 200,
-    },
+  },
 });

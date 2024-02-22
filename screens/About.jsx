@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: globalColor.midLight,
     flex: 3,
-    textTransform:"uppercase"
+    textTransform: "uppercase",
   },
   avatar: {
     alignSelf: "center",

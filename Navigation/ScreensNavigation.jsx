@@ -3,8 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ContactBook from "../screens/ContactBook";
 import Home from "../screens/Home.jsx";
-import { View } from "react-native";
-import NavElement from "./NavElement.jsx";
 import { useState } from "react";
 import About from "../screens/About.jsx";
 import NavMenu from "./NavMenu.jsx";

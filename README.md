@@ -38,12 +38,12 @@
 <br />
 
 # Navegación
-Navigation » ScreensNavigaation.jsx
-Screen Stack » Home.jsx, ContactBook.jsx, About.jsx
-
-Title props » ScreensNavigaation.jsx, TopBar.jsx » "Classic Pocket", "Contactos", "Mis Datos"
-GoBack() » TopBar.jsx
-popToTop() » AddContact.jsx
+- Navigation » ScreensNavigation.jsx
+- Screen Stack » Home.jsx, ContactBook.jsx, About.jsx
+- Title props » ScreensNavigaation.jsx » TopBar.jsx » "Classic Pocket", "Contactos", "Mis Datos"
+- Navigation props » GoBack() » TopBar.jsx
+- Navigation props » popToTop() » ContactBook.jsx » OptimizedList.jsx » AddContact.jsx
+- Navigation props » navigate() » NavMenu.jsx
 
 # Datos
 ContactList.js » Datos de contactos de la agenda

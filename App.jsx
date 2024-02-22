@@ -19,22 +19,21 @@ export default function App() {
 
   return (
     <View style={[globalStyles.BG, styles.container]}>
+      <StatusBar
+        animated={true}
+        backgroundColor={globalColor.lowLight}
+        style="light"
+      />
 
-<StatusBar animated={true} backgroundColor={globalColor.lowLight}
-style="light"
- />
-
-      {/* !isLogin ? <Login fx={toggleLogin} /> : <ScreensNavigation /> */}
-      <ScreensNavigation />
+      {!isLogin ? <Login fx={toggleLogin} /> : <ScreensNavigation />}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     width: "100%",
     alignContent: "center",
   },
 });
-
