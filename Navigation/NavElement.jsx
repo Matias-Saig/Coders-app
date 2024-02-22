@@ -1,14 +1,13 @@
 import { globalColor } from "../global/globalStyles";
 import { Pressable, StyleSheet, Text } from "react-native";
 
-import fonts from "../global/fonts";
 import Icons from "../components/Elements/Icons";
 
-const NavElement = ({ refer, fx, children }) => {
+const NavElement = ({ refer, fx, children, isActive }) => {
   const styles = StyleSheet.create({
     button: {
       fontSize: 20,
-      backgroundColor: globalColor.midDark,
+      backgroundColor: isActive ? globalColor.lowShadow : globalColor.midDark,
       flex: 1,
       flexDirection:"row",
       paddingHorizontal: 5,

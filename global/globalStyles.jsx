@@ -39,6 +39,8 @@ export const globalStyles = StyleSheet.create({
     fontFamily: fonts.title,   
     width: "100%",
     fontWeight: "bold",
+    fontSize: 26,
+    color: globalColor.highLight,
   },
 
   subtitle: {

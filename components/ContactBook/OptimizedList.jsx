@@ -5,12 +5,12 @@ import { useState } from "react";
 import AddContact from "./AddContact";
 
 
-const OptimizedList = () => {
+const OptimizedList = ({navigation}) => {
   const [contacts, setContacts] = useState(contactsList);
 
   return (
     <SafeAreaView style={styles.list}>
-      <AddContact contacts={contacts} setContacts={setContacts} />
+      <AddContact contacts={contacts} setContacts={setContacts} navigation={navigation} />
 
       <FlatList
         data={contacts}

@@ -6,19 +6,14 @@ import Home from "../screens/Home.jsx";
 import { View } from "react-native";
 import NavElement from "./NavElement.jsx";
 import { useState } from "react";
-// import { View } from "react-native-web";
-// import { globalStyles } from "../global/globalStyles";
+import About from "../screens/About.jsx";
 
 const Stack = createNativeStackNavigator();
 
 const ScreensNavigation = () => {
   const [isHome, setIsHome] = useState(false);
   const [isContacts, setIsContacts] = useState(false);
-
-  const toggleActive = () => {
-    setIsHome(!isHome);
-    setIsContacts(!isContacts);
-  };
+  const [isUser, setIsUser] = useState(false);
 
   return (
     <>
@@ -27,42 +22,52 @@ const ScreensNavigation = () => {
           initialRouteName="Home"
           screenOptions={({ route, navigation }) => {
             return {
+              animation: "slide_from_right",
               header: () => {
                 return (
                   <>
-                    <TopBar
-                      navigation={navigation}
-                      title={
-                        route.name === "Home"
-                          ? "Classic Pocket"
-                          : route.name === "ContactBook"
-                            ? "Agenda"
-                            : null
-                      }
-                    />
+                    <TopBar navigation={navigation} title={route.name} />
                     <View
                       style={{
                         flexDirection: "row",
                       }}
                     >
-              {/*         {route.name === "Home" &&  setIsHome(true)}
-                      {route.name === "ContactBook" && setIsContacts(true)} */}
+                      {route.name === "Classic Pocket"
+                        ? setIsHome(true)
+                        : setIsHome(false)}
+                      {route.name === "Contactos"
+                        ? setIsContacts(true)
+                        : setIsContacts(false)}
+                      {route.name === "Mis datos"
+                        ? setIsUser(true)
+                        : setIsUser(false)}
 
-                      <NavElement refer="home" isActive={isHome}
-                      fx={
-                        () => {navigation.navigate('Home')
-                     }
-                      }>
+                      <NavElement
+                        refer="home"
+                        isActive={isHome}
+                        fx={() => {
+                          navigation.navigate("Classic Pocket");
+                        }}
+                      >
                         Inicio
                       </NavElement>
-                      <NavElement refer="book" isActive={isContacts}
-                      fx={
-                        () => {
-                          
-                          navigation.navigate('ContactBook')
-                      }
-                      }>
+                      <NavElement
+                        refer="book"
+                        isActive={isContacts}
+                        fx={() => {
+                          navigation.navigate("Contactos");
+                        }}
+                      >
                         Agenda
+                      </NavElement>
+                      <NavElement
+                        refer="user"
+                        isActive={isUser}
+                        fx={() => {
+                          navigation.navigate("Mis datos");
+                        }}
+                      >
+                        Usuario
                       </NavElement>
                     </View>
                   </>
@@ -71,8 +76,10 @@ const ScreensNavigation = () => {
             };
           }}
         >
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="ContactBook" component={ContactBook} />
+          <Stack.Screen name="Classic Pocket" component={Home} />
+          <Stack.Screen name="Contactos" component={ContactBook} />
+          <Stack.Screen name="Mis datos" component={About} />
+          
         </Stack.Navigator>
       </NavigationContainer>
     </>

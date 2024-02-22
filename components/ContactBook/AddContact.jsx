@@ -1,16 +1,16 @@
 import { useState } from "react";
 import {
   Alert,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
 import CustomModal from "../CustomModal/CustomModal";
 import { globalColor, globalStyles } from "../../global/globalStyles";
-const AddContact = ({ contacts, setContacts }) => {
+const AddContact = ({ contacts, setContacts, navigation }) => {
   // Modal
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -125,14 +125,22 @@ const AddContact = ({ contacts, setContacts }) => {
             placeholder="Alias"
           />
 
-          <TouchableOpacity
-            onPress={addContact}
-            style={[globalStyles.buttons, styles.sendButton]}
-          >
-            <Text style={[globalStyles.buttonsText, styles.sendText]}>
-              Agendar nuevo contacto
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.buttonsContainer}>
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={[globalStyles.buttons, styles.retryButton, styles.button]}
+            >
+              <Text style={[globalStyles.buttonsText, styles.sendText, styles.retryText]}>Cancelar</Text>
+            </Pressable>
+            <Pressable
+              onPress={addContact}
+              style={[globalStyles.buttons, styles.sendButton, styles.button]}
+            >
+              <Text style={[globalStyles.buttonsText, styles.sendText]}>
+                Agendar
+              </Text>
+            </Pressable>
+          </View>
         </View>
       </ScrollView>
     </CustomModal>
@@ -145,10 +153,30 @@ const styles = StyleSheet.create({
   sendButton: {
     backgroundColor: globalColor.detailLight,
   },
+  retryButton :{
+    backgroundColor: globalColor.midShadow,
+  },
+  retryText: {
+    color: globalColor.highShadow,
+  },
+  button:{
+    width: "40%",
+    alignSelf: "center",
+    elevation: 3,
+    marginBottom: 10,
+  },
   sendText: {
     color: globalColor.midDark,
+    fontSize: 16,
+    textAlign: "center",
   },
   scroll: {
     width: "100%",
   },
+  buttonsContainer: {
+    flexDirection:"row",
+    justifyContent:"space-around",
+    width:"90%",
+    marginTop:20
+  }
 });
