@@ -1,11 +1,21 @@
 import { StyleSheet, View } from "react-native";
-import { globalColor, globalStyles } from "./global/globalStyles";
-import { useFonts } from "expo-font";
-import { fontsCollection } from "./global/fonts";
-import Login from "./screens/Login";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+
+// Variables globales
+import { globalColor, globalStyles } from "./global/globalStyles";
+
+// Fuentes
+import { useFonts } from "expo-font";
+import { fontsCollection } from "./global/fonts";
+
+// Screens
+import Login from "./screens/Login";
 import ScreensNavigation from "./Navigation/ScreensNavigation";
+
+// Store
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -18,15 +28,17 @@ export default function App() {
   };
 
   return (
-    <View style={[globalStyles.BG, styles.container]}>
-      <StatusBar
-        animated={true}
-        backgroundColor={globalColor.lowLight}
-        style="light"
-      />
+    <Provider store={store}>
+      <View style={[globalStyles.BG, styles.container]}>
+        <StatusBar
+          animated={true}
+          backgroundColor={globalColor.lowLight}
+          style="light"
+        />
 
-      {!isLogin ? <Login fx={toggleLogin} /> : <ScreensNavigation />}
-    </View>
+        {!isLogin ? <Login fx={toggleLogin} /> : <ScreensNavigation />}
+      </View>
+    </Provider>
   );
 }
 

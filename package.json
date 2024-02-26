@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@redux-devtools/core": "^4.0.0",
     "eslint": "^8.56.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
