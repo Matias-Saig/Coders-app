@@ -14,7 +14,7 @@ import Login from "./screens/Login";
 import ScreensNavigation from "./Navigation/ScreensNavigation";
 
 // Store
-import { store } from "./store/store";
+import { store } from "./app/store";
 import { Provider } from "react-redux";
 
 export default function App() {
