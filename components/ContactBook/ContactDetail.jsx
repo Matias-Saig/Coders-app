@@ -1,5 +1,4 @@
 import {
-  Alert,
   StyleSheet,
   Switch,
   Text,
@@ -9,8 +8,10 @@ import {
 import { globalColor, globalStyles } from "../../global/globalStyles";
 import CustomModal from "../CustomModal/CustomModal";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../features/Contacts/ContactsSlice";
 
-const ContactDetail = ({ renderItem, contacts, setContacts }) => {
+const ContactDetail = ({ renderItem}) => {
   // Modal
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -26,10 +27,18 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
   };
 
   // Delete
-  const deleteContact = () => {
+  /* const deleteContact = () => {
     setContacts(contacts.filter((elem) => elem.id !== renderItem.id));
     Alert.alert("Contacto borrado");
   };
+ */
+
+  const dispatch = useDispatch();
+
+  const handleDeleteContact = (contactId) => {
+    dispatch(deleteContact(contactId));
+  };
+  
 
   return (
     <View style={[styles.container, highlight]}>
@@ -86,12 +95,11 @@ const ContactDetail = ({ renderItem, contacts, setContacts }) => {
         </Text>
 
         <TouchableOpacity
-          onPress={deleteContact}
+          onPress={handleDeleteContact}
           style={[globalStyles.buttons, styles.buttonTrash]}
         >
           <Text style={[globalStyles.buttonsText, styles.buttonTextTrash]}>
-            {" "}
-            borrar contacto{" "}
+            borrar contacto
           </Text>
         </TouchableOpacity>
       </CustomModal>

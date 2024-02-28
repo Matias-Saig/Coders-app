@@ -1,17 +1,17 @@
 import { FlatList, SafeAreaView, StyleSheet } from "react-native";
-import { contactsList } from "../../data/contactList";
 import ContactDetail from "./ContactDetail";
-import { useState } from "react";
 import AddContact from "./AddContact";
+import { useSelector } from "react-redux";
 
 const OptimizedList = ({ navigation }) => {
-  const [contacts, setContacts] = useState(contactsList);
+
+  const contacts = useSelector((state)=> state.contacts)
+
 
   return (
     <SafeAreaView style={styles.list}>
       <AddContact
         contacts={contacts}
-        setContacts={setContacts}
         navigation={navigation}
       />
 
@@ -20,8 +20,6 @@ const OptimizedList = ({ navigation }) => {
         renderItem={({ item }) => (
           <ContactDetail
             renderItem={item}
-            contacts={contacts}
-            setContacts={setContacts}
           />
         )}
         keyExtractor={(item) => item.id}

@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../features/Ej -Counter/CounterSlice' // name del slice + Reducer
-
+import ContactsReducer from '../features/Contacts/ContactsSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    ContactsReducer
   },
 })

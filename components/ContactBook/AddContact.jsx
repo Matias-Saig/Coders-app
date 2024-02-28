@@ -10,9 +10,14 @@ import {
 } from "react-native";
 import CustomModal from "../CustomModal/CustomModal";
 import { globalColor, globalStyles } from "../../global/globalStyles";
-const AddContact = ({ contacts, setContacts, navigation }) => {
+import { useDispatch } from "react-redux";
+import { addContact } from "../../features/Contacts/ContactsSlice";
+const AddContact = ({ contacts, navigation }) => {
   // Modal
   const [toggleModal, setToggleModal] = useState(false);
+
+  // Redux
+  const dispatch = useDispatch();
 
   // States
   const [newContactId, setNewContactId] = useState(
@@ -48,7 +53,7 @@ const AddContact = ({ contacts, setContacts, navigation }) => {
   };
 
   // edit function
-  const addContact = () => {
+  const addNewContact = () => {
     setNewContactId(newContactId + 1);
 
     setNewContact([
@@ -61,7 +66,8 @@ const AddContact = ({ contacts, setContacts, navigation }) => {
       (newContact.alias = newContactAlias),
     ]);
 
-    setContacts([newContact, ...contacts]);
+    dispatch(addContact(newContact));
+
     setToggleModal(!toggleModal);
     Alert.alert("Contacto agregado");
   };
@@ -130,10 +136,18 @@ const AddContact = ({ contacts, setContacts, navigation }) => {
               onPress={() => navigation.popToTop()}
               style={[globalStyles.buttons, styles.retryButton, styles.button]}
             >
-              <Text style={[globalStyles.buttonsText, styles.sendText, styles.retryText]}>Cancelar</Text>
+              <Text
+                style={[
+                  globalStyles.buttonsText,
+                  styles.sendText,
+                  styles.retryText,
+                ]}
+              >
+                Cancelar
+              </Text>
             </Pressable>
             <Pressable
-              onPress={addContact}
+              onPress={addNewContact}
               style={[globalStyles.buttons, styles.sendButton, styles.button]}
             >
               <Text style={[globalStyles.buttonsText, styles.sendText]}>
@@ -152,15 +166,15 @@ export default AddContact;
 const styles = StyleSheet.create({
   sendButton: {
     backgroundColor: globalColor.detailLight,
-    marginBottom:20,
+    marginBottom: 20,
   },
-  retryButton :{
+  retryButton: {
     backgroundColor: globalColor.midShadow,
   },
   retryText: {
     color: globalColor.highShadow,
   },
-  button:{
+  button: {
     width: "40%",
     alignSelf: "center",
     elevation: 3,
@@ -175,9 +189,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   buttonsContainer: {
-    flexDirection:"row",
-    justifyContent:"space-around",
-    width:"90%",
-    marginTop:20
-  }
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "90%",
+    marginTop: 20,
+  },
 });
