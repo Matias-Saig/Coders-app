@@ -21,6 +21,7 @@
 <br />
 
 # Elementos usados
+- **Material Top Tabs Navigator**
 - Alert » aviso de contacto agregado o borrado (Android)
 - FlatList » OptimizedList.jsx
 - Image
@@ -37,13 +38,22 @@
 
 <br />
 
+# Redux
+- ContactsSlice.jsx » reduce: deleteContact » ContactDetail.jsx
+- ContactsSlice.jsx » reduce: addContact » AddContact.jsx
+
+<br />
+
 # Navegación
 - Navigation » ScreensNavigation.jsx
-- Screen Stack » Home.jsx, ContactBook.jsx, About.jsx
+- Screen Stacks » Login.jsx, ScreensTabs.jsx 
+- Screen Tabs » ScreensTabs.jsx » Home.jsx, ContactBook.jsx, About.jsx
 - Title props » ScreensNavigaation.jsx » TopBar.jsx » "Classic Pocket", "Contactos", "Mis Datos"
 - Navigation props » GoBack() » TopBar.jsx
 - Navigation props » popToTop() » ContactBook.jsx » OptimizedList.jsx » AddContact.jsx
 - Navigation props » navigate() » NavMenu.jsx
+
+<br />
 
 # Datos
 ContactList.js » Datos de contactos de la agenda
