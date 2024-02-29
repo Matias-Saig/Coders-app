@@ -1,56 +1,32 @@
-import TopBar from "../components/TopBar/TopBar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ContactBook from "../screens/ContactBook";
-import Home from "../screens/Home.jsx";
-import { useState } from "react";
-import About from "../screens/About.jsx";
-import NavMenu from "./NavMenu.jsx";
+import Login from "../screens/Login.jsx";
+import ScreensTabs from "./ScreensTabs.jsx";
+import TopBar from "../components/TopBar/TopBar.jsx";
 
 const Stack = createNativeStackNavigator();
 
 const ScreensNavigation = () => {
-  const [isHome, setIsHome] = useState(false);
-  const [isContacts, setIsContacts] = useState(false);
-  const [isUser, setIsUser] = useState(false);
-
+ 
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
-          screenOptions={({ route, navigation }) => {
+          initialRouteName="Login"
+          screenOptions={() => {
             return {
               animation: "slide_from_right",
-              header: () => {
-                return (
-                  <>
-                    {route.name === "Classic Pocket"
-                      ? setIsHome(true)
-                      : setIsHome(false)}
-                    {route.name === "Contactos"
-                      ? setIsContacts(true)
-                      : setIsContacts(false)}
-                    {route.name === "Mis datos"
-                      ? setIsUser(true)
-                      : setIsUser(false)}
-
-                    <TopBar navigation={navigation} title={route.name} />
-                    <NavMenu
-                      navigation={navigation}
-                      isContacts={isContacts}
-                      isHome={isHome}
-                      isUser={isUser}
-                    />
-                  </>
-                );
-              },
+              header: ({navigation, route}) => {
+              return (
+                <TopBar navigation={navigation} title={route.name}/>
+              )
+             }
             };
           }}
         >
-          <Stack.Screen name="Classic Pocket" component={Home} />
-          <Stack.Screen name="Contactos" component={ContactBook} />
-          <Stack.Screen name="Mis datos" component={About} />
+           <Stack.Screen name="Login" component={Login} />
+           <Stack.Screen name="Classic Pocket" component={ScreensTabs} />  
+         
         </Stack.Navigator>
       </NavigationContainer>
     </>

@@ -5,22 +5,22 @@ import Subtitle from "../components/Elements/Subtitle";
 import Icons from "../components/Elements/Icons";
 import { globalColor } from "../global/globalStyles";
 import fonts from "../global/fonts";
-const Login = ({ fx }) => {
+const Login = ({ navigation }) => {
   return (
-    <View style={{marginTop:50}}>
+   /*  <View style={{marginTop:50}}>
       <View style={[styles.container, styles.logo]}>
         <Logo />
         <Title align="center" />
       </View>
-
+ */
       <View style={[styles.container, styles.text]}>
         <Subtitle addStyle={styles.subtitle}>Invitado</Subtitle>
-        <Pressable style={styles.button} onPress={fx}>
+        <Pressable style={styles.button} onPress={ ()=> navigation.navigate("Classic Pocket")
+        }>
           <Text style={styles.buttonText}> Ingresar </Text>
           <Icons refer="login" size={20} color={globalColor.white} />
         </Pressable>
       </View>
-    </View>
   );
 };
 
@@ -28,7 +28,7 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
+    marginTop: "25%",
     padding: 50,
     borderRadius: 5,
     height:"45%",

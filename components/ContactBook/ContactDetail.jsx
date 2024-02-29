@@ -1,11 +1,4 @@
-import {
-  Button,
-  StyleSheet,
-  Switch,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
 import { globalColor, globalStyles } from "../../global/globalStyles";
 import CustomModal from "../CustomModal/CustomModal";
 import { useState } from "react";

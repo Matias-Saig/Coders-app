@@ -12,7 +12,7 @@ const NavMenu = ({ navigation, isHome, isContacts, isUser }) => {
         refer="home"
         isActive={isHome}
         fx={() => {
-          navigation.navigate("Classic Pocket");
+          navigation.navigate("Inicio");
         }}
       >
         Inicio
