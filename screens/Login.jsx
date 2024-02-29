@@ -1,18 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import Logo from "../components/TopBar/Logo";
-import Title from "../components/TopBar/Title";
 import Subtitle from "../components/Elements/Subtitle";
 import Icons from "../components/Elements/Icons";
 import { globalColor } from "../global/globalStyles";
 import fonts from "../global/fonts";
 const Login = ({ navigation }) => {
   return (
-   /*  <View style={{marginTop:50}}>
-      <View style={[styles.container, styles.logo]}>
-        <Logo />
-        <Title align="center" />
-      </View>
- */
       <View style={[styles.container, styles.text]}>
         <Subtitle addStyle={styles.subtitle}>Invitado</Subtitle>
         <Pressable style={styles.button} onPress={ ()=> navigation.navigate("Classic Pocket")
