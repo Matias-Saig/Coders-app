@@ -27,13 +27,6 @@ const ContactDetail = ({ renderItem}) => {
     fontSize: 24,
   };
 
-  // Delete
-  /* const deleteContact = () => {
-    setContacts(contacts.filter((elem) => elem.id !== renderItem.id));
-    Alert.alert("Contacto borrado");
-  };
- */
-
   const dispatch = useDispatch();
 
   const handleDeleteContact = () => {
@@ -91,7 +84,9 @@ const ContactDetail = ({ renderItem}) => {
         setToggleModal={setToggleModal}
       >
         <Text style={[globalStyles.paragraph, styles.modalText]}>
-          ¿Quieres borrar este contacto de la agenda? Una vez hecho no se puede
+          ¿Quieres borrar el contacto de
+          <Text style={styles.spanDelete}> {renderItem.name} {renderItem.lastname} </Text>
+          de la agenda? Una vez hecho no se puede
           deshacer
         </Text>
 
@@ -150,6 +145,9 @@ const styles = StyleSheet.create({
   span: {
     fontWeight: "bold",
     color: globalColor.midShadow,
+  },
+  spanDelete: {
+    fontWeight: "bold"
   },
   spanContainer: {
     flexDirection: "row",

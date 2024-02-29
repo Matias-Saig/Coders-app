@@ -8,12 +8,11 @@ export const ContactsSlice = createSlice({
   initialState: contacts,
   reducers: {
     deleteContact: (state, action) => {
-      // const { id } = action.payload;
        const index = state.findIndex(
         (account) => account.id === action.payload.id,
       );
       state.splice(index, 1); 
-      // Alert.alert("Contacto borrado"); 
+      Alert.alert(`Contacto borrado: \n${action.payload.name} ${action.payload.lastname}`); 
 
       /*  options 2
 
