@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../features/Contacts/ContactsSlice";
 
-const ContactDetail = ({ renderItem}) => {
+const ContactDetail = ({ renderItem }) => {
   // Modal
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -30,9 +30,8 @@ const ContactDetail = ({ renderItem}) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = () => {
-    dispatch(deleteContact(renderItem)); 
+    dispatch(deleteContact(renderItem));
   };
-  
 
   return (
     <View style={[styles.container, highlight]}>
@@ -74,7 +73,6 @@ const ContactDetail = ({ renderItem}) => {
         {renderItem.bank}
       </Text>
 
-
       {/* Modal */}
       <CustomModal
         openButtonText={"Borrar"}
@@ -85,9 +83,11 @@ const ContactDetail = ({ renderItem}) => {
       >
         <Text style={[globalStyles.paragraph, styles.modalText]}>
           ¿Quieres borrar el contacto de
-          <Text style={styles.spanDelete}> {renderItem.name} {renderItem.lastname} </Text>
-          de la agenda? Una vez hecho no se puede
-          deshacer
+          <Text style={styles.spanDelete}>
+            {" "}
+            {renderItem.name} {renderItem.lastname}{" "}
+          </Text>
+          de la agenda? Una vez hecho no se puede deshacer
         </Text>
 
         <TouchableOpacity
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     color: globalColor.midShadow,
   },
   spanDelete: {
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   spanContainer: {
     flexDirection: "row",

@@ -13,17 +13,10 @@ export const ContactsSlice = createSlice({
       );
       state.splice(index, 1); 
       Alert.alert(`Contacto borrado: \n${action.payload.name} ${action.payload.lastname}`); 
-
-      /*  options 2
-
-    const accounts = state.accounts.filter(account => account.id !== action.payload);
-
-    // Reemplazar el array original con el array filtrado
-    state.accounts = accounts;
- */
     },
     addContact: (state, action) => {
-      state.contacts.unshift(action.payload);
+      state.unshift(action.payload);
+      Alert.alert(`Contacto agregado: \n${action.payload.name} ${action.payload.lastname}`); 
     },
   },
 });

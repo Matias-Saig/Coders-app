@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Alert,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -69,7 +68,6 @@ const AddContact = ({ contacts, navigation }) => {
     dispatch(addContact(newContact));
 
     setToggleModal(!toggleModal);
-    Alert.alert("Contacto agregado");
   };
 
   return (
