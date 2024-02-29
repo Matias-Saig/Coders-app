@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { contactsList } from "../../data/contactList";
+import { contactsList as contacts } from "../../data/contactList";
 import { Alert } from "react-native";
 
+
 export const ContactsSlice = createSlice({
-  name: "Contacts",
-  initialState: { contacts: contactsList },
+  name: "contacts",
+  initialState: contacts,
   reducers: {
     deleteContact: (state, action) => {
-      const index = state.contacts.findIndex(
-        (account) => account.id === action.payload,
+      // const { id } = action.payload;
+       const index = state.findIndex(
+        (account) => account.id === action.payload.id,
       );
-      state.contacts.splice(index, 1);
-      Alert.alert("Contacto borrado");
+      state.splice(index, 1); 
+      // Alert.alert("Contacto borrado"); 
 
       /*  options 2
 

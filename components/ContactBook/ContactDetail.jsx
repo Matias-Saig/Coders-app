@@ -1,4 +1,5 @@
 import {
+  Button,
   StyleSheet,
   Switch,
   Text,
@@ -35,8 +36,8 @@ const ContactDetail = ({ renderItem}) => {
 
   const dispatch = useDispatch();
 
-  const handleDeleteContact = (contactId) => {
-    dispatch(deleteContact(contactId));
+  const handleDeleteContact = () => {
+    dispatch(deleteContact(renderItem)); 
   };
   
 
@@ -80,8 +81,8 @@ const ContactDetail = ({ renderItem}) => {
         {renderItem.bank}
       </Text>
 
-      {/* Modal */}
 
+      {/* Modal */}
       <CustomModal
         openButtonText={"Borrar"}
         openStyle={[globalStyles.buttons, styles.buttonTrash]}

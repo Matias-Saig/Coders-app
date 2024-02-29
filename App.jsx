@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import { useState } from "react";
+// import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 
 // Variables globales
@@ -10,7 +10,7 @@ import { useFonts } from "expo-font";
 import { fontsCollection } from "./global/fonts";
 
 // Screens
-import Login from "./screens/Login";
+// import Login from "./screens/Login";
 import ScreensNavigation from "./Navigation/ScreensNavigation";
 
 // Store
@@ -18,14 +18,14 @@ import { store } from "./app/store";
 import { Provider } from "react-redux";
 
 export default function App() {
-  const [isLogin, setIsLogin] = useState(false);
+//  const [isLogin, setIsLogin] = useState(false);
 
   const [fontLoaded] = useFonts(fontsCollection);
   if (!fontLoaded) return null;
 
-  const toggleLogin = () => {
-    setIsLogin(!isLogin);
-  };
+ // const toggleLogin = () => {
+ //   setIsLogin(!isLogin);
+ //  };
 
   return (
     <Provider store={store}>
@@ -36,7 +36,11 @@ export default function App() {
           style="light"
         />
 
-        {!isLogin ? <Login fx={toggleLogin} /> : <ScreensNavigation />}
+        {
+        /* !isLogin ? <Login fx={toggleLogin} /> : <ScreensNavigation /> */
+        }
+
+<ScreensNavigation />
       </View>
     </Provider>
   );
