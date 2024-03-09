@@ -5,7 +5,7 @@ export const userProfileApi = createApi({
     reducerPath:"userProfileApi",
     baseQuery:fetchBaseQuery({baseUrl:firebaseUrl}),
     endpoints:(builder)=>({
-        putImage: builder.mutation({
+        setImage: builder.mutation({
             query:({image,localId})=>({
                 url:`/profile/${localId}.json`,
                 method:"PUT",
