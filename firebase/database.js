@@ -1,0 +1,1 @@
+export const baseUrl = "https://classic-pocket-default-rtdb.firebaseio.com/"
