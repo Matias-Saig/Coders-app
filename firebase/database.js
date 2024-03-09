@@ -1,1 +1,1 @@
-export const baseUrl = "https://classic-pocket-default-rtdb.firebaseio.com/"
+export const firebaseUrl = "https://classic-pocket-default-rtdb.firebaseio.com/"

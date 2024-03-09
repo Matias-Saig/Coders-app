@@ -11,284 +11,223 @@
       },
       "balance": 150000,
       "movements": [
-        { "Supermercado": 6500 },
-        { "Combustible": 12000 },
-        { "teléfono": 7300 },
-        { "cable": 10200 },
-        { "Transferencia a NG": 20000 },
-        { "Transferencia de TJ": 10000 },
-        { "Pago QR": 25000 }
+        {
+          "category": "Pago QR",
+          "detail": "Tienda_J",
+          "value": 20000,
+          "date": "30 de marzo",
+          "cashFlow": "out"
+        },
+        {
+          "category": "Supermercado",
+          "detail": "super_A",
+          "value": 6500,
+          "date": "14 de marzo",
+          "cashFlow": "out"
+        },
+        {
+          "category": "Combustible",
+          "detail": "estación_G",
+          "value": 12000,
+          "date": "5 de marzo",
+          "cashFlow": "out"
+        },
+        {
+          "category": "Carga",
+          "detail": "Ingreso de efectivo por cajero",
+          "value": 40000,
+          "date": "19 de febrero",
+          "cashFlow": "out"
+        },
+        {
+          "category": "Teléfono",
+          "detail": "empresa_R",
+          "value": 7300,
+          "date": "10 de febrero",
+          "cashFlow": "out"
+        },
+        {
+          "category": "Cable",
+          "detail": "empresa_E",
+          "value": 10200,
+          "date": "3 de febrero",
+          "cashFlow": "out"
+        },
+        {
+          "category": "Transferencia",
+          "detail": "Recibida de NG",
+          "value": 20000,
+          "date": "25 de enero",
+          "cashFlow": "in"
+        },
+        {
+          "category": "Transferencia",
+          "detail": "Enviada a RJ",
+          "value": 10000,
+          "date": "10 de enero",
+          "cashFlow": "out"
+        }
       ],
       "contacts": [
         {
           "id": 1,
-          "name": "Juan",
-          "lastname": "Pérez",
+          "name": "Juan Pérez",
           "nickname": "JP",
           "bank": "Banco A",
           "cbu": "1234567890123456789012",
-          "alias": "juanperezalias"
+          "alias": "jp.a"
         },
         {
           "id": 2,
-          "name": "María",
-          "lastname": "Gómez",
+          "name": "María Gómez",
           "nickname": "MG",
           "bank": "Banco B",
           "cbu": "2345678901234567890123",
-          "alias": "mariagomezalias"
+          "alias": "mg.b"
         },
         {
           "id": 3,
-          "name": "Carlos",
-          "lastname": "Rodríguez",
+          "name": "Carlos Rodríguez",
           "nickname": "CR",
           "bank": "Banco C",
           "cbu": "3456789012345678901234",
-          "alias": "carlosrodriguezalias"
+          "alias": "cr.c"
         },
         {
           "id": 4,
-          "name": "Laura",
-          "lastname": "Hernández",
+          "name": "Laura Hernández",
           "nickname": "LH",
           "bank": "Banco A",
           "cbu": "4567890123456789012345",
-          "alias": "laurahernandezalias"
+          "alias": "lh.a"
         },
         {
           "id": 5,
-          "name": "Pedro",
-          "lastname": "López",
+          "name": "Pedro López",
           "nickname": "PL",
           "bank": "Banco B",
           "cbu": "5678901234567890123456",
-          "alias": "pedrolopezalias"
+          "alias": "pl.b"
         },
         {
           "id": 6,
-          "name": "Ana",
-          "lastname": "García",
+          "name": "Ana García",
           "nickname": "AG",
           "bank": "Banco C",
           "cbu": "6789012345678901234567",
-          "alias": "anagarciaalias"
+          "alias": "ag.c"
         },
         {
           "id": 7,
-          "name": "Javier",
-          "lastname": "Díaz",
+          "name": "Javier Díaz",
           "nickname": "JD",
           "bank": "Banco A",
           "cbu": "7890123456789012345678",
-          "alias": "javierdiazalias"
+          "alias": "jd.a"
         },
         {
           "id": 8,
-          "name": "Isabel",
-          "lastname": "Fernández",
+          "name": "Isabel Fernández",
           "nickname": "IF",
           "bank": "Banco B",
           "cbu": "8901234567890123456789",
-          "alias": "isabelfernandezalias"
+          "alias": "if.b"
         },
         {
           "id": 9,
-          "name": "Miguel",
-          "lastname": "Martínez",
+          "name": "Miguel Martínez",
           "nickname": "MM",
           "bank": "Banco C",
           "cbu": "9012345678901234567890",
-          "alias": "miguelmartinezalias"
+          "alias": "mm.c"
         },
         {
           "id": 10,
-          "name": "Sofía",
-          "lastname": "López",
+          "name": "Sofía López",
           "nickname": "SL",
           "bank": "Banco A",
           "cbu": "0123456789012345678901",
-          "alias": "sofialopezalias"
+          "alias": "sl.a"
         },
         {
           "id": 11,
-          "name": "Alejandro",
-          "lastname": "Ramírez",
+          "name": "Alejandro Ramírez",
           "nickname": "AR",
           "bank": "Banco B",
           "cbu": "1234567890123456789012",
-          "alias": "alejandroramirezalias"
+          "alias": "ar.b"
         },
         {
           "id": 12,
-          "name": "Carmen",
-          "lastname": "Herrera",
+          "name": "Carmen Herrera",
           "nickname": "CH",
           "bank": "Banco C",
           "cbu": "2345678901234567890123",
-          "alias": "carmenherreraalias"
+          "alias": "ch.c"
         },
         {
           "id": 13,
-          "name": "Raúl",
-          "lastname": "González",
+          "name": "Raúl González",
           "nickname": "RG",
           "bank": "Banco A",
           "cbu": "3456789012345678901234",
-          "alias": "raulgonzalezalias"
+          "alias": "rg.a"
         },
         {
           "id": 14,
-          "name": "Elena",
-          "lastname": "Fuentes",
+          "name": "Elena Fuentes",
           "nickname": "EF",
           "bank": "Banco B",
           "cbu": "4567890123456789012345",
-          "alias": "elenafuentesalias"
+          "alias": "ef.b"
         },
         {
           "id": 15,
-          "name": "Francisco",
-          "lastname": "Díaz",
+          "name": "Francisco Díaz",
           "nickname": "FD",
           "bank": "Banco C",
           "cbu": "5678901234567890123456",
-          "alias": "franciscodiazalias"
+          "alias": "fd.c"
         },
         {
           "id": 16,
-          "name": "Luisa",
-          "lastname": "Muñoz",
+          "name": "Luisa Muñoz",
           "nickname": "LM",
           "bank": "Banco A",
           "cbu": "6789012345678901234567",
-          "alias": "luisamunozalias"
+          "alias": "lm.a"
         },
         {
           "id": 17,
-          "name": "Andrés",
-          "lastname": "Sánchez",
+          "name": "Andrés Sánchez",
           "nickname": "AS",
           "bank": "Banco B",
           "cbu": "7890123456789012345678",
-          "alias": "andressanchezalias"
+          "alias": "as.b"
         },
         {
           "id": 18,
-          "name": "Beatriz",
-          "lastname": "Ortega",
-          "nickname": "BO",
+          "name": "Beatriz Pedraza",
+          "nickname": "BP",
           "bank": "Banco C",
           "cbu": "8901234567890123456789",
-          "alias": "beatrizortegaalias"
+          "alias": "bp.c"
         },
         {
           "id": 19,
-          "name": "Roberto",
-          "lastname": "Cruz",
+          "name": "Roberto Cruz",
           "nickname": "RC",
           "bank": "Banco A",
           "cbu": "9012345678901234567890",
-          "alias": "robertocruzalias"
+          "alias": "rc.a"
         },
         {
           "id": 20,
-          "name": "Natalia",
-          "lastname": "Jiménez",
-          "nickname": "NJ",
-          "bank": "Banco B",
-          "cbu": "0123456789012345678901",
-          "alias": "nataliajimenezalias"
-        },
-        {
-          "id": 21,
-          "name": "Diego",
-          "lastname": "Torres",
-          "nickname": "DT",
-          "bank": "Banco C",
-          "cbu": "1234567890123456789012",
-          "alias": "diegotorresalias"
-        },
-        {
-          "id": 22,
-          "name": "Adriana",
-          "lastname": "Vargas",
-          "nickname": "AV",
-          "bank": "Banco A",
-          "cbu": "2345678901234567890123",
-          "alias": "adrianavargasalias"
-        },
-        {
-          "id": 23,
-          "name": "Martín",
-          "lastname": "Lara",
+          "name": "Martín Lara",
           "nickname": "ML",
           "bank": "Banco B",
           "cbu": "3456789012345678901234",
-          "alias": "martinlaraalias"
-        },
-        {
-          "id": 24,
-          "name": "Patricia",
-          "lastname": "Guerrero",
-          "nickname": "PG",
-          "bank": "Banco C",
-          "cbu": "4567890123456789012345",
-          "alias": "patriciaguerreroalias"
-        },
-        {
-          "id": 25,
-          "name": "Gabriel",
-          "lastname": "Mendoza",
-          "nickname": "GM",
-          "bank": "Banco A",
-          "cbu": "5678901234567890123456",
-          "alias": "gabrielmendozaalias"
-        },
-        {
-          "id": 26,
-          "name": "Cecilia",
-          "lastname": "Cruz",
-          "nickname": "CC",
-          "bank": "Banco B",
-          "cbu": "6789012345678901234567",
-          "alias": "ceciliacruzalias"
-        },
-        {
-          "id": 27,
-          "name": "Ricardo",
-          "lastname": "Santos",
-          "nickname": "RS",
-          "bank": "Banco C",
-          "cbu": "7890123456789012345678",
-          "alias": "ricardosantosalias"
-        },
-        {
-          "id": 28,
-          "name": "Valeria",
-          "lastname": "Gutiérrez",
-          "nickname": "VG",
-          "bank": "Banco A",
-          "cbu": "8901234567890123456789",
-          "alias": "valeriagutierrezalias"
-        },
-        {
-          "id": 29,
-          "name": "Héctor",
-          "lastname": "Navarro",
-          "nickname": "HN",
-          "bank": "Banco B",
-          "cbu": "9012345678901234567890",
-          "alias": "hectornavarroalias"
-        },
-        {
-          "id": 30,
-          "name": "Silvia",
-          "lastname": "López",
-          "nickname": "SL",
-          "bank": "Banco C",
-          "cbu": "0123456789012345678901",
-          "alias": "silvialopezalias"
+          "alias": "ml.b"
         }
       ]
     }
