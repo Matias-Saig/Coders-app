@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
             
             <View style={[styles.container, styles.text]}>
             <Subtitle addStyle={styles.subtitle}>{item}</Subtitle>
-            <Pressable style={styles.button} onPress={ ()=> navigation.navigate("Classic Pocket")
+            <Pressable style={styles.button} onPress={ () => navigation.navigate("Classic Pocket")
             }>
               <Text style={styles.buttonText}> Ingresar </Text>
               <Icons refer="login" size={20} color={globalColor.white} />

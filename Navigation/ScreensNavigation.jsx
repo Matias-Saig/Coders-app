@@ -25,7 +25,7 @@ const ScreensNavigation = () => {
           }}
         >
            <Stack.Screen name="Login" component={Login} />
-           <Stack.Screen name="Classic Pocket" component={ScreensTabs} />  
+           <Stack.Screen name="Classic Pocket" component={ScreensTabs}/>  
          
         </Stack.Navigator>
       </NavigationContainer>
