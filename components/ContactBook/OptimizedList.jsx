@@ -1,20 +1,53 @@
-import { FlatList, SafeAreaView, StyleSheet } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import ContactDetail from "./ContactDetail";
 import AddContact from "./AddContact";
-import { useSelector } from "react-redux";
+import { useGetContactListQuery } from "../../app/Service/userContactsApi";
+// import { useSelector } from "react-redux";
 
 const OptimizedList = ({ navigation }) => {
-  const contacts = useSelector((state) => state.contacts);
+  // const contacts = useSelector((state) => state.contacts);
+
+  const { data: contacts, isLoading, isError, error } = useGetContactListQuery();
+
+  if (isError) console.log("error de",error);
 
   return (
     <SafeAreaView style={styles.list}>
-      <AddContact contacts={contacts} navigation={navigation} />
+      {isError && (
+        <Text
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: 48,
+            color: "tomato",
+          }}
+        >
+          Error de carga
+        </Text>
+      )}
 
-      <FlatList
-        data={contacts}
-        renderItem={({ item }) => <ContactDetail renderItem={item} />}
-        keyExtractor={(item) => item.id}
-      />
+      {isLoading ? (
+        <Text
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: 48,
+            color: "aqua",
+          }}
+        >
+          Cargando datos
+        </Text>
+      ) : (
+        <>
+          <AddContact contacts={contacts} navigation={navigation} />
+
+          <FlatList
+            data={contacts}
+            renderItem={({ item }) => <ContactDetail renderItem={item} />}
+            keyExtractor={(item) => item.id}
+          />
+        </>
+      )}
     </SafeAreaView>
   );
 };
