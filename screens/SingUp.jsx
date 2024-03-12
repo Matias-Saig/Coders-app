@@ -1,16 +1,12 @@
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
-import { globalColor, globalStyles } from "../global/globalStyles";
 import { useState } from "react";
 import { useSignUpMutation } from "../app/Service/userAuth";
 import { registerSchema } from "../Validation/authSchema";
 import { setUser } from "../features/Auth/AuthSlice";
 import { useDispatch } from "react-redux";
+import FormInput from "../components/Elements/FormInput";
+import ErrorMsg from "../components/Elements/ErrorMsg";
+import FormButton from "../components/Elements/FormButton";
+import FormContainer from "../components/Elements/FormContainer";
 
 const SingUp = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -23,7 +19,6 @@ const SingUp = ({ navigation }) => {
   const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
 
   const [triggerRegister] = useSignUpMutation();
-
 
   const onSubmit = async () => {
     try {
@@ -57,95 +52,32 @@ const SingUp = ({ navigation }) => {
     }
   };
 
-  
   return (
-    <View style={globalStyles.containerCenter}>
-      <Text style={globalStyles.inputLabel}>Nombre</Text>
-      <TextInput
-        style={globalStyles.input}
-        onChangeText={(text) => {
-          setEmail(text);
-        }}
-        value={email}
-        placeholder="Email"
-      />
-      {errorEmail && (
-        <Text>{errorEmail}</Text>
-      )}
+    <FormContainer>
+      <FormInput label="Email" fx={setEmail} value={email} place="Email" />
+      <ErrorMsg error={errorEmail} />
 
-      <TextInput
-        style={globalStyles.input}
-        onChangeText={(text) => {
-          setPassword(text);
-        }}
+      <FormInput
+        label="Contraseña"
+        fx={setPassword}
         value={password}
-        placeholder="Contraseña"
-        secureTextEntry={true}
+        place="Contraseña"
+        password={true}
       />
-      {errorPassword && (
-        <Text>{errorPassword}</Text>
-      )}
+      <ErrorMsg error={errorPassword} />
 
-      <TextInput
-        style={globalStyles.input}
-        onChangeText={(text) => {
-          setConfirmPassword(text);
-        }}
+      <FormInput
+        label="Repetir contraseña"
+        fx={setConfirmPassword}
         value={confirmPassword}
-        placeholder="Repetir contraseña"
-        secureTextEntry={true}
+        place="Repetir contraseña"
+        password={true}
       />
-      {errorConfirmPassword && (
-        <Text>
-          {errorConfirmPassword}
-        </Text>
-      )}
+      <ErrorMsg error={errorConfirmPassword} />
 
-        <Pressable
-          onPress={onSubmit}
-          style={[globalStyles.buttons, styles.sendButton, styles.button]}
-        >
-          <Text style={[globalStyles.buttonsText, styles.sendText]}>
-            revisar
-          </Text>
-        </Pressable>
-    </View>
-    
+      <FormButton fx={onSubmit} text="Registrarme" />
+    </FormContainer>
   );
 };
 
 export default SingUp;
-
-
-const styles = StyleSheet.create({
-  sendButton: {
-    backgroundColor: globalColor.detailLight,
-    marginBottom: 20,
-  },
-  retryButton: {
-    backgroundColor: globalColor.midShadow,
-  },
-  retryText: {
-    color: globalColor.highShadow,
-  },
-  button: {
-    width: "40%",
-    alignSelf: "center",
-    elevation: 3,
-    marginBottom: 10,
-  },
-  sendText: {
-    color: globalColor.midDark,
-    fontSize: 16,
-    textAlign: "center",
-  },
-  scroll: {
-    width: "100%",
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "90%",
-    marginTop: 20,
-  },
-});

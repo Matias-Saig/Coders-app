@@ -1,0 +1,238 @@
+{
+  "users": {
+    "Alter": {
+      "balance": 12
+    },
+    "guest": {
+      "balance": 200000,
+      "contacts": [
+        {
+          "alias": "jp.a",
+          "bank": "Banco A",
+          "cbu": "1234567890123456789012",
+          "id": 1,
+          "name": "Juan Pérez",
+          "nickname": "JP"
+        },
+        {
+          "alias": "mg.b",
+          "bank": "Banco B",
+          "cbu": "2345678901234567890123",
+          "id": 2,
+          "name": "María Gómez",
+          "nickname": "MG"
+        },
+        {
+          "alias": "cr.c",
+          "bank": "Banco C",
+          "cbu": "3456789012345678901234",
+          "id": 3,
+          "name": "Carlos Rodríguez",
+          "nickname": "CR"
+        },
+        {
+          "alias": "lh.a",
+          "bank": "Banco A",
+          "cbu": "4567890123456789012345",
+          "id": 4,
+          "name": "Laura Hernández",
+          "nickname": "LH"
+        },
+        {
+          "alias": "pl.b",
+          "bank": "Banco B",
+          "cbu": "5678901234567890123456",
+          "id": 5,
+          "name": "Pedro López",
+          "nickname": "PL"
+        },
+        {
+          "alias": "ag.c",
+          "bank": "Banco C",
+          "cbu": "6789012345678901234567",
+          "id": 6,
+          "name": "Ana García",
+          "nickname": "AG"
+        },
+        {
+          "alias": "jd.a",
+          "bank": "Banco A",
+          "cbu": "7890123456789012345678",
+          "id": 7,
+          "name": "Javier Díaz",
+          "nickname": "JD"
+        },
+        {
+          "alias": "if.b",
+          "bank": "Banco B",
+          "cbu": "8901234567890123456789",
+          "id": 8,
+          "name": "Isabel Fernández",
+          "nickname": "IF"
+        },
+        {
+          "alias": "mm.c",
+          "bank": "Banco C",
+          "cbu": "9012345678901234567890",
+          "id": 9,
+          "name": "Miguel Martínez",
+          "nickname": "MM"
+        },
+        {
+          "alias": "sl.a",
+          "bank": "Banco A",
+          "cbu": "0123456789012345678901",
+          "id": 10,
+          "name": "Sofía López",
+          "nickname": "SL"
+        },
+        {
+          "alias": "ar.b",
+          "bank": "Banco B",
+          "cbu": "1234567890123456789012",
+          "id": 11,
+          "name": "Alejandro Ramírez",
+          "nickname": "AR"
+        },
+        {
+          "alias": "ch.c",
+          "bank": "Banco C",
+          "cbu": "2345678901234567890123",
+          "id": 12,
+          "name": "Carmen Herrera",
+          "nickname": "CH"
+        },
+        {
+          "alias": "rg.a",
+          "bank": "Banco A",
+          "cbu": "3456789012345678901234",
+          "id": 13,
+          "name": "Raúl González",
+          "nickname": "RG"
+        },
+        {
+          "alias": "ef.b",
+          "bank": "Banco B",
+          "cbu": "4567890123456789012345",
+          "id": 14,
+          "name": "Elena Fuentes",
+          "nickname": "EF"
+        },
+        {
+          "alias": "fd.c",
+          "bank": "Banco C",
+          "cbu": "5678901234567890123456",
+          "id": 15,
+          "name": "Francisco Díaz",
+          "nickname": "FD"
+        },
+        {
+          "alias": "lm.a",
+          "bank": "Banco A",
+          "cbu": "6789012345678901234567",
+          "id": 16,
+          "name": "Luisa Muñoz",
+          "nickname": "LM"
+        },
+        {
+          "alias": "as.b",
+          "bank": "Banco B",
+          "cbu": "7890123456789012345678",
+          "id": 17,
+          "name": "Andrés Sánchez",
+          "nickname": "AS"
+        },
+        {
+          "alias": "bp.c",
+          "bank": "Banco C",
+          "cbu": "8901234567890123456789",
+          "id": 18,
+          "name": "Beatriz Pedraza",
+          "nickname": "BP"
+        },
+        {
+          "alias": "rc.a",
+          "bank": "Banco A",
+          "cbu": "9012345678901234567890",
+          "id": 19,
+          "name": "Roberto Cruz",
+          "nickname": "RC"
+        },
+        {
+          "alias": "ml.b",
+          "bank": "Banco B",
+          "cbu": "3456789012345678901234",
+          "id": 20,
+          "name": "Martín Lara",
+          "nickname": "ML"
+        }
+      ],
+      "movements": [
+        {
+          "cashFlow": "out",
+          "category": "Pago QR",
+          "date": "30 de marzo",
+          "detail": "Tienda_J",
+          "value": 20000
+        },
+        {
+          "cashFlow": "out",
+          "category": "Supermercado",
+          "date": "14 de marzo",
+          "detail": "super_A",
+          "value": 6500
+        },
+        {
+          "cashFlow": "out",
+          "category": "Combustible",
+          "date": "5 de marzo",
+          "detail": "estación_G",
+          "value": 12000
+        },
+        {
+          "cashFlow": "out",
+          "category": "Carga",
+          "date": "19 de febrero",
+          "detail": "Ingreso de efectivo por cajero",
+          "value": 40000
+        },
+        {
+          "cashFlow": "out",
+          "category": "Teléfono",
+          "date": "10 de febrero",
+          "detail": "empresa_R",
+          "value": 7300
+        },
+        {
+          "cashFlow": "out",
+          "category": "Cable",
+          "date": "3 de febrero",
+          "detail": "empresa_E",
+          "value": 10200
+        },
+        {
+          "cashFlow": "in",
+          "category": "Transferencia",
+          "date": "25 de enero",
+          "detail": "Recibida de NG",
+          "value": 20000
+        },
+        {
+          "cashFlow": "out",
+          "category": "Transferencia",
+          "date": "10 de enero",
+          "detail": "Enviada a RJ",
+          "value": 10000
+        }
+      ],
+      "profile": {
+        "CVU": 5.465853811100078e+21,
+        "alias": "guest.classicpocket",
+        "email": "guest@test.com",
+        "name": "Invitado",
+        "password": "",
+        "picture": ""
+      }
+    }
+  }
+}

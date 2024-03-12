@@ -5,7 +5,12 @@ import HomeButton from "../components/HomeElements/HomeButton";
 import HomeDisplay from "../components/HomeElements/HomeDisplay";
 import HomeButtonCard from "../components/HomeElements/HomeButtonCard";
 import { globalColor } from "../global/globalStyles";
+import { useSelector } from "react-redux";
 const Home = () => {
+
+  const user = useSelector(state => state.auth)
+  console.log("usuario en home", user);
+  
   return (
     <View style={styles.containerSup}>
       <Subtitle>Hola Invitado</Subtitle>

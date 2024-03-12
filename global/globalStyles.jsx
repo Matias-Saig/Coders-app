@@ -14,6 +14,7 @@ export const globalColor = {
   detailShadow: "#FEEECD",
   detailDark: "#D7B791",
   error: "#e63946",
+  alert:"#754c38",
 
   // mid tones
   midLight: "#8894AE",
@@ -36,7 +37,7 @@ export const globalStyles = StyleSheet.create({
   // texts
   title: {
     fontStyle: "italic",
-    fontFamily: fonts.title,   
+    fontFamily: fonts.title,
     width: "100%",
     fontWeight: "bold",
     fontSize: 26,
@@ -63,6 +64,18 @@ export const globalStyles = StyleSheet.create({
     lineHeight: 22,
   },
 
+  verificationError: {
+    color: globalColor.alert,
+    fontSize: 15,
+    fontWeight:"bold",
+    fontStyle:"italic",
+    backgroundColor:globalColor.highLight,
+    paddingVertical:10,
+    paddingLeft:5,
+    width:"90%",
+    marginBottom:10
+  },
+
   // inputs
   buttons: {
     marginTop: 10,
@@ -77,7 +90,7 @@ export const globalStyles = StyleSheet.create({
   input: {
     height: 40,
     width: "90%",
-    marginBottom: 12,
+    marginBottom: 15,
     borderWidth: 1,
     borderColor: globalColor.highDark,
     borderRadius: 5,
@@ -87,7 +100,9 @@ export const globalStyles = StyleSheet.create({
   inputLabel: {
     fontWeight: "bold",
     marginBottom: 5,
+    marginLeft: "5%",
     color: globalColor.midDark,
     fontSize: 16,
+    alignSelf: "flex-start",
   },
 });

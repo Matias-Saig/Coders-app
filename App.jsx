@@ -9,18 +9,13 @@ import { useFonts } from "expo-font";
 import { fontsCollection } from "./global/fonts";
 
 // Screens
-import ScreensLoginNav from "./Navigation/ScreensLoginNav";
+import MainNavigator from "./Navigation/MainNavigator";
 
 // Store
 import { store } from "./app/store";
-import { Provider, useSelector } from "react-redux";
-import ScreensTabs from "./Navigation/ScreensTabs";
-import MainNavigator from "./Navigation/MainNavigator";
+import { Provider } from "react-redux";
 
 export default function App() {
-
-
-
   const [fontLoaded] = useFonts(fontsCollection);
   if (!fontLoaded) return null;
 
@@ -33,9 +28,7 @@ export default function App() {
           style="light"
         />
 
-       <MainNavigator />
-         /{/*  <ScreensNavigation />  */}
-          
+        <MainNavigator />
       </View>
     </Provider>
   );

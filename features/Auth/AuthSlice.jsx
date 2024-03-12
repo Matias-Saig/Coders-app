@@ -1,20 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import { Alert } from "react-native";
 
 const initialState = {
-    email:"",
-    idToken:"",
-    localId:""
-}
+  email: "",
+  idToken: "",
+  localId: "",
+};
 
 export const authSlice = createSlice({
-    name:"auth",
-    initialState,
-    reducers:{
-        setUser: (state, actions) => {state = actions.payload},
-        clearUser:(state) => {state = {email:"", idToken:""}}
-    }
-})
+  name: "auth",
+  initialState,
+  reducers: {
+    setUser: (state, actions) => {
+      state = actions.payload;
+      Alert.alert("Usuario registrado!");
+    },
 
-export const {setUser,clearUser} = authSlice.actions
+    clearUser: (state) => (state = { email: "", idToken: "" }),
+  },
+});
 
-export default authSlice.reducer
+export const { setUser, clearUser } = authSlice.actions;
+
+export default authSlice.reducer;

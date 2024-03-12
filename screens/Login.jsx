@@ -1,19 +1,14 @@
-import {
-  FlatList,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
-import Subtitle from "../components/Elements/Subtitle";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { globalColor, globalStyles } from "../global/globalStyles";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 import { useLoginMutation } from "../app/Service/userAuth";
 import { loginSchema } from "../Validation/authSchema";
 import { setUser } from "../features/Auth/AuthSlice";
 import { useDispatch } from "react-redux";
+import ErrorMsg from "../components/Elements/ErrorMsg";
+import FormInput from "../components/Elements/FormInput";
+import FormButton from "../components/Elements/FormButton";
+import FormContainer from "../components/Elements/FormContainer";
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -22,163 +17,69 @@ const Login = ({ navigation }) => {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  const [triggerLogin, result] = useLoginMutation();
-
-
-//  const { data: usersList, isLoading, isError, error } = useGetUsersListQuery();
-
+  const [triggerLogin] = useLoginMutation();
 
   const onSubmit = async () => {
-       try {
+    try {
+      loginSchema.validateSync({ email, password });
+      const { data } = await triggerLogin({ email, password });
+      dispatch(
+        setUser({
+          email: data.email,
+          idToken: data.idToken,
+          localId: data.localId,
+        }),
+      );
+    } catch (error) {
+      setErrorEmail("");
+      setErrorPassword("");
 
-        loginSchema.validateSync({email,password})
-        const {data} = await  triggerLogin({email,password})
-        dispatch(setUser({email:data.email,idToken:data.idToken,localId:data.localId}))
-      } catch (error) {
-
-        setErrorEmail("")
-        setErrorPassword("")
-
-        switch(error.path){
-          case "email":
-            setErrorEmail(error.message)
-            break
-          case "password":
-            setErrorPassword(error.message)
-            break
-          default:
-            break
-        }
-
+      switch (error.path) {
+        case "email":
+          setErrorEmail(error.message);
+          break;
+        case "password":
+          setErrorPassword(error.message);
+          break;
+        default:
+          break;
       }
- 
     }
-
-  
-   console.log("la respuesta es  ", result);
+  };
 
   return (
-    <View style={globalStyles.containerCenter}>
+    <FormContainer>
+      <FormInput label="Email" fx={setEmail} value={email} place="Email" />
+      <ErrorMsg error={errorEmail} />
 
-      <Text style={globalStyles.inputLabel}>Nombre</Text>
-      <TextInput
-        style={globalStyles.input}
-        onChangeText={(text) => {
-          setEmail(text);
-        }}
-        value={email}
-        placeholder="Email"
-      />
-      {errorEmail && (
-        <Text style={{ color: "tomato", fontSize: 24 }}>{errorEmail}</Text>
-      )}
-
-      <TextInput
-        style={globalStyles.input}
-        onChangeText={(text) => {
-          setPassword(text);
-        }}
+      <FormInput
+        label="Contraseña"
+        fx={setPassword}
         value={password}
-        placeholder="Contraseña"
-        secureTextEntry={true}
+        place="Contraseña"
+        password={true}
       />
-      {errorPassword && (
-        <Text style={{ color: "tomato", fontSize: 24 }}>{errorPassword}</Text>
-      )}
+      <ErrorMsg error={errorPassword} />
 
-        <Pressable
-          onPress={onSubmit}
-          style={[globalStyles.buttons, styles.sendButton, styles.button]}
-        >
-          <Text style={[globalStyles.buttonsText, styles.sendText]}>
-            revisar
-          </Text>
-        </Pressable>
-    </View>
-    /* 
-      <SafeAreaView style={styles.list}>
-      {isError && (
-        <Text
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 48,
-            color: "tomato",
-          }}
-        >
-          Error de carga
-        </Text>
-      )}
+      <FormButton fx={onSubmit} text="Ingresar" icon={true} iconName="login" />
 
-      {isLoading ? (
-        <Text
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 48,
-            color: "aqua",
-          }}
-        >
-          Cargando datos
+      <Pressable onPress={() => navigation.navigate("Registrarse")}>
+        <Text style={[globalStyles.paragraph, styles.singUp]}>
+          No tienes usuario? aquí puedes registrarte
         </Text>
-      ) : (
-        <>
-         
-          <FlatList
-            data={usersList}
-            renderItem={({ item }) => 
-            
-            <View style={[styles.container, styles.text]}>
-            <Subtitle addStyle={styles.subtitle}>{item}</Subtitle>
-            <Pressable style={styles.button} onPress={ () => navigation.navigate("Classic Pocket")
-            }>
-              <Text style={styles.buttonText}> Ingresar </Text>
-              <Icons refer="login" size={20} color={globalColor.white} />
-            </Pressable>
-          </View>
-          
-          
-          }
-            keyExtractor={(item) => item}
-          />
-        </>
-      )}
-    </SafeAreaView> */
+      </Pressable>
+    </FormContainer>
   );
 };
 
 export default Login;
 
-
 const styles = StyleSheet.create({
-  sendButton: {
-    backgroundColor: globalColor.detailLight,
-    marginBottom: 20,
-  },
-  retryButton: {
-    backgroundColor: globalColor.midShadow,
-  },
-  retryText: {
-    color: globalColor.highShadow,
-  },
-  button: {
-    width: "40%",
-    alignSelf: "center",
-    elevation: 3,
-    marginBottom: 10,
-  },
-  sendText: {
-    color: globalColor.midDark,
-    fontSize: 16,
-    textAlign: "center",
-  },
-  scroll: {
-    width: "100%",
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "90%",
+  singUp: {
+    color: globalColor.alert,
     marginTop: 20,
+    fontWeight: "600",
+    borderBottomWidth: 2,
+    borderBottomColor: globalColor.detailDark,
   },
 });
