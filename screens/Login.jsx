@@ -18,55 +18,22 @@ const Login = ({ navigation }) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
   const [triggerLogin, result] = useLoginMutation();
 
+
 //  const { data: usersList, isLoading, isError, error } = useGetUsersListQuery();
 
-  // console.log(result);
 
   const onSubmit = async () => {
-   /*  try {
-      registerSchema.validateSync({ email, password });
-      const { data } = await triggerRegister({ email, password });
-      dispatch(
-        setUser({
-          email: data.email,
-          idToken: data.idToken,
-          localId: data.localId,
-        }),
-      );
-    } catch (error) {
-      setErrorEmail("");
-      setErrorPassword("");
-      setErrorConfirmPassword("");
-
-      switch (error.path) {
-        case "email":
-          setErrorEmail(error.message);
-          break;
-        case "password":
-          setErrorPassword(error.message);
-          break;
-        case "confirmPassword":
-          setErrorConfirmPassword(error.message);
-          break;
-        default:
-          break;
-      }
-    }
-  }; */
-
-    try {
+       try {
 
         loginSchema.validateSync({email,password})
         const {data} = await  triggerLogin({email,password})
         dispatch(setUser({email:data.email,idToken:data.idToken,localId:data.localId}))
-console.log(result);
       } catch (error) {
 
         setErrorEmail("")
@@ -87,11 +54,12 @@ console.log(result);
  
     }
 
-  // triggerSignUp({email, password})
-  // console.log("la respuesta es  ", result);
+  
+   console.log("la respuesta es  ", result);
 
   return (
     <View style={globalStyles.containerCenter}>
+
       <Text style={globalStyles.inputLabel}>Nombre</Text>
       <TextInput
         style={globalStyles.input}

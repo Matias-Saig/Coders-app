@@ -3,7 +3,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 
 // features
 import contactsReducer from "../features/Contacts/ContactsSlice";
-import  authReducer  from "../features/Auth/AuthSlice";
+import authReducer from "../features/Auth/AuthSlice";
 
 // service
 import { userAccountApi } from "./Service/userAccountApi";
@@ -22,7 +22,7 @@ export const store = configureStore({
     [userBalanceApi.reducerPath]: userBalanceApi.reducer,
     [userContactsApi.reducerPath]: userContactsApi.reducer,
     [userMovementsApi.reducerPath]: userMovementsApi.reducer,
-    [userProfileApi.reducerPath]: userProfileApi,
+    [userProfileApi.reducerPath]: userProfileApi
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(

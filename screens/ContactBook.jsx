@@ -6,7 +6,7 @@ const ContactBook = ({ navigation }) => {
     <View>
       <Subtitle>Agenda de contactos</Subtitle>
 
-      <OptimizedList navigation={navigation} />
+      {/* <OptimizedList navigation={navigation} /> */}
     </View>
   );
 };
