@@ -2,7 +2,7 @@ import { object, string, ref } from "yup";
 
 export const registerSchema = object().shape({
   confirmPassword: string()
-    .required("Confirme su contraseña")
+    .required("La contraseña no coincide")
     .oneOf([ref("password"), null], "La contraseña no coincide"),
   password: string()
     .required("Ingrese su contraseña")

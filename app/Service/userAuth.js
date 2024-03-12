@@ -14,7 +14,7 @@ export const userAuthApi = createApi({
         }),
         login: builder.mutation({
             query: (user) => ({
-                url:"accounts:signInWithPassword?key=AIzaSyA2U21ILusl3jVe0oA7x1ejeNv7wAQ47jw",
+                url:`accounts:signInWithPassword?key=${apiKey}`,
                 method:"POST",
                 body:user
             })

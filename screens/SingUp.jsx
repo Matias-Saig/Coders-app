@@ -1,20 +1,18 @@
 import {
-  FlatList,
   Pressable,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from "react-native";
-import Subtitle from "../components/Elements/Subtitle";
 import { globalColor, globalStyles } from "../global/globalStyles";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
-import { useLoginMutation } from "../app/Service/userAuth";
-import { loginSchema } from "../Validation/authSchema";
+import { useSignUpMutation } from "../app/Service/userAuth";
+import { registerSchema } from "../Validation/authSchema";
 import { setUser } from "../features/Auth/AuthSlice";
 import { useDispatch } from "react-redux";
-const Login = ({ navigation }) => {
+
+const SingUp = ({ navigation }) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,15 +20,13 @@ const Login = ({ navigation }) => {
 
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
+  const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
 
-  const [triggerLogin, result] = useLoginMutation();
+  const [triggerRegister] = useSignUpMutation();
 
-//  const { data: usersList, isLoading, isError, error } = useGetUsersListQuery();
-
-  // console.log(result);
 
   const onSubmit = async () => {
-   /*  try {
+    try {
       registerSchema.validateSync({ email, password });
       const { data } = await triggerRegister({ email, password });
       dispatch(
@@ -59,37 +55,9 @@ const Login = ({ navigation }) => {
           break;
       }
     }
-  }; */
+  };
 
-    try {
-
-        loginSchema.validateSync({email,password})
-        const {data} = await  triggerLogin({email,password})
-        dispatch(setUser({email:data.email,idToken:data.idToken,localId:data.localId}))
-console.log(result);
-      } catch (error) {
-
-        setErrorEmail("")
-        setErrorPassword("")
-
-        switch(error.path){
-          case "email":
-            setErrorEmail(error.message)
-            break
-          case "password":
-            setErrorPassword(error.message)
-            break
-          default:
-            break
-        }
-
-      }
- 
-    }
-
-  // triggerSignUp({email, password})
-  // console.log("la respuesta es  ", result);
-
+  
   return (
     <View style={globalStyles.containerCenter}>
       <Text style={globalStyles.inputLabel}>Nombre</Text>
@@ -102,7 +70,7 @@ console.log(result);
         placeholder="Email"
       />
       {errorEmail && (
-        <Text style={{ color: "tomato", fontSize: 24 }}>{errorEmail}</Text>
+        <Text>{errorEmail}</Text>
       )}
 
       <TextInput
@@ -115,7 +83,22 @@ console.log(result);
         secureTextEntry={true}
       />
       {errorPassword && (
-        <Text style={{ color: "tomato", fontSize: 24 }}>{errorPassword}</Text>
+        <Text>{errorPassword}</Text>
+      )}
+
+      <TextInput
+        style={globalStyles.input}
+        onChangeText={(text) => {
+          setConfirmPassword(text);
+        }}
+        value={confirmPassword}
+        placeholder="Repetir contraseña"
+        secureTextEntry={true}
+      />
+      {errorConfirmPassword && (
+        <Text>
+          {errorConfirmPassword}
+        </Text>
       )}
 
         <Pressable
@@ -127,59 +110,11 @@ console.log(result);
           </Text>
         </Pressable>
     </View>
-    /* 
-      <SafeAreaView style={styles.list}>
-      {isError && (
-        <Text
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 48,
-            color: "tomato",
-          }}
-        >
-          Error de carga
-        </Text>
-      )}
-
-      {isLoading ? (
-        <Text
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 48,
-            color: "aqua",
-          }}
-        >
-          Cargando datos
-        </Text>
-      ) : (
-        <>
-         
-          <FlatList
-            data={usersList}
-            renderItem={({ item }) => 
-            
-            <View style={[styles.container, styles.text]}>
-            <Subtitle addStyle={styles.subtitle}>{item}</Subtitle>
-            <Pressable style={styles.button} onPress={ () => navigation.navigate("Classic Pocket")
-            }>
-              <Text style={styles.buttonText}> Ingresar </Text>
-              <Icons refer="login" size={20} color={globalColor.white} />
-            </Pressable>
-          </View>
-          
-          
-          }
-            keyExtractor={(item) => item}
-          />
-        </>
-      )}
-    </SafeAreaView> */
+    
   );
 };
 
-export default Login;
+export default SingUp;
 
 
 const styles = StyleSheet.create({
