@@ -1,5 +1,3 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { globalColor, globalStyles } from "../global/globalStyles";
 import { useState } from "react";
 import { useLoginMutation } from "../app/Service/userAuth";
 import { loginSchema } from "../Validation/authSchema";
@@ -9,8 +7,10 @@ import ErrorMsg from "../components/Elements/ErrorMsg";
 import FormInput from "../components/Elements/FormInput";
 import FormButton from "../components/Elements/FormButton";
 import FormContainer from "../components/Elements/FormContainer";
+import FormLinks from "../components/Elements/FormLinks";
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,6 +18,7 @@ const Login = ({ navigation }) => {
   const [errorPassword, setErrorPassword] = useState("");
 
   const [triggerLogin] = useLoginMutation();
+
 
   const onSubmit = async () => {
     try {
@@ -30,6 +31,7 @@ const Login = ({ navigation }) => {
           localId: data.localId,
         }),
       );
+
     } catch (error) {
       setErrorEmail("");
       setErrorPassword("");
@@ -45,10 +47,14 @@ const Login = ({ navigation }) => {
           break;
       }
     }
+
+
   };
 
   return (
     <FormContainer>
+
+
       <FormInput label="Email" fx={setEmail} value={email} place="Email" />
       <ErrorMsg error={errorEmail} />
 
@@ -63,23 +69,12 @@ const Login = ({ navigation }) => {
 
       <FormButton fx={onSubmit} text="Ingresar" icon={true} iconName="login" />
 
-      <Pressable onPress={() => navigation.navigate("Registrarse")}>
-        <Text style={[globalStyles.paragraph, styles.singUp]}>
-          No tienes usuario? aquí puedes registrarte
-        </Text>
-      </Pressable>
+      <FormLinks
+        fx={() => navigation.navigate("Registrarse")}
+        text="No tienes usuario? aquí puedes registrarte"
+      />
     </FormContainer>
   );
 };
 
 export default Login;
-
-const styles = StyleSheet.create({
-  singUp: {
-    color: globalColor.alert,
-    marginTop: 20,
-    fontWeight: "600",
-    borderBottomWidth: 2,
-    borderBottomColor: globalColor.detailDark,
-  },
-});

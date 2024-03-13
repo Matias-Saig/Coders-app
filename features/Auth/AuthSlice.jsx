@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Alert } from "react-native";
 
 const initialState = {
   email: "",
@@ -11,11 +10,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, actions) => {
-      state = actions.payload;
-      Alert.alert("Usuario registrado!");
-    },
-
+    setUser: (state, actions) => (state = actions.payload),
     clearUser: (state) => (state = { email: "", idToken: "" }),
   },
 });

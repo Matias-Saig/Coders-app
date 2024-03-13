@@ -7,6 +7,7 @@ import FormInput from "../components/Elements/FormInput";
 import ErrorMsg from "../components/Elements/ErrorMsg";
 import FormButton from "../components/Elements/FormButton";
 import FormContainer from "../components/Elements/FormContainer";
+import { Alert } from "react-native";
 
 const SingUp = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const SingUp = ({ navigation }) => {
 
   const onSubmit = async () => {
     try {
-      registerSchema.validateSync({ email, password });
+      registerSchema.validateSync({email,password,confirmPassword})
       const { data } = await triggerRegister({ email, password });
       dispatch(
         setUser({
@@ -31,6 +32,7 @@ const SingUp = ({ navigation }) => {
           localId: data.localId,
         }),
       );
+      Alert.alert("Usuario registrado!");
     } catch (error) {
       setErrorEmail("");
       setErrorPassword("");
