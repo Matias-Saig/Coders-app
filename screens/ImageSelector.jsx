@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Image, Pressable, StyleSheet, View } from 'react-native'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as ImagePicker from 'expo-image-picker';
+import { setImageCam } from '../features/Auth/AuthSlice';
+import { useSetProfileImageMutation } from '../app/Service/userProfileApi';
+
 
 const ImageSelector = ({navigation}) => {
-    const [image, seetImage] = useState("")
+    const [image, setImage] = useState("")
+    const {localId} = useSelector(state => state.auth.value)
+    const [triggerProfileImage, result] = useSetProfileImageMutation
     const dispatch = useDispatch()
-
-    
 
     const pickImage = async () => {
         const {granted} = await ImagePicker.requestCameraPermissionsAsync()
@@ -27,7 +30,12 @@ const ImageSelector = ({navigation}) => {
  
     }
 
-    const saveImage = () => {}
+    const saveImage = () => {
+        dispatch(setImageCam(image))
+        triggerProfileImage({localId, image})
+        navigation.goBack()
+    }
+    
 return (
 <View>
 

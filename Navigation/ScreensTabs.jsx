@@ -3,6 +3,7 @@ import NavMenu from "./NavMenu";
 import Home from "../screens/Home";
 import ContactBook from "../screens/ContactBook";
 import About from "../screens/About";
+import ScreensProfileStack from "./ScreensProfileStack";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -17,7 +18,7 @@ function ScreensTabs() {
     >
       <Tab.Screen name="Inicio" component={Home} />
       <Tab.Screen name="Contactos" component={ContactBook} />
-      <Tab.Screen name="Mis datos" component={About} />
+      <Tab.Screen name="Mis datos" component={ScreensProfileStack} />
     </Tab.Navigator>
   );
 }
