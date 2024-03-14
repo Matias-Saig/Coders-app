@@ -8,6 +8,7 @@ import FormInput from "../components/Elements/FormInput";
 import FormButton from "../components/Elements/FormButton";
 import FormContainer from "../components/Elements/FormContainer";
 import FormLinks from "../components/Elements/FormLinks";
+import LoadingMsg from "../components/Elements/LoadingMsg";
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
 
@@ -17,11 +18,15 @@ const Login = ({ navigation }) => {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  const [triggerLogin] = useLoginMutation();
+  const [isLoading, setIsLoading] = useState(false);
 
+  const [loginError, setLoginError] = useState("");
+
+  const [triggerLogin] = useLoginMutation();
 
   const onSubmit = async () => {
     try {
+      setIsLoading(true);
       loginSchema.validateSync({ email, password });
       const { data } = await triggerLogin({ email, password });
       dispatch(
@@ -31,7 +36,7 @@ const Login = ({ navigation }) => {
           localId: data.localId,
         }),
       );
-
+      setIsLoading(false);
     } catch (error) {
       setErrorEmail("");
       setErrorPassword("");
@@ -46,15 +51,18 @@ const Login = ({ navigation }) => {
         default:
           break;
       }
+      if (error.data?.error) {
+        setLoginError(error.data.error);
+      } else {
+        setLoginError("El usuario o la contraseña no son correctos");
+      }
+    } finally {
+      setIsLoading(false);
     }
-
-
   };
 
   return (
     <FormContainer>
-
-
       <FormInput label="Email" fx={setEmail} value={email} place="Email" />
       <ErrorMsg error={errorEmail} />
 
@@ -68,11 +76,14 @@ const Login = ({ navigation }) => {
       <ErrorMsg error={errorPassword} />
 
       <FormButton fx={onSubmit} text="Ingresar" icon={true} iconName="login" />
+      {isLoading && <LoadingMsg text="Cargando datos" />}
+      {loginError && <ErrorMsg error={loginError} />}
 
       <FormLinks
         fx={() => navigation.navigate("Registrarse")}
         text="No tienes usuario? aquí puedes registrarte"
       />
+
     </FormContainer>
   );
 };

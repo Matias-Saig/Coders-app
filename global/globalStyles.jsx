@@ -64,8 +64,7 @@ export const globalStyles = StyleSheet.create({
     lineHeight: 22,
   },
 
-  verificationError: {
-    color: globalColor.alert,
+  msg: {
     fontSize: 15,
     fontWeight:"bold",
     fontStyle:"italic",
@@ -73,7 +72,13 @@ export const globalStyles = StyleSheet.create({
     paddingVertical:10,
     paddingLeft:5,
     width:"90%",
-    marginBottom:10
+    marginVertical:10
+  },
+  msgError: {
+    color: globalColor.alert
+  },
+  msgLoading: {
+    color: globalColor.highDark
   },
 
   // inputs

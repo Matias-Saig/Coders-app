@@ -17,7 +17,7 @@ export const userAuthApi = createApi({
                 url:`accounts:signInWithPassword?key=${apiKey}`,
                 method:"POST",
                 body:user
-            })
+            }),
         })
     })
 })

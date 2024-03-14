@@ -1,23 +1,22 @@
 import { Text } from "react-native";
 import Icons from "./Icons";
 import { globalColor, globalStyles } from "../../global/globalStyles";
-const ErrorMsg = ({ error }) => {
+const LoadingMsg = ({ text }) => {
   return (
     <>
-      {error && (
-        <Text style={[globalStyles.verification, globalStyles.msgError]
-        }>
-          <Icons
+      {text && (
+        <Text style={[globalStyles.verification, globalStyles.msgLoading]} >
+            <Icons
             refer="info-with-circle"
             size={16}
-            color={globalColor.error}
+            color={globalColor.highDark}
             styleAdd={{ marginRight: 10 }}
           />
-          {error}
+          {text}
         </Text>
       )}
     </>
   );
 };
 
-export default ErrorMsg;
+export default LoadingMsg;
