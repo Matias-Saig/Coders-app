@@ -4,7 +4,7 @@ const initialState = {
   email: "",
   idToken: "",
   localId: "",
-  imageCam: null
+  imageCam: ""
 };
 
 export const authSlice = createSlice({

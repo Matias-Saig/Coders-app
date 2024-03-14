@@ -3,10 +3,10 @@ import Subtitle from "../components/Elements/Subtitle";
 import OptimizedList from "../components/ContactBook/OptimizedList";
 const ContactBook = ({ navigation }) => {
   return (
-    <View>
+    <View style={{marginVertical:20}}>
       <Subtitle>Agenda de contactos</Subtitle>
 
-      {/* <OptimizedList navigation={navigation} /> */}
+      { <OptimizedList navigation={navigation} /> }
     </View>
   );
 };

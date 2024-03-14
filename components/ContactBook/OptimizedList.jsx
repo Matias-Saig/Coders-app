@@ -2,10 +2,9 @@ import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import ContactDetail from "./ContactDetail";
 import AddContact from "./AddContact";
 import { useGetContactListQuery } from "../../app/Service/userContactsApi";
-// import { useSelector } from "react-redux";
+import { globalColor } from "../../global/globalStyles";
 
 const OptimizedList = ({ navigation }) => {
-  // const contacts = useSelector((state) => state.contacts);
 
   const { data: contacts, isLoading, isError, error } = useGetContactListQuery();
 
@@ -15,12 +14,7 @@ const OptimizedList = ({ navigation }) => {
     <SafeAreaView style={styles.list}>
       {isError && (
         <Text
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 48,
-            color: "tomato",
-          }}
+          style={[styles.text, styles.error]}
         >
           Error de carga
         </Text>
@@ -28,14 +22,9 @@ const OptimizedList = ({ navigation }) => {
 
       {isLoading ? (
         <Text
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 48,
-            color: "aqua",
-          }}
+          style={[styles.text, styles.loading]}
         >
-          Cargando datos
+          Cargando datos...
         </Text>
       ) : (
         <>
@@ -60,4 +49,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingBottom: 200,
   },
+  text: {
+    textAlign:"center",
+    fontSize: 24,
+  },
+  loading: {
+    color: globalColor.alert
+  },
+  error: {
+    color: globalColor.error
+  }
+
 });

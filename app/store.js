@@ -22,7 +22,7 @@ export const store = configureStore({
     [userBalanceApi.reducerPath]: userBalanceApi.reducer,
     [userContactsApi.reducerPath]: userContactsApi.reducer,
     [userMovementsApi.reducerPath]: userMovementsApi.reducer,
-    [userProfileApi.reducerPath]: userProfileApi
+    [userProfileApi.reducerPath]: userProfileApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(

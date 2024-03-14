@@ -3,13 +3,19 @@ import Subtitle from "../components/Elements/Subtitle";
 import { globalColor } from "../global/globalStyles";
 import { useSelector } from "react-redux";
 import FormButton from "../components/Elements/FormButton";
-const About = ({ navigation }) => {
-  const image = useSelector((state) => state.auth.value.imageCam);
+import { useGetProfileImageQuery } from "../app/Service/userProfileApi";
+import { useEffect } from "react";
 
-  /* 
-  const launchCamera = async () => {
-    navigation.navigate("Foto de perfil");
-  }; */
+const About = ({ navigation }) => {
+
+  const user = useSelector((state) => state.auth);
+
+
+
+const profile = useGetProfileImageQuery(user.localId)
+const image = profile.data?.image
+
+
 
   return (
     <View style={styles.containerSup}>
@@ -77,6 +83,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginVertical: 20,
     width:128,
-    height:128
+    height:128,
+    borderRadius:30,
+
   },
 });

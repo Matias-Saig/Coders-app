@@ -9,33 +9,25 @@ export const userContactsApi = createApi({
   endpoints: (builder) => ({
     
     updateContact: builder.mutation({
-      query: ({
-        user,
-        contactId,
-        contactName,
-        contactNickname,
-        contactAlias,
-        contactCBU,
-      }) => ({
-        url: `/users/${user}/contacts/${contactId}.json`,
+      query: (
+        editContact
+      ) => ({
+        url: `/users/guest/contacts.json`,
         method: "PATCH",
         body: {
-          name: contactName,
-          nickname: contactNickname,
-          alias: contactAlias,
-          cbu: contactCBU,
+          editContact
         },
       }),
     }),
 
     getContact: builder.query({
-      query: ({ user, contactId }) =>
-        `/users/${user}/contacts/${contactId}.json`,
+      query: ( ) =>
+      `/users/guest/contacts.json`,
     }),
 
     newContact: builder.mutation({
-      query: ({ user, newContact }) => ({
-        url: `/users/${user}/contacts.json`,
+      query: (newContact ) => ({
+        url: `/users/guest/contacts.json`,
         method: "POST",
         body: { newContact },
       }),
@@ -43,7 +35,7 @@ export const userContactsApi = createApi({
     }),
 
     getContactList: builder.query({
-      query: (user) => `/users/${user}/contacts.json`,
+      query: () => `/users/guest/contacts.json`,
       providesTags: ["contacts"],
     }),
   }),

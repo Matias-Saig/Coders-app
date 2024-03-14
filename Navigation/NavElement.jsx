@@ -11,9 +11,10 @@ const NavElement = ({ refer, fx, children, isActive }) => {
       flex: 1,
       flexDirection:"row",
       paddingHorizontal: 5,
-      paddingVertical: 10,
+      paddingVertical: 15,
       alignItems:"center",
-      justifyContent:"center"
+      justifyContent:"center",
+      
     },
     color: {
       color: globalColor.midLight,

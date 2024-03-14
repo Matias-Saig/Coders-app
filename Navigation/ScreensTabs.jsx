@@ -2,7 +2,6 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import NavMenu from "./NavMenu";
 import Home from "../screens/Home";
 import ContactBook from "../screens/ContactBook";
-import About from "../screens/About";
 import ScreensProfileStack from "./ScreensProfileStack";
 
 const Tab = createMaterialTopTabNavigator();
