@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {  useState } from "react";
+import { Image,  StyleSheet,  View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
 import { setImageCam } from "../features/Auth/AuthSlice";
 import {
-  useGetProfileImageQuery,
   useSetProfileImageMutation,
 } from "../app/Service/userProfileApi";
 import FormButton from "../components/Elements/FormButton";
@@ -14,12 +13,7 @@ const ImageSelector = ({ navigation }) => {
   const user = useSelector((state) => state.auth);
   const localId = user.localId;
   const [triggerProfileImage] = useSetProfileImageMutation();
-  const { data, isSuccess } = useGetProfileImageQuery(localId);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (isSuccess && data) setImage(data.image);
-  }, [isSuccess, data]);
 
   const pickImage = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();

@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { contactsList as contacts } from "../../data/contactList";
 import { Alert } from "react-native";
 
 
 export const ContactsSlice = createSlice({
   name: "contacts",
-  initialState: contacts,
+  initialState: [],
   reducers: {
     deleteContact: (state, action) => {
        const index = state.findIndex(
