@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoginMutation } from "../app/Service/userAuth";
 import { loginSchema } from "../Validation/authSchema";
 import { setUser } from "../features/Auth/AuthSlice";
@@ -9,6 +9,8 @@ import FormButton from "../components/Elements/FormButton";
 import FormContainer from "../components/Elements/FormContainer";
 import FormLinks from "../components/Elements/FormLinks";
 import LoadingMsg from "../components/Elements/LoadingMsg";
+import { insertSession } from "../db";
+
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
 
@@ -19,10 +21,9 @@ const Login = ({ navigation }) => {
   const [errorPassword, setErrorPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-
   const [loginError, setLoginError] = useState("");
 
-  const [triggerLogin] = useLoginMutation();
+  const [triggerLogin, result] = useLoginMutation();
 
   const onSubmit = async () => {
     try {
@@ -61,6 +62,21 @@ const Login = ({ navigation }) => {
     }
   };
 
+  // SQLite
+  useEffect(() => {
+    if (result?.data) {
+      console.log(result.data);
+      // dispatch(setUser(result.data))
+      insertSession({
+        email: result.data.email,
+        localId: result.data.localId,
+        token: result.data.idToken,
+      })
+        .then((result) => console.log(result))
+        .catch((error) => console.log(error.message));
+    }
+  }, [result]);
+
   return (
     <FormContainer>
       <FormInput label="Email" fx={setEmail} value={email} place="Email" />
@@ -83,7 +99,6 @@ const Login = ({ navigation }) => {
         fx={() => navigation.navigate("Registrarse")}
         text="No tienes usuario? aquí puedes registrarte"
       />
-
     </FormContainer>
   );
 };
