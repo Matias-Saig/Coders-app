@@ -8,8 +8,9 @@ import { deleteUserSession } from "../db";
 
 const About = ({ navigation }) => {
   const user = useSelector((state) => state.auth);
-  const profile = useGetProfileImageQuery(user.localId);
 
+  // Camera Device
+  const profile = useGetProfileImageQuery(user.localId);
   const image = profile.data?.image;
 
   return (
@@ -32,6 +33,15 @@ const About = ({ navigation }) => {
         iconName="camera"
       />
 
+      <View style={styles.container}>
+        <Text style={styles.subtitle}>CVU</Text>
+        <Text style={styles.text}>5859039111100088318423</Text>
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.subtitle}>Alias</Text>
+        <Text style={styles.text}>invitado.classicpocket</Text>
+      </View>
+
       <FormButton
         fx={async () => {
           await deleteUserSession();
@@ -42,14 +52,6 @@ const About = ({ navigation }) => {
         iconName="log-out"
       />
 
-      <View style={styles.container}>
-        <Text style={styles.subtitle}>CVU</Text>
-        <Text style={styles.text}>5859039111100088318423</Text>
-      </View>
-      <View style={styles.container}>
-        <Text style={styles.subtitle}>Alias</Text>
-        <Text style={styles.text}>invitado.classicpocket</Text>
-      </View>
     </View>
   );
 };

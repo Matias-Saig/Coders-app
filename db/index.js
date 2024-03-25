@@ -1,16 +1,15 @@
 import * as SQLite from "expo-sqlite";
 
-const db = SQLite.openDatabase("mydb.db");
+const db = SQLite.openDatabase("session.db");
 
 const setupDatabase = () => {
   db.transaction((tx) => {
     tx.executeSql(
       "CREATE TABLE IF NOT EXISTS user_session (localId TEXT PRIMARY KEY, email TEXT, idToken TEXT)",
       [],
-      (_, result) => console.log("Base Init Ok", result),
+      () => console.log("Base Init Ok"),
       (_, error) => console.error("Base Init Error", error),
     );
-
   });
 };
 
@@ -26,9 +25,8 @@ export const getUserSession = () =>
         [],
         (_, { rows }) => {
           resolve(rows._array[0]);
-          console.log("getUser OK", rows);
         },
-        (_, error) => reject(console.error("getUser Error", error))
+        (_, error) => reject(console.error("getUser Error", error)),
       );
     });
   });
@@ -42,8 +40,9 @@ export const saveUserSession = (localId, email, idToken) =>
         (_, { rowsAffected }) => {
           if (rowsAffected > 0) {
             resolve();
+            console.log("SaveUser Ok");
           } else {
-            reject(new Error("Error al guardar la sesión del usuario"));
+            reject(new Error("SaveUser Error"));
           }
         },
       );
@@ -55,9 +54,10 @@ export const deleteUserSession = () =>
     db.transaction((tx) => {
       tx.executeSql("DELETE FROM user_session", [], (_, { rowsAffected }) => {
         if (rowsAffected > 0) {
-          resolve(); console.log("eliminacion exitosa");
+          resolve();
+          console.log("DeleteUser Ok");
         } else {
-          reject(new Error("Error al eliminar la sesión del usuario"));
+          reject(new Error("DeleteUser Error"));
         }
       });
     });

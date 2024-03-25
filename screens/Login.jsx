@@ -25,13 +25,13 @@ const Login = ({ navigation }) => {
 
   const [triggerLogin] = useLoginMutation();
 
-  // console.log(user);
   const onSubmit = async () => {
     try {
       setIsLoading(true);
       loginSchema.validateSync({ email, password });
       const { data } = await triggerLogin({ email, password });
 
+      // SQLite
       await saveUserSession(data.localId, data.email, data.idToken);
 
       dispatch(
@@ -42,7 +42,8 @@ const Login = ({ navigation }) => {
         }),
       );
 
-      navigation.navigate('Tabs')
+      navigation.navigate("Tabs");
+
       setIsLoading(false);
     } catch (error) {
       setErrorEmail("");
@@ -62,6 +63,9 @@ const Login = ({ navigation }) => {
         setLoginError(error.data.error);
       } else {
         setLoginError("El usuario o la contraseña no son correctos");
+        setTimeout(() => {
+          setLoginError("");
+        }, 3000);
       }
     } finally {
       setIsLoading(false);

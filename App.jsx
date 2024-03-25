@@ -19,7 +19,6 @@ import { initDatabase } from "./db";
 // SQLite
 initDatabase();
 
-
 export default function App() {
   const [fontLoaded] = useFonts(fontsCollection);
   if (!fontLoaded) return null;
