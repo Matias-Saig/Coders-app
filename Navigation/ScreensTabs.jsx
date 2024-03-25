@@ -11,7 +11,7 @@ function ScreensTabs() {
     <Tab.Navigator
       initialRouteName="Inicio"
       tabBar={({ navigation }) => {
-        return <NavMenu navigation={navigation} />;
+        return <NavMenu navigation={navigation} />
       }}
       tabBarPosition="bottom"
     >

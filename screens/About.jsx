@@ -10,7 +10,7 @@ const About = ({ navigation }) => {
   const user = useSelector((state) => state.auth);
   const profile = useGetProfileImageQuery(user.localId);
 
- const image = profile.data?.image;
+  const image = profile.data?.image;
 
   return (
     <View style={styles.containerSup}>
@@ -32,14 +32,14 @@ const About = ({ navigation }) => {
         iconName="camera"
       />
 
-      <FormButton 
-      fx={async () => {
-        await deleteUserSession();
-    navigation.navigate('Inicio');
-      }}
-      text="Cerrar Cesión"
-      icon={true}
-      iconName="log-out"
+      <FormButton
+        fx={async () => {
+          await deleteUserSession();
+          navigation.navigate("Login");
+        }}
+        text="Cerrar Cesión"
+        icon={true}
+        iconName="log-out"
       />
 
       <View style={styles.container}>

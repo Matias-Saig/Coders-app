@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoginMutation } from "../app/Service/userAuth";
 import { loginSchema } from "../Validation/authSchema";
 import { setUser } from "../features/Auth/AuthSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ErrorMsg from "../components/Elements/ErrorMsg";
 import FormInput from "../components/Elements/FormInput";
 import FormButton from "../components/Elements/FormButton";
 import FormContainer from "../components/Elements/FormContainer";
 import FormLinks from "../components/Elements/FormLinks";
 import LoadingMsg from "../components/Elements/LoadingMsg";
-import { deleteSession, insertSession, saveUserSession } from "../db";
+import { saveUserSession } from "../db";
 
 const Login = ({ navigation }) => {
-  const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -42,6 +41,8 @@ const Login = ({ navigation }) => {
           localId: data.localId,
         }),
       );
+
+      navigation.navigate('Tabs')
       setIsLoading(false);
     } catch (error) {
       setErrorEmail("");
