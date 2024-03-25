@@ -4,12 +4,13 @@ import { globalColor } from "../global/globalStyles";
 import { useSelector } from "react-redux";
 import FormButton from "../components/Elements/FormButton";
 import { useGetProfileImageQuery } from "../app/Service/userProfileApi";
+import { deleteUserSession } from "../db";
 
 const About = ({ navigation }) => {
   const user = useSelector((state) => state.auth);
   const profile = useGetProfileImageQuery(user.localId);
 
-  const image = profile.data?.image;
+ const image = profile.data?.image;
 
   return (
     <View style={styles.containerSup}>
@@ -29,6 +30,16 @@ const About = ({ navigation }) => {
         text="Cambiar foto de perfil"
         icon={true}
         iconName="camera"
+      />
+
+      <FormButton 
+      fx={async () => {
+        await deleteUserSession();
+    navigation.navigate('Inicio');
+      }}
+      text="Cerrar Cesión"
+      icon={true}
+      iconName="log-out"
       />
 
       <View style={styles.container}>

@@ -14,15 +14,11 @@ import MainNavigator from "./Navigation/MainNavigator";
 // Store
 import { store } from "./app/store";
 import { Provider } from "react-redux";
-import { init } from "./db";
+import { initDatabase } from "./db";
 
 // SQLite
-init()
-.then(() => console.log('init local DB'))
-.catch(err => {
-  console.log('local DB failed')
-  console.log(err.message);
-})
+initDatabase();
+
 
 export default function App() {
   const [fontLoaded] = useFonts(fontsCollection);

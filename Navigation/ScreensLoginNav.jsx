@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const ScreensLoginNav = () => {
  
   return (
-    <>
+  
        <Stack.Navigator
           initialRouteName="Login"
           screenOptions={() => {
@@ -27,7 +27,7 @@ const ScreensLoginNav = () => {
            <Stack.Screen name="Registrarse" component={SingUp} />
          
         </Stack.Navigator>
-  </>
+
   );
 };
 
