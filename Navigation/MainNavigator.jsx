@@ -16,6 +16,8 @@ const MainNavigator = () => {
   const dispatch = useDispatch();
   const { data: userImage } = useGetProfileImageQuery(user.localId);
 
+
+  // Device Camera
   useEffect(() => {
     if (userImage) {
       dispatch(setImageCam(userImage));

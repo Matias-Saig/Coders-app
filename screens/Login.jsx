@@ -41,7 +41,6 @@ const Login = ({ navigation }) => {
           localId: data.localId,
         }),
       );
-
       navigation.navigate("Tabs");
 
       setIsLoading(false);
@@ -63,9 +62,10 @@ const Login = ({ navigation }) => {
         setLoginError(error.data.error);
       } else {
         setLoginError("El usuario o la contraseña no son correctos");
+        console.log(error);
         setTimeout(() => {
           setLoginError("");
-        }, 3000);
+        }, 2000);
       }
     } finally {
       setIsLoading(false);

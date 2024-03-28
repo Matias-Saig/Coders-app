@@ -28,7 +28,7 @@ const OptimizedList = ({ navigation }) => {
         </Text>
       ) : (
         <>
-          <AddContact contacts={contacts} navigation={navigation} />
+          {/* <AddContact contacts={contacts} navigation={navigation} /> */}
 
           <FlatList
             data={contacts}

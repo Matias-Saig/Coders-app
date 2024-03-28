@@ -68,6 +68,7 @@ const SingUp = ({ navigation }) => {
         userAlias,
       });
       Alert.alert("Usuario registrado!");
+      navigation.navigate("Tabs")
 
     } catch (error) {
       console.log("error de registro", error);
