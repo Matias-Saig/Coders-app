@@ -5,13 +5,31 @@ import HomeButton from "../components/HomeElements/HomeButton";
 import HomeDisplay from "../components/HomeElements/HomeDisplay";
 import HomeButtonCard from "../components/HomeElements/HomeButtonCard";
 import { globalColor } from "../global/globalStyles";
+import { useGetUserQuery } from "../app/Service/userAccountApi";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+
 const Home = () => {
 
-  return (
-    <View style={styles.containerSup}>
-      <Subtitle>Hola Invitado</Subtitle>
+  const user = useSelector((state) => state.auth);
+  const {data:session} = useGetUserQuery(user.localId)
+  const [isSession, setIsSession] = useState("")
 
-      <HomeDisplay />
+  useEffect (()=>{
+
+    if (session) {
+      setIsSession(session)
+    }
+  }, [session])
+
+  return (
+
+    <View style={styles.containerSup}>
+    
+   {  isSession ? <>
+      <Subtitle>Hola {session.profile.name}</Subtitle>
+
+      <HomeDisplay balance={session.balance}/>
 
       <View style={styles.container}>
         <HomeButton refer="credit">Ingresar Retirar</HomeButton>
@@ -25,16 +43,16 @@ const Home = () => {
       <View style={styles.containerColumn}>
         <Text style={styles.subtitle}>MOVIMIENTOS</Text>
 
+<Text>{session.movements[0].category}</Text>
+<Text>{session.movements[0].date}</Text>
+<Text>{session.movements[0].detail}</Text>
+<Text>{session.movements[0].value}</Text>
+{/* 
         <HomeCard detail="Supermercado A" coinNumber={20142} coinSpan={99} />
-
-        <HomeCard
-          detail="Transferencia a NG"
-          coinNumber={11480}
-          coinSpan={12}
-        />
-
-        <HomeCard detail="Combustible" coinNumber={12345} coinSpan={56} />
+ */}
       </View>
+      </> : <Text>Cargando datos</Text>
+      }
     </View>
   );
 };
