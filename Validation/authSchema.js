@@ -1,9 +1,13 @@
 import { object, string, ref } from "yup";
 
 export const registerSchema = object().shape({
+  userName: string()
+    .required("El nombre es obligatorio")
+    .max(20, "El nombre no puede superar los 20 caracteres"),
   password: string()
     .required("Ingrese su contraseña")
-    .min(8, "Minimo 8 caracteres"),
+    .min(6, "Minimo 6 caracteres")
+    .max(20,"Máximo de 20 caracteres"),
   email: string()
     .required("Ingrese un email")
     .email("No es un mail valido, ej.: email@email.com"),
@@ -15,7 +19,7 @@ export const registerSchema = object().shape({
 export const loginSchema = object().shape({
   password: string()
     .required("Ingrese su contraseña")
-    .min(8, "Minimo 8 caracteres"),
+    .min(6, "Minimo 6 caracteres"),
   email: string()
     .required("Ingrese un email")
     .email("No es un mail valido, ej.: email@email.com"),

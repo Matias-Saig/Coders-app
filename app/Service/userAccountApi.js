@@ -7,32 +7,64 @@ export const userAccountApi = createApi({
   tagTypes: ["users"],
 
   endpoints: (builder) => ({
-    
     getUser: builder.query({
       query: (userId) => `/users/${userId}`,
       providesTags: ["users"],
     }),
 
+    // create init user
     createUser: builder.mutation({
-      query: ({newUserId, newUser}) => ({
-        url: `/users/${newUserId}`,
-        method: "POST",
-        body: newUser,
+      query: ({newUserId, userName, userEmail, userAlias} ) => ({
+        url: `/users/${newUserId}.json`,
+        method: "PATCH",
+        body: {
+          balance: 200000,
+          contacts: [
+            {
+              alias: "alias.muestra",
+              bank: "Banco.muestra",
+              cbu: "0123456789",
+              id: 1,
+              name: "nombre y apellido",
+              nickname: "apodo",
+            },
+          ],
+          movements: [
+            {
+              cashFlow: "in",
+              category: "categoria",
+              date: "01/nov/23",
+              detail: "detalle de ingreso",
+              value: 100,
+            },
+            {
+              cashFlow: "out",
+              category: "categoria",
+              date: "02/dic/23",
+              detail: "detalle de salida",
+              value: 100,
+            },
+          ],
+          profile: {
+            CVU: "123456789",
+            alias: `${userAlias}.classicpocket`,
+            email: userEmail,
+            name: userName,
+            password: "***********",
+            image: "data:image/jpeg;base64",
+          },
+        },
       }),
       invalidatesTags: ["users"],
     }),
 
-//    triggerProfileImage({ localId, image });
-
-
     deleteUser: builder.mutation({
       query: (userId) => ({
-        url: `/users/${userId}`,
+        url: `/users/${userId}.json`,
         method: "DELETE",
       }),
       invalidatesTags: ["users"],
     }),
-
   }),
 });
 
@@ -46,6 +78,6 @@ export const userAccountApi = createApi({
       invalidatesTags: ["Tasks"],
     }),
  */
- 
 
-export const { useGetUserQuery, useCreateUserMutation, useDeleteUserMutation } = userAccountApi;
+export const { useGetUserQuery, useCreateUserMutation, useDeleteUserMutation } =
+  userAccountApi;
