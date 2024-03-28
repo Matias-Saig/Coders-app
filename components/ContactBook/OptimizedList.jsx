@@ -1,14 +1,12 @@
 import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import ContactDetail from "./ContactDetail";
 import AddContact from "./AddContact";
-import { useGetContactListQuery } from "../../app/Service/userContactsApi";
 import { globalColor } from "../../global/globalStyles";
+import useSessionGet from "../../Hooks/useSessionGet";
 
 const OptimizedList = ({ navigation }) => {
 
-  const { data: contacts, isLoading, isError, error } = useGetContactListQuery();
-
-  if (isError) console.log("error de",error);
+  const {session, isError, isLoading} = useSessionGet()
 
   return (
     <SafeAreaView style={styles.list}>
@@ -31,7 +29,7 @@ const OptimizedList = ({ navigation }) => {
           {/* <AddContact contacts={contacts} navigation={navigation} /> */}
 
           <FlatList
-            data={contacts}
+            data={session.contacts}
             renderItem={({ item }) => <ContactDetail renderItem={item} />}
             keyExtractor={(item) => item.id}
           />

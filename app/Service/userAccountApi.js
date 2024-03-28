@@ -1,14 +1,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { firebaseUrl } from "../../firebase/database";
 
+// Mockup → createUser
+// import {balance, contacts, movements} from "../../db/userInitMockup";
+import balance from "./userInit/balance";
+import contacts from "./userInit/contacts";
+import movements from "./userInit/movements";
+
 export const userAccountApi = createApi({
   reducerPath: "userAccountApi",
   baseQuery: fetchBaseQuery({ baseUrl: firebaseUrl }),
   tagTypes: ["users"],
-
   endpoints: (builder) => ({
-
     
+    // getUser → useSessionGet.jsx
     getUser: builder.query({
       query: (userId) => `/users/${userId}.json`,
       providesTags: ["users"],
@@ -20,33 +25,9 @@ export const userAccountApi = createApi({
         url: `/users/${newUserId}.json`,
         method: "PATCH",
         body: {
-          balance: 200000,
-          contacts: [
-            {
-              alias: "alias.muestra",
-              bank: "Banco.muestra",
-              cbu: "0123456789",
-              id: 1,
-              name: "nombre y apellido",
-              nickname: "apodo",
-            },
-          ],
-          movements: [
-            {
-              cashFlow: "in",
-              category: "categoria",
-              date: "01/nov/23",
-              detail: "detalle de ingreso",
-              value: 100,
-            },
-            {
-              cashFlow: "out",
-              category: "categoria",
-              date: "02/dic/23",
-              detail: "detalle de salida",
-              value: 100,
-            },
-          ],
+          balance,
+          contacts,
+          movements,
           profile: {
             CVU: "123456789",
             alias: `${userAlias}.classicpocket`,

@@ -3,7 +3,7 @@ import Subtitle from "../components/Elements/Subtitle";
 import OptimizedList from "../components/ContactBook/OptimizedList";
 const ContactBook = ({ navigation }) => {
   return (
-    <View style={{marginVertical:20}}>
+    <View style={{paddingVertical:20}}>
       <Subtitle>Agenda de contactos</Subtitle>
 
       <OptimizedList navigation={navigation} /> 
