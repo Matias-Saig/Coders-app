@@ -1,11 +1,9 @@
-import {  useState } from "react";
-import { Image,  StyleSheet,  View } from "react-native";
+import { useState } from "react";
+import { Image, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
 import { setImageCam } from "../features/Auth/AuthSlice";
-import {
-  useSetProfileImageMutation,
-} from "../app/Service/userProfileApi";
+import { useSetProfileImageMutation } from "../app/Service/userProfileApi";
 import FormButton from "../components/Elements/FormButton";
 
 const ImageSelector = ({ navigation }) => {
@@ -43,7 +41,6 @@ const ImageSelector = ({ navigation }) => {
       {image ? (
         <>
           <Image source={{ uri: image }} style={styles.preview} />
-          
 
           <FormButton
             fx={pickImage}
@@ -75,11 +72,11 @@ const ImageSelector = ({ navigation }) => {
 export default ImageSelector;
 
 const styles = StyleSheet.create({
-    preview: {
-        width:128,
-        height:128,
-        alignSelf:"center",
-        marginVertical:10,
-        borderRadius:30,
-    }
+  preview: {
+    width: 128,
+    height: 128,
+    alignSelf: "center",
+    marginVertical: 10,
+    borderRadius: 30,
+  },
 });
