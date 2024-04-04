@@ -2,12 +2,16 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import Subtitle from "../components/Elements/Subtitle";
 import { globalColor } from "../global/globalStyles";
 import { useSelector } from "react-redux";
-import FormButton from "../components/Elements/FormButton";
 import { useGetProfileImageQuery } from "../app/Service/userProfileApi";
 import { deleteUserSession } from "../db";
+import useSessionGet from "../Hooks/useSessionGet";
+import SessionButton from "../components/Elements/SessionButton";
+import { useDeleteUserMutation } from "../app/Service/userAccountApi";
 
 const About = ({ navigation }) => {
   const user = useSelector((state) => state.auth);
+  const { isLoading, session } = useSessionGet();
+  const [triggerDeleteUser] = useDeleteUserMutation();
 
   // Camera Device
   const profile = useGetProfileImageQuery(user.localId);
@@ -15,43 +19,63 @@ const About = ({ navigation }) => {
 
   return (
     <View style={styles.containerSup}>
-      <Subtitle addStyle={styles.h2}>Invitado</Subtitle>
-      <Image
-        source={
-          image ? { uri: image } : require("../assets/img/user_avatar.png")
-        }
-        style={styles.avatar}
-        resizeMode="cover"
-      />
+      {!isLoading ? (
+        <>
+          <Subtitle addStyle={styles.h2}>{session?.profile?.name}</Subtitle>
+          <Image
+            source={
+              image ? { uri: image } : require("../assets/img/user_avatar.png")
+            }
+            style={styles.avatar}
+            resizeMode="cover"
+          />
 
-      <FormButton
-        fx={async () => {
-          navigation.navigate("Foto de perfil");
-        }}
-        text="Cambiar foto de perfil"
-        icon={true}
-        iconName="camera"
-      />
+          <SessionButton
+            fx={async () => {
+              navigation.navigate("Foto de perfil");
+            }}
+            text="Cambiar foto de perfil"
+            icon={true}
+            iconName="camera"
+          />
 
-      <View style={styles.container}>
-        <Text style={styles.subtitle}>CVU</Text>
-        <Text style={styles.text}>5859039111100088318423</Text>
-      </View>
-      <View style={styles.container}>
-        <Text style={styles.subtitle}>Alias</Text>
-        <Text style={styles.text}>invitado.classicpocket</Text>
-      </View>
+          <View style={styles.container}>
+            <Text style={styles.subtitle}>CVU</Text>
+            <Text style={styles.text}>{session?.profile?.cvu}</Text>
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.subtitle}>Alias</Text>
+            <Text style={styles.text}>{session?.profile?.alias}</Text>
+          </View>
 
-      <FormButton
-        fx={async () => {
-          await deleteUserSession();
-          navigation.navigate("Login");
-        }}
-        text="Cerrar Cesión"
-        icon={true}
-        iconName="log-out"
-      />
+          {/* SQLite */}
+          <SessionButton
+            fx={async () => {
+              await deleteUserSession();
+              navigation.navigate("Login");
+            }}
+            text="Cerrar sesión"
+            icon={true}
+            iconName="log-out"
+            close={true}
+          />
 
+          {/*  Firebase */}
+          <SessionButton
+            fx={async () => {
+              await triggerDeleteUser(session?.userId);
+              navigation.navigate("Login");
+            }}
+            text="Borrar todos los datos"
+            icon={true}
+            iconName="cross"
+            close={true}
+            del={true}
+          />
+        </>
+      ) : (
+        <Text>cargando datos</Text>
+      )}
     </View>
   );
 };

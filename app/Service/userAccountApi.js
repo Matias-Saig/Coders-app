@@ -25,11 +25,12 @@ export const userAccountApi = createApi({
         url: `/users/${newUserId}.json`,
         method: "PATCH",
         body: {
+          userId: newUserId,
           balance,
           contacts,
           movements,
           profile: {
-            CVU: "123456789",
+            cvu: "123456789",
             alias: `${userAlias}.classicpocket`,
             email: userEmail,
             name: userName,
@@ -50,17 +51,6 @@ export const userAccountApi = createApi({
     }),
   }),
 });
-
-/* 
-    updateTask: builder.mutation({
-      query: (updatedTask) => ({
-        url: `/tasks/${updatedTask.id}`,
-        method: "PATCH",
-        body: updatedTask,
-      }),
-      invalidatesTags: ["Tasks"],
-    }),
- */
 
 export const { useGetUserQuery, useCreateUserMutation, useDeleteUserMutation } =
   userAccountApi;

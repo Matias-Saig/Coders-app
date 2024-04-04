@@ -54,11 +54,13 @@ export const deleteUserSession = () =>
     db.transaction((tx) => {
       tx.executeSql("DELETE FROM user_session", [], (_, { rowsAffected }) => {
         if (rowsAffected > 0) {
+          tx.executeSql("DROP TABLE user_session");
           resolve();
-          console.log("DeleteUser Ok");
+          console.log("Delete user_session");
         } else {
-          reject(new Error("DeleteUser Error"));
+          reject(new Error(console.log("DeleteUser Error", Error)));
         }
       });
     });
   });
+

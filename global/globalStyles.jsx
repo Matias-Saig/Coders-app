@@ -15,6 +15,8 @@ export const globalColor = {
   detailDark: "#D7B791",
   error: "#e63946",
   alert:"#754c38",
+  plus:"#6CA849",
+  minus: "#A46A59",
 
   // mid tones
   midLight: "#8894AE",

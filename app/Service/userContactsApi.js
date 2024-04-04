@@ -8,42 +8,26 @@ export const userContactsApi = createApi({
   tagTypes: ["contacts"],
   endpoints: (builder) => ({
     
-    updateContact: builder.mutation({
-      query: (
-        editContact
-      ) => ({
-        url: `/users/guest/contacts.json`,
-        method: "PATCH",
-        body: {
-          editContact
-        },
-      }),
-    }),
-
-    getContact: builder.query({
-      query: ( ) =>
-      `/users/guest/contacts.json`,
-    }),
-
     newContact: builder.mutation({
-      query: (newContact ) => ({
-        url: `/users/guest/contacts.json`,
+      query: ({userId,newContact} ) => ({
+        url: `/users/${userId}/contacts.json`,
         method: "POST",
         body: { newContact },
       }),
       invalidatesTags: ["contacts"],
     }),
 
-    getContactList: builder.query({
-      query: () => `/users/guest/contacts.json`,
-      providesTags: ["contacts"],
+    deleteContact: builder.mutation({
+      query: (userId) => ({
+        url: `/users/${userId}/contacts.json`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["contacts"],
     }),
   }),
 });
 
 export const {
-  useUpdateContactMutation,
-  useGetContactQuery,
   useNewContactMutation,
-  useGetContactListQuery,
+  useDeleteContactMutation
 } = userContactsApi;

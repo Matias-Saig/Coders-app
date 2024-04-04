@@ -44,6 +44,8 @@ const SingUp = ({ navigation }) => {
         confirmPassword,
       });
 
+      setIsLoading(true)
+
       // Firebase
       const { data } = await triggerRegister({ email, password });
 

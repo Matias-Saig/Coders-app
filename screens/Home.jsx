@@ -1,4 +1,11 @@
-import { FlatList, SafeAreaViewBase, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  SafeAreaViewBase,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import Subtitle from "../components/Elements/Subtitle";
 import HomeCard from "../components/HomeElements/HomeCard";
 import HomeButton from "../components/HomeElements/HomeButton";
@@ -10,7 +17,6 @@ import useSessionGet from "../Hooks/useSessionGet";
 const Home = () => {
   const { isLoading, session } = useSessionGet();
 
-  console.log(session);
   return (
     <View style={styles.containerSup}>
       {!isLoading ? (
@@ -23,7 +29,7 @@ const Home = () => {
             <HomeButton refer="credit">Ingresar Retirar</HomeButton>
             <HomeButton refer="swap">Transferir</HomeButton>
             <HomeButton refer="credit-card">Crédito</HomeButton>
-            <HomeButton refer="wallet">Inversiones</HomeButton>
+            <HomeButton refer="wallet">Invertir</HomeButton>
           </View>
 
           <HomeButtonCard />
@@ -31,23 +37,20 @@ const Home = () => {
           <View style={styles.containerColumn}>
             <Text style={styles.subtitle}>MOVIMIENTOS</Text>
 
-              <FlatList
-                data={session?.movements}
-                renderItem={({ item }) => 
-                  <>
-                    <Text>{item.cashFlow}</Text>
-                    <Text>{item.category}</Text>
-                    <Text>{item.date}</Text>
-                    <Text>{item.detail}</Text>
-                    <Text>{item.price}</Text>
-                  </>
-                }
-                keyExtractor={(item) => item.detail}
-              />
-
-            {/* 
-        <HomeCard detail="Supermercado A" coinNumber={20142} coinSpan={99} />
- */}
+            <FlatList
+              data={session?.movements}
+              style={{ height: 200, width: "100%" }}
+              renderItem={({ item }) => (
+                <HomeCard
+                  detail={item.detail}
+                  category={item.category}
+                  date={item.date}
+                  price={item.price}
+                  flow={item.cashFlow}
+                />
+              )}
+              keyExtractor={(item) => item.detail}
+            />
           </View>
         </>
       ) : (
