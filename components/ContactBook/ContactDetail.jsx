@@ -1,13 +1,9 @@
-import { StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Switch, Text, View } from "react-native";
 import { globalColor, globalStyles } from "../../global/globalStyles";
-import CustomModal from "../CustomModal/CustomModal";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../features/Contacts/ContactsSlice";
+import RemoveContact from "./RemoveContact";
 
 const ContactDetail = ({ renderItem }) => {
-  // Modal
-  const [toggleModal, setToggleModal] = useState(false);
 
   // Switch
   const [isEnabled, setIsEnabled] = useState(false);
@@ -18,12 +14,6 @@ const ContactDetail = ({ renderItem }) => {
   const highlight = isEnabled && {
     backgroundColor: globalColor.detailShadow,
     fontSize: 24,
-  };
-
-  const dispatch = useDispatch();
-
-  const handleDeleteContact = () => {
-    dispatch(deleteContact(renderItem));
   };
 
   return (
@@ -41,7 +31,7 @@ const ContactDetail = ({ renderItem }) => {
       />
 
       <Text style={[globalStyles.paragraph, styles.name, highlight]}>
-        {renderItem.name} {renderItem.lastname}
+        {renderItem.name} 
       </Text>
 
       <Text style={[globalStyles.paragraph, styles.nickname]}>
@@ -67,31 +57,8 @@ const ContactDetail = ({ renderItem }) => {
       </Text>
 
       {/* Modal */}
-      <CustomModal
-        openButtonText={"Borrar"}
-        openStyle={[globalStyles.buttons, styles.buttonTrash]}
-        openTextStyle={[globalStyles.buttonsText, styles.buttonTextTrash]}
-        toggleModal={toggleModal}
-        setToggleModal={setToggleModal}
-      >
-        <Text style={[globalStyles.paragraph, styles.modalText]}>
-          ¿Quieres borrar el contacto de
-          <Text style={styles.spanDelete}>
-            {" "}
-            {renderItem.name} {renderItem.lastname}{" "}
-          </Text>
-          de la agenda? Una vez hecho no se puede deshacer
-        </Text>
-
-        <TouchableOpacity
-          onPress={handleDeleteContact}
-          style={[globalStyles.buttons, styles.buttonTrash]}
-        >
-          <Text style={[globalStyles.buttonsText, styles.buttonTextTrash]}>
-            borrar contacto
-          </Text>
-        </TouchableOpacity>
-      </CustomModal>
+      
+       <RemoveContact contactName={renderItem.name} contactId={renderItem.id}/>
     </View>
   );
 };
@@ -139,25 +106,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: globalColor.midShadow,
   },
-  spanDelete: {
-    fontWeight: "bold",
-  },
+  
   spanContainer: {
     flexDirection: "row",
     gap: 10,
-  },
-  buttonTrash: {
-    backgroundColor: globalColor.error,
-    width: "40%",
-    opacity: 0.8,
-    marginTop: 30,
-  },
-  buttonTextTrash: {
-    color: globalColor.white,
-    textAlign: "center",
-  },
-  modalText: {
-    color: globalColor.lowDark,
-    fontSize: 16,
   },
 });

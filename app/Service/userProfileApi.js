@@ -11,7 +11,7 @@ export const userProfileApi = createApi({
         localId,
         image       
       }) => ({
-        url: `/${localId}/profile.json`,
+        url: `/users/${localId}/profile/image.json`,
         method: "PUT",
         body: {
           image
@@ -22,7 +22,7 @@ export const userProfileApi = createApi({
     }),
 
     getProfileImage: builder.query({
-      query: (localId) => `/${localId}/profile.json`,
+      query: (localId) => `/users/${localId}/profile/image.json`,
       providesTags: ["image"],
 
     }),

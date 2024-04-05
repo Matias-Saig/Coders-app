@@ -2,36 +2,28 @@ import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import ContactDetail from "./ContactDetail";
 import AddContact from "./AddContact";
 import { globalColor } from "../../global/globalStyles";
-import useSessionGet from "../../Hooks/useSessionGet";
+import useContactsGet from "../../Hooks/useContactsGet";
 
 const OptimizedList = ({ navigation }) => {
-
-  const {session, isError, isLoading} = useSessionGet()
+  const { contacts, isError, isLoading, isFetching } = useContactsGet();
 
   return (
     <SafeAreaView style={styles.list}>
       {isError && (
-        <Text
-          style={[styles.text, styles.error]}
-        >
-          Error de carga
-        </Text>
+        <Text style={[styles.text, styles.error]}>Error de carga</Text>
       )}
 
-      {isLoading ? (
-        <Text
-          style={[styles.text, styles.loading]}
-        >
-          Cargando datos...
-        </Text>
+      {isLoading || isFetching ? (
+        <Text style={[styles.text, styles.loading]}>Cargando datos...</Text>
       ) : (
         <>
           {/* <AddContact contacts={contacts} navigation={navigation} /> */}
-
           <FlatList
-            data={session.contacts}
-            renderItem={({ item }) => <ContactDetail renderItem={item} />}
-            keyExtractor={(item) => item.id}
+            data={contacts}
+            renderItem={({ item }) =>
+              item !== null ? <ContactDetail renderItem={item} /> : null
+            }
+            keyExtractor={(item) => (item != null ? item.id : Math.random())}
           />
         </>
       )}
@@ -46,17 +38,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignItems: "center",
     height: "100%",
-    paddingBottom:150
+    paddingBottom: 150,
   },
   text: {
-    textAlign:"center",
+    textAlign: "center",
     fontSize: 24,
   },
   loading: {
-    color: globalColor.alert
+    color: globalColor.alert,
   },
   error: {
-    color: globalColor.error
-  }
-
+    color: globalColor.error,
+  },
 });

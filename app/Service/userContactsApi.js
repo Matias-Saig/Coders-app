@@ -7,7 +7,11 @@ export const userContactsApi = createApi({
 
   tagTypes: ["contacts"],
   endpoints: (builder) => ({
-    
+    getContacts: builder.query({
+      query: (userId) => `/users/${userId}/contacts.json`,
+      providesTags: ["contacts"],
+    }),
+
     newContact: builder.mutation({
       query: ({userId,newContact} ) => ({
         url: `/users/${userId}/contacts.json`,
@@ -18,8 +22,8 @@ export const userContactsApi = createApi({
     }),
 
     deleteContact: builder.mutation({
-      query: (userId) => ({
-        url: `/users/${userId}/contacts.json`,
+      query: ({userId, contactIndex}) => ({
+        url: `/users/${userId}/contacts/${contactIndex}.json`,
         method: "DELETE",
       }),
       invalidatesTags: ["contacts"],
@@ -28,6 +32,7 @@ export const userContactsApi = createApi({
 });
 
 export const {
+  useGetContactsQuery,
   useNewContactMutation,
   useDeleteContactMutation
 } = userContactsApi;

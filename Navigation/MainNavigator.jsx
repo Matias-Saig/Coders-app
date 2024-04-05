@@ -10,6 +10,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TopBar from "../components/TopBar/TopBar";
 import Login from "../screens/Login";
 import SingUp from "../screens/SingUp";
+
 const MainNavigator = () => {
   const [userSession, setUserSession] = useState(false);
   const user = useSelector((state) => state.auth);
@@ -31,6 +32,7 @@ const MainNavigator = () => {
       if (userSession) {
         setUserSession(true);
         console.log("Session Log");
+        // console.log(userSession);
       }
     };
     checkUserSession();

@@ -40,7 +40,7 @@ export const saveUserSession = (localId, email, idToken) =>
         (_, { rowsAffected }) => {
           if (rowsAffected > 0) {
             resolve();
-            console.log("SaveUser Ok");
+            console.log("SaveUser Ok",rowsAffected);
           } else {
             reject(new Error("SaveUser Error"));
           }
@@ -54,7 +54,6 @@ export const deleteUserSession = () =>
     db.transaction((tx) => {
       tx.executeSql("DELETE FROM user_session", [], (_, { rowsAffected }) => {
         if (rowsAffected > 0) {
-          tx.executeSql("DROP TABLE user_session");
           resolve();
           console.log("Delete user_session");
         } else {
