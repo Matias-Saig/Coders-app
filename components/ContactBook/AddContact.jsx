@@ -10,22 +10,21 @@ import {
 
 import CustomModal from "../CustomModal/CustomModal";
 import { globalColor, globalStyles } from "../../global/globalStyles";
-import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "../../features/Contacts/ContactsSlice";
+import { useSelector } from "react-redux";
 import { useNewContactMutation } from "../../app/Service/userContactsApi";
 import LoadingMsg from "../Elements/LoadingMsg";
-const AddContact = ({ contacts, navigation, ids }) => {
+const AddContact = ({ ids }) => {
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false)
   // Modal
   const [toggleModal, setToggleModal] = useState(false);
+
   // Redux
   const user = useSelector((state) => state.auth);
+
+  // Firestore
   const [triggerNewContact] = useNewContactMutation();
 
-  const dispatch = useDispatch();
-
-  
   const [newContact, setNewContact] = useState({
     id: "",
     name: "",
@@ -35,26 +34,25 @@ const AddContact = ({ contacts, navigation, ids }) => {
     alias: "",
   });
 
+  // newId
+  useEffect(() => {
+    if (ids !== undefined) setNewContact({ ...newContact, id: ids + 1 });
+    console.log("newId", newContact.id);
+  }, [ids]);
 
-  useEffect( ()=>{
-    if (ids !== undefined) setNewContact({ ...newContact, id: ids + 1 })
-    
-    console.log("new", newContact.id);
-  }, [ids])
-  
   const addNewContact = async () => {
-    
     if (newContact.id < 2) {
-    setIsLoading(true)
-} else {
-setIsLoading(false)
-  console.log("button ", newContact);
-
-  // dispatch(addContact(newContact));
-  await triggerNewContact({userId: user.localId, newContact, idx: newContact.id - 1})
-  setToggleModal(!toggleModal);
-
-}
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+      console.log("button ", newContact);
+      await triggerNewContact({
+        userId: user.localId,
+        newContact,
+        idx: newContact.id - 1,
+      });
+      setToggleModal(!toggleModal);
+    }
   };
 
   return (
@@ -67,9 +65,6 @@ setIsLoading(false)
     >
       <ScrollView style={styles.scroll}>
         <View style={globalStyles.containerCenter}>
-        
-          <Text>{newContact.id}</Text>
-        
           <Text style={globalStyles.inputLabel}>Nombre y apellido</Text>
           <TextInput
             style={globalStyles.input}
@@ -119,9 +114,13 @@ setIsLoading(false)
             placeholder="Alias"
           />
 
+          <Text style={[globalStyles.inputLabel, { alignSelf: "flex-end" }]}>
+            Contacto nº {newContact.id}
+          </Text>
+
           <View style={styles.buttonsContainer}>
             <Pressable
-              onPress={() => navigation.popToTop()}
+              onPress={() => setToggleModal(!toggleModal)}
               style={[globalStyles.buttons, styles.retryButton, styles.button]}
             >
               <Text
@@ -137,13 +136,14 @@ setIsLoading(false)
             <Pressable
               onPress={addNewContact}
               style={[globalStyles.buttons, styles.sendButton, styles.button]}
-            >
+              >
               <Text style={[globalStyles.buttonsText, styles.sendText]}>
                 Agendar
               </Text>
             </Pressable>
           </View>
-          {isLoading && <LoadingMsg /> }
+
+          {isLoading && <LoadingMsg />}
         </View>
       </ScrollView>
     </CustomModal>
