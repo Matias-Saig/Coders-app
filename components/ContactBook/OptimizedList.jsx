@@ -1,33 +1,34 @@
-import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import ContactDetail from "./ContactDetail";
 import AddContact from "./AddContact";
 import { globalColor } from "../../global/globalStyles";
 import useContactsGet from "../../Hooks/useContactsGet";
+import LoadingMsg from "../Elements/LoadingMsg";
 
 const OptimizedList = ({ navigation }) => {
   const { contacts, isError, isLoading, isFetching } = useContactsGet();
-
   return (
-    <SafeAreaView style={styles.list}>
+    <View style={styles.list}>
       {isError && (
         <Text style={[styles.text, styles.error]}>Error de carga</Text>
       )}
 
       {isLoading || isFetching ? (
-        <Text style={[styles.text, styles.loading]}>Cargando datos...</Text>
+        <LoadingMsg />
       ) : (
         <>
-          {/* <AddContact contacts={contacts} navigation={navigation} /> */}
+         <AddContact contacts={contacts} navigation={navigation} /> 
           <FlatList
+            initialNumToRender={20}
             data={contacts}
             renderItem={({ item }) =>
-              item !== null ? <ContactDetail renderItem={item} /> : null
+              item !== null ? <ContactDetail renderItem={item} /> : <View></View>
             }
             keyExtractor={(item) => (item != null ? item.id : Math.random())}
           />
         </>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 

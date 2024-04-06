@@ -35,13 +35,14 @@ export const userAccountApi = createApi({
             email: userEmail,
             name: userName,
             password: "***********",
-            image: "data:image/jpeg;base64",
+            image: null,
           },
         },
       }),
       invalidatesTags: ["users"],
     }),
 
+    // del user info
     deleteUser: builder.mutation({
       query: (userId) => ({
         url: `/users/${userId}.json`,

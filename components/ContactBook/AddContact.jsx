@@ -9,19 +9,25 @@ import {
 } from "react-native";
 import CustomModal from "../CustomModal/CustomModal";
 import { globalColor, globalStyles } from "../../global/globalStyles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../features/Contacts/ContactsSlice";
+import { useNewContactMutation } from "../../app/Service/userContactsApi";
 const AddContact = ({ contacts, navigation }) => {
   // Modal
   const [toggleModal, setToggleModal] = useState(false);
 
   // Redux
+  const user = useSelector((state) => state.auth);
+  const [triggerNewContact] = useNewContactMutation()
+
   const dispatch = useDispatch();
 
   // States
-  const [newContactId, setNewContactId] = useState(
+  /* const [newContactId, setNewContactId] = useState(
     Math.max(...contacts.map((item) => item.id)) + 1,
-  );
+  ); */
+
+
 
   const [newContactName, setNewContactName] = useState("");
   const [newContactLastname, setNewContactLastname] = useState("");
@@ -29,7 +35,7 @@ const AddContact = ({ contacts, navigation }) => {
   const [newContactBank, setNewContactBank] = useState("");
   const [newContactCbu, setNewContactCbu] = useState("");
   const [newContactAlias, setNewContactAlias] = useState("");
-  const [newContact, setNewContact] = useState([]);
+  const [newContact, setNewContact] = useState({});
 
   // Handles
   const handleName = (text) => {
@@ -53,21 +59,30 @@ const AddContact = ({ contacts, navigation }) => {
 
   // edit function
   const addNewContact = () => {
-    setNewContactId(newContactId + 1);
+   // setNewContactId(newContactId + 1);
 
-    setNewContact([
-      (newContact.id = newContactId),
-      (newContact.name = newContactName),
-      (newContact.lastname = newContactLastname),
-      (newContact.nickname = newContactNickname),
-      (newContact.bank = newContactBank),
-      (newContact.cbu = newContactCbu),
-      (newContact.alias = newContactAlias),
-    ]);
 
-    dispatch(addContact(newContact));
+   let ultimoElemento = contacts[contacts.length - 1];
+ console.log(ultimoElemento.id);
+   const execut = ultimoElemento.id + 1;
+  
+  console.log("execut", execut);
+   
 
-    setToggleModal(!toggleModal);
+  /* 
+    setNewContact({
+      "id": 22,
+     "name" : newContactName,
+    "nickname" : newContactNickname,
+      "bank" : newContactBank,
+      "cbu" : newContactCbu,
+      "alias" : newContactAlias
+    });
+ */
+   // dispatch(addContact(newContact));
+// triggerNewContact({userId: user.localId, newContact})
+// console.log(user.localId, newContact);
+   // setToggleModal(!toggleModal);
   };
 
   return (

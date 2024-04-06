@@ -1,27 +1,26 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import Subtitle from "../components/Elements/Subtitle";
 import { globalColor } from "../global/globalStyles";
-import { useSelector } from "react-redux";
-import { useGetProfileImageQuery } from "../app/Service/userProfileApi";
 import { deleteUserSession } from "../db";
-import useSessionGet from "../Hooks/useSessionGet";
 import SessionButton from "../components/Elements/SessionButton";
 import { useDeleteUserMutation } from "../app/Service/userAccountApi";
+import useProfileGet from "../Hooks/useProfileGet";
+import LoadingMsg from "../components/Elements/LoadingMsg";
 
 const About = ({ navigation }) => {
-  const user = useSelector((state) => state.auth);
-  const { isLoading, session } = useSessionGet();
+  const { isLoading, profile, isFetching } = useProfileGet();
   const [triggerDeleteUser] = useDeleteUserMutation();
 
-  // Camera Device
-  const profile = useGetProfileImageQuery(user.localId);
-  const image = profile.data?.image;
+  const image = profile?.image;
 
   return (
     <View style={styles.containerSup}>
-      {!isLoading ? (
+      {isLoading || isFetching ? (
+        <LoadingMsg />
+      ) : (
         <>
-          <Subtitle addStyle={styles.h2}>{session?.profile?.name}</Subtitle>
+          <Subtitle addStyle={styles.h2}>{profile?.name}</Subtitle>
+
           <Image
             source={
               image ? { uri: image } : require("../assets/img/user_avatar.png")
@@ -41,11 +40,11 @@ const About = ({ navigation }) => {
 
           <View style={styles.container}>
             <Text style={styles.subtitle}>CVU</Text>
-            <Text style={styles.text}>{session?.profile?.cvu}</Text>
+            <Text style={styles.text}>{profile?.cvu}</Text>
           </View>
           <View style={styles.container}>
             <Text style={styles.subtitle}>Alias</Text>
-            <Text style={styles.text}>{session?.profile?.alias}</Text>
+            <Text style={styles.text}>{profile?.alias}</Text>
           </View>
 
           {/* SQLite */}
@@ -63,7 +62,7 @@ const About = ({ navigation }) => {
           {/*  Firebase */}
           <SessionButton
             fx={async () => {
-              await triggerDeleteUser(session?.userId);
+              await triggerDeleteUser(profile.userId);
               navigation.navigate("Login");
             }}
             text="Borrar todos los datos"
@@ -73,8 +72,6 @@ const About = ({ navigation }) => {
             del={true}
           />
         </>
-      ) : (
-        <Text>cargando datos</Text>
       )}
     </View>
   );

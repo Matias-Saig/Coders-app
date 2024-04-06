@@ -4,7 +4,6 @@ import { useState } from "react";
 import RemoveContact from "./RemoveContact";
 
 const ContactDetail = ({ renderItem }) => {
-
   // Switch
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
@@ -31,7 +30,7 @@ const ContactDetail = ({ renderItem }) => {
       />
 
       <Text style={[globalStyles.paragraph, styles.name, highlight]}>
-        {renderItem.name} 
+        {renderItem.name}
       </Text>
 
       <Text style={[globalStyles.paragraph, styles.nickname]}>
@@ -56,9 +55,7 @@ const ContactDetail = ({ renderItem }) => {
         {renderItem.bank}
       </Text>
 
-      {/* Modal */}
-      
-       <RemoveContact contactName={renderItem.name} contactId={renderItem.id}/>
+      <RemoveContact contactName={renderItem.name} contactId={renderItem.id} />
     </View>
   );
 };
@@ -106,7 +103,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: globalColor.midShadow,
   },
-  
+
   spanContainer: {
     flexDirection: "row",
     gap: 10,

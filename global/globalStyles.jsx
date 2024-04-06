@@ -14,8 +14,8 @@ export const globalColor = {
   detailShadow: "#FEEECD",
   detailDark: "#D7B791",
   error: "#e63946",
-  alert:"#754c38",
-  plus:"#6CA849",
+  alert: "#754c38",
+  plus: "#6CA849",
   minus: "#A46A59",
 
   // mid tones
@@ -66,21 +66,30 @@ export const globalStyles = StyleSheet.create({
     lineHeight: 22,
   },
 
+  msgContainer: {
+    backgroundColor: globalColor.highLight,
+    paddingVertical: 20,
+    paddingHorizontal: 5,
+    width: "90%",
+    marginVertical: 10,
+    borderRadius: 15,
+  },
+  msgTextContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
   msg: {
-    fontSize: 15,
-    fontWeight:"bold",
-    fontStyle:"italic",
-    backgroundColor:globalColor.highLight,
-    paddingVertical:10,
-    paddingLeft:5,
-    width:"90%",
-    marginVertical:10
+    fontWeight: "bold",
+    fontStyle: "italic",
+    alignSelf: "center",
   },
   msgError: {
-    color: globalColor.alert
+    fontSize: 15,
+    color: globalColor.alert,
   },
   msgLoading: {
-    color: globalColor.highDark
+    fontSize: 20,
+    color: globalColor.highDark,
   },
 
   // inputs

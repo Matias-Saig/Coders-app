@@ -87,7 +87,7 @@ const Login = ({ navigation }) => {
       <ErrorMsg error={errorPassword} />
 
       <FormButton fx={onSubmit} text="Ingresar" icon={true} iconName="login" />
-      {isLoading && <LoadingMsg text="Cargando datos" />}
+      {isLoading && <LoadingMsg />}
       {loginError && <ErrorMsg error={loginError} />}
 
       <FormLinks

@@ -16,7 +16,7 @@ const RemoveContact = ({ contactName, contactId }) => {
 
   const handleDeleteContact = async () => {
     await triggerDelete({ userId, contactIndex });
-    setToggleModal(!toggleModal)
+    setToggleModal(!toggleModal);
     console.log("contacto eliminado");
   };
 

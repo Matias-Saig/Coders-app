@@ -30,9 +30,9 @@ const ImageSelector = ({ navigation }) => {
     }
   };
 
-  const saveImage = () => {
+  const saveImage = async () => {
     dispatch(setImageCam(image));
-    triggerProfileImage({ localId, image });
+    await triggerProfileImage({ localId, image });
     navigation.goBack();
   };
 

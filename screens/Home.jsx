@@ -11,6 +11,7 @@ import HomeDisplay from "../components/HomeElements/HomeDisplay";
 import HomeButtonCard from "../components/HomeElements/HomeButtonCard";
 import { globalColor } from "../global/globalStyles";
 import useSessionGet from "../Hooks/useSessionGet";
+import LoadingMsg from "../components/Elements/LoadingMsg";
 
 const Home = () => {
   const { isLoading, session } = useSessionGet();
@@ -52,7 +53,7 @@ const Home = () => {
           </View>
         </>
       ) : (
-        <Text>Cargando datos</Text>
+        <LoadingMsg />
       )}
     </View>
   );

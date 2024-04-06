@@ -4,7 +4,9 @@ import { useGetContactsQuery } from "../app/Service/userContactsApi";
 
 function useContactsGet() {
   const user = useSelector((state) => state.auth);
-  const { data, isLoading, isError, error, isFetching } = useGetContactsQuery(user.localId);
+  const { data, isLoading, isError, error, isFetching } = useGetContactsQuery(
+    user.localId,
+  );
   const [contacts, setContacts] = useState("");
 
   useEffect(() => {

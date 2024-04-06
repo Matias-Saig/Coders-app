@@ -142,7 +142,7 @@ const SingUp = ({ navigation }) => {
       <ErrorMsg error={errorConfirmPassword} />
 
       <FormButton fx={onSubmit} text="Registrarme" />
-      {isLoading && <LoadingMsg text="Cargando datos" />}
+      {isLoading && <LoadingMsg />}
       {singUpError && <ErrorMsg error={singUpError} />}
     </FormContainer>
   );
