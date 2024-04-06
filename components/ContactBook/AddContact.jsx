@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -7,82 +7,54 @@ import {
   TextInput,
   View,
 } from "react-native";
+
 import CustomModal from "../CustomModal/CustomModal";
 import { globalColor, globalStyles } from "../../global/globalStyles";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../features/Contacts/ContactsSlice";
 import { useNewContactMutation } from "../../app/Service/userContactsApi";
-const AddContact = ({ contacts, navigation }) => {
+import LoadingMsg from "../Elements/LoadingMsg";
+const AddContact = ({ contacts, navigation, ids }) => {
+
+  const [isLoading, setIsLoading] = useState(false)
   // Modal
   const [toggleModal, setToggleModal] = useState(false);
-
   // Redux
   const user = useSelector((state) => state.auth);
-  const [triggerNewContact] = useNewContactMutation()
+  const [triggerNewContact] = useNewContactMutation();
 
   const dispatch = useDispatch();
 
-  // States
-  /* const [newContactId, setNewContactId] = useState(
-    Math.max(...contacts.map((item) => item.id)) + 1,
-  ); */
-
-
-
-  const [newContactName, setNewContactName] = useState("");
-  const [newContactLastname, setNewContactLastname] = useState("");
-  const [newContactNickname, setNewContactNickname] = useState("");
-  const [newContactBank, setNewContactBank] = useState("");
-  const [newContactCbu, setNewContactCbu] = useState("");
-  const [newContactAlias, setNewContactAlias] = useState("");
-  const [newContact, setNewContact] = useState({});
-
-  // Handles
-  const handleName = (text) => {
-    setNewContactName(text);
-  };
-  const handleLastname = (text) => {
-    setNewContactLastname(text);
-  };
-  const handleNickname = (text) => {
-    setNewContactNickname(text);
-  };
-  const handleBank = (text) => {
-    setNewContactBank(text);
-  };
-  const handleCbu = (text) => {
-    setNewContactCbu(text);
-  };
-  const handleAlias = (text) => {
-    setNewContactAlias(text);
-  };
-
-  // edit function
-  const addNewContact = () => {
-   // setNewContactId(newContactId + 1);
-
-
-   let ultimoElemento = contacts[contacts.length - 1];
- console.log(ultimoElemento.id);
-   const execut = ultimoElemento.id + 1;
   
-  console.log("execut", execut);
-   
+  const [newContact, setNewContact] = useState({
+    id: "",
+    name: "",
+    nickname: "",
+    bank: "",
+    cbu: "",
+    alias: "",
+  });
 
-  /* 
-    setNewContact({
-      "id": 22,
-     "name" : newContactName,
-    "nickname" : newContactNickname,
-      "bank" : newContactBank,
-      "cbu" : newContactCbu,
-      "alias" : newContactAlias
-    });
- */
-   // dispatch(addContact(newContact));
-// triggerNewContact({userId: user.localId, newContact})
-// console.log(user.localId, newContact);
-   // setToggleModal(!toggleModal);
+
+  useEffect( ()=>{
+    if (ids !== undefined) setNewContact({ ...newContact, id: ids + 1 })
+    
+    console.log("new", newContact.id);
+  }, [ids])
+  
+  const addNewContact = async () => {
+    
+    if (newContact.id < 2) {
+    setIsLoading(true)
+} else {
+setIsLoading(false)
+  console.log("button ", newContact);
+
+  // dispatch(addContact(newContact));
+  await triggerNewContact({userId: user.localId, newContact, idx: newContact.id - 1})
+  setToggleModal(!toggleModal);
+
+}
   };
 
   return (
@@ -95,43 +67,44 @@ const AddContact = ({ contacts, navigation }) => {
     >
       <ScrollView style={styles.scroll}>
         <View style={globalStyles.containerCenter}>
-          <Text style={globalStyles.inputLabel}>Nombre</Text>
+        
+          <Text>{newContact.id}</Text>
+        
+          <Text style={globalStyles.inputLabel}>Nombre y apellido</Text>
           <TextInput
             style={globalStyles.input}
-            onChangeText={handleName}
-            value={newContactName}
+            onChangeText={(text) =>
+              setNewContact({ ...newContact, name: text })
+            }
+            value={newContact.name}
             placeholder="Nombre"
-          />
-
-          <Text style={globalStyles.inputLabel}>Apellido</Text>
-          <TextInput
-            style={globalStyles.input}
-            onChangeText={handleLastname}
-            value={newContactLastname}
-            placeholder="Apellido"
           />
 
           <Text style={globalStyles.inputLabel}>Apodo</Text>
           <TextInput
             style={globalStyles.input}
-            onChangeText={handleNickname}
-            value={newContactNickname}
+            onChangeText={(text) =>
+              setNewContact({ ...newContact, nickname: text })
+            }
+            value={newContact.nickname}
             placeholder="Apodo"
           />
 
           <Text style={globalStyles.inputLabel}>Banco</Text>
           <TextInput
             style={globalStyles.input}
-            onChangeText={handleBank}
-            value={newContactBank}
+            onChangeText={(text) =>
+              setNewContact({ ...newContact, bank: text })
+            }
+            value={newContact.bank}
             placeholder="Banco"
           />
 
           <Text style={globalStyles.inputLabel}>CBU</Text>
           <TextInput
             style={globalStyles.input}
-            onChangeText={handleCbu}
-            value={newContactCbu}
+            onChangeText={(text) => setNewContact({ ...newContact, cbu: text })}
+            value={newContact.cbu}
             placeholder="Cbu"
             inputMode="numeric"
           />
@@ -139,8 +112,10 @@ const AddContact = ({ contacts, navigation }) => {
           <Text style={globalStyles.inputLabel}>Alias</Text>
           <TextInput
             style={globalStyles.input}
-            onChangeText={handleAlias}
-            value={newContactAlias}
+            onChangeText={(text) =>
+              setNewContact({ ...newContact, alias: text })
+            }
+            value={newContact.alias}
             placeholder="Alias"
           />
 
@@ -168,6 +143,7 @@ const AddContact = ({ contacts, navigation }) => {
               </Text>
             </Pressable>
           </View>
+          {isLoading && <LoadingMsg /> }
         </View>
       </ScrollView>
     </CustomModal>

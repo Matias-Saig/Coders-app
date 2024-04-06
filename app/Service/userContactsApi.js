@@ -13,8 +13,13 @@ export const userContactsApi = createApi({
     }),
 
     newContact: builder.mutation({
-      query: ({ userId, newContact, idx }) => ({
+      /* query: ({ userId, newContact, idx }) => ({
         url: `/users/${userId}/contacts.json`,
+        method: "PATCH",
+        body:  newContact ,
+      }), */
+      query: ({ userId, newContact, idx }) => ({
+        url: `/users/${userId}/contacts/${idx}.json`,
         method: "PATCH",
         body:  newContact ,
       }),

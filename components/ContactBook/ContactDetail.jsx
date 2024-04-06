@@ -17,10 +17,10 @@ const ContactDetail = ({ renderItem }) => {
 
   return (
     <View style={[styles.container, highlight]}>
-      <Text style={[globalStyles.paragraph, styles.top]}>
+     <Text style={[globalStyles.paragraph, styles.top]}>
         nro {renderItem.id}
       </Text>
-
+ 
       <Text style={[globalStyles.paragraph, styles.top]}>Destacar</Text>
 
       <Switch

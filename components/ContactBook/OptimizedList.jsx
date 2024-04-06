@@ -4,9 +4,20 @@ import AddContact from "./AddContact";
 import { globalColor } from "../../global/globalStyles";
 import useContactsGet from "../../Hooks/useContactsGet";
 import LoadingMsg from "../Elements/LoadingMsg";
+import { useEffect, useState } from "react";
 
 const OptimizedList = ({ navigation }) => {
+
+  const [maxId, setMaxId] = useState("")
   const { contacts, isError, isLoading, isFetching } = useContactsGet();
+
+useEffect( ()=> {
+  const last = contacts[contacts.length - 1];
+  setMaxId(last?.id);
+  console.log("max id", maxId);
+}, [contacts])
+
+
   return (
     <View style={styles.list}>
       {isError && (
@@ -17,14 +28,14 @@ const OptimizedList = ({ navigation }) => {
         <LoadingMsg />
       ) : (
         <>
-         <AddContact contacts={contacts} navigation={navigation} /> 
+         <AddContact contacts={contacts} navigation={navigation} ids={maxId} /> 
           <FlatList
             initialNumToRender={20}
             data={contacts}
             renderItem={({ item }) =>
               item !== null ? <ContactDetail renderItem={item} /> : <View></View>
             }
-            keyExtractor={(item) => (item != null ? item.id : Math.random())}
+            keyExtractor={(item) => (item != null ? item.alias : Math.random())}
           />
         </>
       )}
