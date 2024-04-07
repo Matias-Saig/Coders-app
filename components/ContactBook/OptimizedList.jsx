@@ -8,15 +8,17 @@ import { useEffect, useState } from "react";
 
 const OptimizedList = ({ navigation }) => {
 
-  const [maxId, setMaxId] = useState("")
+  // customHook
   const { contacts, isError, isLoading, isFetching } = useContactsGet();
-
-useEffect( ()=> {
-  const last = contacts[contacts.length - 1];
-  setMaxId(last?.id);
-  console.log("max id", maxId);
-}, [contacts])
-
+  
+  // maxId
+  const [maxId, setMaxId] = useState("");
+  useEffect(() => {
+    if (contacts !== undefined) {
+      const last = contacts[contacts.length - 1];
+      setMaxId(last?.id);
+    }
+  }, [contacts]);
 
   return (
     <View style={styles.list}>
@@ -28,12 +30,16 @@ useEffect( ()=> {
         <LoadingMsg />
       ) : (
         <>
-         <AddContact contacts={contacts} navigation={navigation} ids={maxId} /> 
+          <AddContact contacts={contacts} navigation={navigation} ids={maxId} />
           <FlatList
             initialNumToRender={20}
             data={contacts}
             renderItem={({ item }) =>
-              item !== null ? <ContactDetail renderItem={item} /> : <View></View>
+              item !== null ? (
+                <ContactDetail renderItem={item} />
+              ) : (
+                <View></View>
+              )
             }
             keyExtractor={(item) => (item != null ? item.alias : Math.random())}
           />

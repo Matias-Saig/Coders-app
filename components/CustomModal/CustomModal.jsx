@@ -1,8 +1,8 @@
 import {
   Modal,
+  Pressable,
   StyleSheet,
   Text,
-  TouchableHighlight,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -39,12 +39,12 @@ const CustomModal = ({
         </View>
       </Modal>
 
-      <TouchableHighlight
+      <Pressable
         style={openStyle}
         onPress={() => setToggleModal(true)}
       >
         <Text style={openTextStyle}>{openButtonText}</Text>
-      </TouchableHighlight>
+      </Pressable>
     </>
   );
 };

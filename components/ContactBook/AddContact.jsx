@@ -37,15 +37,14 @@ const AddContact = ({ ids }) => {
   // newId
   useEffect(() => {
     if (ids !== undefined) setNewContact({ ...newContact, id: ids + 1 });
-    console.log("newId", newContact.id);
   }, [ids]);
 
+  // addContact
   const addNewContact = async () => {
     if (newContact.id < 2) {
       setIsLoading(true);
     } else {
       setIsLoading(false);
-      console.log("button ", newContact);
       await triggerNewContact({
         userId: user.localId,
         newContact,
@@ -58,7 +57,10 @@ const AddContact = ({ ids }) => {
   return (
     <CustomModal
       openButtonText={"Agendar contacto"}
-      openStyle={[globalStyles.buttons, styles.sendButton]}
+      openStyle={({ pressed }) => [
+        pressed ? styles.sendButtonPress : styles.sendButton,
+        globalStyles.buttons
+      ]}
       openTextStyle={[globalStyles.buttonsText, styles.sendText]}
       toggleModal={toggleModal}
       setToggleModal={setToggleModal}
@@ -121,7 +123,11 @@ const AddContact = ({ ids }) => {
           <View style={styles.buttonsContainer}>
             <Pressable
               onPress={() => setToggleModal(!toggleModal)}
-              style={[globalStyles.buttons, styles.retryButton, styles.button]}
+              style={({ pressed }) => [
+                pressed ? styles.retryButtonPress : styles.retryButton,
+                globalStyles.buttons,
+                styles.button,
+              ]}
             >
               <Text
                 style={[
@@ -135,8 +141,12 @@ const AddContact = ({ ids }) => {
             </Pressable>
             <Pressable
               onPress={addNewContact}
-              style={[globalStyles.buttons, styles.sendButton, styles.button]}
-              >
+              style={({ pressed }) => [
+                pressed ? styles.sendButtonPress : styles.sendButton,
+                globalStyles.buttons,
+                styles.button,
+              ]}
+            >
               <Text style={[globalStyles.buttonsText, styles.sendText]}>
                 Agendar
               </Text>
@@ -155,10 +165,15 @@ export default AddContact;
 const styles = StyleSheet.create({
   sendButton: {
     backgroundColor: globalColor.detailLight,
-    marginBottom: 20,
+  },
+  sendButtonPress: {
+    backgroundColor: globalColor.highShadow,
   },
   retryButton: {
     backgroundColor: globalColor.midShadow,
+  },
+  retryButtonPress: {
+    backgroundColor: globalColor.error,
   },
   retryText: {
     color: globalColor.highShadow,

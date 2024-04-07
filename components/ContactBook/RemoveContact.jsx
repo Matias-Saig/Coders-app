@@ -24,7 +24,10 @@ const RemoveContact = ({ contactName, contactId }) => {
     <>
       <CustomModal
         openButtonText={"Borrar"}
-        openStyle={[globalStyles.buttons, styles.buttonTrash]}
+        openStyle={({ pressed }) => [
+          pressed ? styles.buttonTrashPress : styles.buttonTrash,
+          globalStyles.buttons
+        ]}
         openTextStyle={[globalStyles.buttonsText, styles.buttonTextTrash]}
         toggleModal={toggleModal}
         setToggleModal={setToggleModal}
@@ -56,6 +59,12 @@ const styles = StyleSheet.create({
   },
   buttonTrash: {
     backgroundColor: globalColor.error,
+    width: "40%",
+    opacity: 0.8,
+    marginTop: 30,
+  },
+  buttonTrashPress: {
+    backgroundColor: globalColor.midShadow,
     width: "40%",
     opacity: 0.8,
     marginTop: 30,
