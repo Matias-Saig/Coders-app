@@ -7,17 +7,14 @@ export const userContactsApi = createApi({
 
   tagTypes: ["contacts"],
   endpoints: (builder) => ({
+    // useContactsGet Custom Hook
     getContacts: builder.query({
       query: (userId) => `/users/${userId}/contacts.json`,
       providesTags: ["contacts"],
     }),
 
+    // AddContact component
     newContact: builder.mutation({
-      /* query: ({ userId, newContact, idx }) => ({
-        url: `/users/${userId}/contacts.json`,
-        method: "PATCH",
-        body:  newContact ,
-      }), */
       query: ({ userId, newContact, idx }) => ({
         url: `/users/${userId}/contacts/${idx}.json`,
         method: "PATCH",
@@ -26,6 +23,7 @@ export const userContactsApi = createApi({
       invalidatesTags: ["contacts"],
     }),
 
+    // RemoveContact component
     deleteContact: builder.mutation({
       query: ({ userId, contactIndex }) => ({
         url: `/users/${userId}/contacts/${contactIndex}.json`,
