@@ -37,7 +37,8 @@
 
 ## Redux
 Para obtener identificación del usuario
-<br />
+<br /><br />
+
 
 ## Navegación
 - Navigation » ScreensNavigation.jsx
@@ -87,7 +88,7 @@ Para obtener identificación del usuario
 # Estilos
 globalStyles » estilos globales
 globalColor » constantes de colores
-<br />
+<br /><br />
 
 # Wireframe
 <img src="/wirerame.jpg" />
