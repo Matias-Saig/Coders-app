@@ -2,8 +2,16 @@
 *Billetera virtual* - *Proyecto coderhouse, de curso de desarrollador de app*
 <br />
 
+# Skills
+- React Native
+- Redux
+- Firebase
+- SQLite
+<br />
+
 # Device » camera
-- 
+- screens/ImageSelector.jsx
+<br />
 
 # Firebase
 - app/store.js » Configuración
@@ -16,8 +24,8 @@
 # SQLite
 - db/index.js » configuración
 - app.jsx » initDatabase
-- Screens/Login.jsx » saveUserSession
-- Screens/About.jsx » deleteUserSession
+- screens/Login.jsx » saveUserSession
+- screens/About.jsx » deleteUserSession
 - Navigation/ MainNavigator.jsx » getUserSession
 <br />
 
@@ -25,6 +33,20 @@
 - Screens/Login.jsx
 - Screens/SingUp.jsx
 - Validation/AuthSchema.js
+<br />
+
+# Redux
+Para obtener identificación del usuario
+<br />
+
+# Navegación
+- Navigation » ScreensNavigation.jsx
+- Screen Stacks » Login.jsx, ScreensTabs.jsx 
+- Screen Tabs » ScreensTabs.jsx » Home.jsx, ContactBook.jsx, About.jsx
+- Title props » ScreensNavigaation.jsx » TopBar.jsx » "Classic Pocket", "Contactos", "Mis Datos"
+- Navigation props » GoBack() » TopBar.jsx
+- Navigation props » popToTop() » ContactBook.jsx » OptimizedList.jsx » AddContact.jsx
+- Navigation props » navigate() » NavMenu.jsx
 <br />
 
 # Custom Hook
@@ -47,13 +69,6 @@
 - LeagueSpartan
 <br />
 
-
-# Skills
-- React Native
-- Firebase
-- SQLite
-<br />
-
 # Elementos usados
 - **Material Top Tabs Navigator**
 - Alert » aviso de contacto agregado o borrado (Android)
@@ -70,21 +85,6 @@
 - useState » para almacenar datos de input, crear contacto y borrar contacto, y cambio de backgroundColor con switch
 - View
 <br />
-
-# Redux
-Para obtener identificación del usuario
-<br />
-
-# Navegación
-- Navigation » ScreensNavigation.jsx
-- Screen Stacks » Login.jsx, ScreensTabs.jsx 
-- Screen Tabs » ScreensTabs.jsx » Home.jsx, ContactBook.jsx, About.jsx
-- Title props » ScreensNavigaation.jsx » TopBar.jsx » "Classic Pocket", "Contactos", "Mis Datos"
-- Navigation props » GoBack() » TopBar.jsx
-- Navigation props » popToTop() » ContactBook.jsx » OptimizedList.jsx » AddContact.jsx
-- Navigation props » navigate() » NavMenu.jsx
-<br />
-
 
 # Estilos
 globalStyles » estilos globales
