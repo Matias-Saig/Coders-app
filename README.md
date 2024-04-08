@@ -2,18 +2,18 @@
 *Billetera virtual* - *Proyecto coderhouse, de curso de desarrollador de app*
 <br />
 
-# Skills
+## Skills
 - React Native
 - Redux
 - Firebase
 - SQLite
 <br />
 
-# Device » camera
+## Device » camera
 - screens/ImageSelector.jsx
 <br />
 
-# Firebase
+## Firebase
 - app/store.js » Configuración
 - app/Service/userAccountApi.js » Cuenta de usuario
 - app/Service/userAuth.js » Autorización de usuario
@@ -21,7 +21,7 @@
 - app/Service/userProfileApi.js » Perfil del usuario
 <br />
 
-# SQLite
+## SQLite
 - db/index.js » configuración
 - app.jsx » initDatabase
 - screens/Login.jsx » saveUserSession
@@ -29,17 +29,17 @@
 - Navigation/ MainNavigator.jsx » getUserSession
 <br />
 
-# Verificaction (yup)
+## Verificaction (yup)
 - Screens/Login.jsx
 - Screens/SingUp.jsx
 - Validation/AuthSchema.js
 <br />
 
-# Redux
+## Redux
 Para obtener identificación del usuario
 <br />
 
-# Navegación
+## Navegación
 - Navigation » ScreensNavigation.jsx
 - Screen Stacks » Login.jsx, ScreensTabs.jsx 
 - Screen Tabs » ScreensTabs.jsx » Home.jsx, ContactBook.jsx, About.jsx
@@ -49,27 +49,25 @@ Para obtener identificación del usuario
 - Navigation props » navigate() » NavMenu.jsx
 <br />
 
-# Custom Hook
+## Custom Hook
 - Hooks » useContactsGet » Lista de contactos
 - Hooks » useProfileGet » Perfil de usuario
 - Hooks - useSessionGet » Datos de usuario
-
-
 <br />
 
-# Switch condicional
+## Switch condicional
 - En login
 - En tabs de inicio y agenda
 <br />
 
-# Fuentes importadas
+## Fuentes importadas
 - Inter
 - CrimsonPro
 - LibreBaskerville
 - LeagueSpartan
 <br />
 
-# Elementos usados
+## Elementos usados
 - **Material Top Tabs Navigator**
 - Alert » aviso de contacto agregado o borrado (Android)
 - FlatList » OptimizedList.jsx
