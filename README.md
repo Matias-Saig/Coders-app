@@ -1,6 +1,23 @@
 # Classic Pocket
 *Billetera virtual* - *Proyecto coderhouse, de curso de desarrollador de app*
 
+# SQLite
+- db/index.js » configuración
+- app.jsx » initDatabase
+- Screens/Login.jsx » saveUserSession
+- Navigation/ MainNavigator.jsx » getUserSession
+  
+# Custom Hook
+- Hooks » useContactsGet » Lista de contactos
+- Hooks » useProfileGet » Perfil de usuario
+- Hooks - useSessionGet » Datos de usuario
+
+# Verificaction (yup)
+- Screens/Login.jsx
+- Screens/SingUp.jsx
+- Validation/AuthSchema.js
+
+
 <br />
 
 # Switch condicional
@@ -61,17 +78,6 @@ ContactList.js » Datos de contactos de la agenda
 # Estilos
 globalStyles » estilos globales
 globalColor » constantes de colores
-
-
-# Preview
-
-**Primer entrega**  
-<img src="/Screenshot_1er_entrega.png" width="150px" />
-
-**Segunda entrega**  
-<img src="/Screenshot_2da_entrega_1.png" width="150px" />
-<img src="/Screenshot_2da_entrega_2.png" width="150px" />
-<img src="/Screenshot_2da_entrega_3.png" width="150px" />
 
 
 # Wireframe
