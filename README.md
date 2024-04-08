@@ -1,6 +1,6 @@
 # Classic Pocket
 *Billetera virtual* - *Proyecto coderhouse, de curso de desarrollador de app*
-<br />
+<br /><br />
 
 ## Skills
 - React Native
@@ -87,7 +87,7 @@ Para obtener identificación del usuario
 # Estilos
 globalStyles » estilos globales
 globalColor » constantes de colores
-
+<br />
 
 # Wireframe
 <img src="/wirerame.jpg" />
