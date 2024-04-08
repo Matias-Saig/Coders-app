@@ -1,21 +1,36 @@
 # Classic Pocket
 *Billetera virtual* - *Proyecto coderhouse, de curso de desarrollador de app*
+<br />
+
+# Device » camera
+- 
+
+# Firebase
+- app/store.js » Configuración
+- app/Service/userAccountApi.js » Cuenta de usuario
+- app/Service/userAuth.js » Autorización de usuario
+- app/Service/userContactsApi.js » Lista de contactos del usuario
+- app/Service/userProfileApi.js » Perfil del usuario
+<br />
 
 # SQLite
 - db/index.js » configuración
 - app.jsx » initDatabase
 - Screens/Login.jsx » saveUserSession
+- Screens/About.jsx » deleteUserSession
 - Navigation/ MainNavigator.jsx » getUserSession
-  
-# Custom Hook
-- Hooks » useContactsGet » Lista de contactos
-- Hooks » useProfileGet » Perfil de usuario
-- Hooks - useSessionGet » Datos de usuario
+<br />
 
 # Verificaction (yup)
 - Screens/Login.jsx
 - Screens/SingUp.jsx
 - Validation/AuthSchema.js
+<br />
+
+# Custom Hook
+- Hooks » useContactsGet » Lista de contactos
+- Hooks » useProfileGet » Perfil de usuario
+- Hooks - useSessionGet » Datos de usuario
 
 
 <br />
@@ -35,6 +50,8 @@
 
 # Skills
 - React Native
+- Firebase
+- SQLite
 <br />
 
 # Elementos usados
@@ -52,13 +69,10 @@
 - TouchableOpacity
 - useState » para almacenar datos de input, crear contacto y borrar contacto, y cambio de backgroundColor con switch
 - View
-
 <br />
 
 # Redux
-- ContactsSlice.jsx » reduce: deleteContact » ContactDetail.jsx
-- ContactsSlice.jsx » reduce: addContact » AddContact.jsx
-
+Para obtener identificación del usuario
 <br />
 
 # Navegación
@@ -69,11 +83,8 @@
 - Navigation props » GoBack() » TopBar.jsx
 - Navigation props » popToTop() » ContactBook.jsx » OptimizedList.jsx » AddContact.jsx
 - Navigation props » navigate() » NavMenu.jsx
-
 <br />
 
-# Datos
-ContactList.js » Datos de contactos de la agenda
 
 # Estilos
 globalStyles » estilos globales
