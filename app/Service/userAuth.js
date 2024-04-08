@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { apiKey, authUrl } from "../../firebase/database";
 
+// Aurh Login - SingUp
 export const userAuthApi = createApi({
     reducerPath:"userAuthApi",
     baseQuery:fetchBaseQuery({baseUrl:authUrl}),
