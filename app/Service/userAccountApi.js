@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { firebaseUrl } from "../../firebase/database";
 
 // Mockup → createUser
-// import {balance, contacts, movements} from "../../db/userInitMockup";
 import balance from "./userInit/balance";
 import contacts from "./userInit/contacts";
 import movements from "./userInit/movements";
